@@ -1,0 +1,108 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@900&family=Ubuntu&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: theme('colors.background');
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lexend Mega', sans-serif;
+}
+
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.navbar {
+  flex: auto;
+  background-color: theme('colors.background');
+  border: 0;
+  box-shadow: none;
+}
+
+.navbar__item {
+  background-color: #A6FAFF;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+  padding: 10px 15px;
+}
+
+.navbar__item:hover {
+  background-color: #79F7FF;
+  box-shadow: 2px 2px 0px 0px black;
+  border-color: black;
+  color: black;
+  font-weight: bold;
+  border-width: 2px;
+  margin: 0 0.5rem;
+}
+
+.navbar__items--right > .navbar__item {
+  background-color: yellow;
+  border-color: black;
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+  padding: 10px 15px;
+}
+
+.navbar__items--right > .navbar__item:hover {
+  background-color: #E3A018;
+  box-shadow: 2px 2px 0px 0px black;
+  border-color: black;
+  color: black;
+  font-weight: bold;
+  border-width: 2px;
+  margin: 0 0.5rem;
+}
+
+.navbar__logo {
+  margin: 0;
+  background-color: white;
+  border-radius: 100%;
+  height: 64px;
+}
+
+.navbar__logo > img {
+  padding: 12px;
+}
+
+.navbar__items--right > .navbar__item > svg {
+  display: none;
+}
+
+/* You can override the default Infima variables here. */
+/* :root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+/*[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+*/
