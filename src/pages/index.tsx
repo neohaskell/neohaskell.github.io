@@ -38,6 +38,18 @@ export default function Home(): JSX.Element {
     <>
       <Layout description={`${siteConfig.tagline}`}>
         <HomepageHeader />
+        <p className="text-red-500 font-extrabold text-5xl">
+          If you're reading this, you probably found it by accident. This is a
+          WIP project, and the site is far from finished. If you're curious
+          about the project, better join the{" "}
+          <a
+            className="text-blue-500"
+            href="https://discord.com/invite/wDj3UYzec8"
+          >
+            Discord server
+          </a>
+          !
+        </p>
         <main>
           <HomepageFeatures />
         </main>
