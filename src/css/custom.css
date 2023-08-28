@@ -27,11 +27,11 @@ p, li {
   font-family: 'Ubuntu', sans-serif;
 }
 
-.navbar {
+/* .navbar {
   flex: auto;
-  background-color: theme('colors.background');
   border: 0;
   box-shadow: none;
+  height: 96px;
 }
 
 .navbar__item {
@@ -52,7 +52,30 @@ p, li {
   border-width: 2px;
   margin: 0 0.5rem;
 }
+*/
 
+.navbar__title {
+  font-family: Lexend Mega, sans-serif;
+  font-size: 1.5rem;
+}
+
+.navbar__link {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+.navbar__link--active {
+  font-weight: bolder;
+  text-decoration-thickness: 2px;
+}
+
+
+.navbar__link:hover {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+/*
 .navbar__items--right > .navbar__item {
   background-color: yellow;
   border-color: black;
@@ -74,18 +97,15 @@ p, li {
 
 .navbar__logo {
   margin: 0;
-  background-color: white;
-  border-radius: 100%;
-  height: 64px;
 }
 
 .navbar__logo > img {
-  padding: 12px;
+  padding: 18px;
 }
 
 .navbar__items--right > .navbar__item > svg {
   display: none;
-}
+} */
 
 /* You can override the default Infima variables here. */
 /* :root {
