@@ -6,18 +6,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@900&family=Ubuntu&display=swap');
 @tailwind base;
+
+@layer base {
+  code {
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
 body {
-  background-color: theme('colors.background');
+  /* background-color: theme('colors.background'); */
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lexend Mega', sans-serif;
 }
 
-* {
+p, li {
   font-family: 'Ubuntu', sans-serif;
 }
 
