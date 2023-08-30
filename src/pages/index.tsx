@@ -7,36 +7,41 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import CodeBlock from "@theme/CodeBlock";
 
 import styles from "./index.module.css";
-import Dialog from "../components/Dialog";
+import Frame from "../components/Frame";
+import Button from "../components/Button";
+
+const dynC = (className: string, color: string) =>
+  `dark:${className}-dark${color} ${className}-light${color}`;
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header
-      className={clsx("bg-transparent  hero hero--primary", styles.heroBanner)}
-    >
-      <div className="dark:text-white text-black container">
-        <div className="px-8 py-8 grid place-content-center space-y-4">
-          <h1 className="hero__title">
-            Don't fear shipping
-            <br />{" "}
-            <span className="dark:text-primary text-secondary underline decoration-wavy ">
-              your prototype.
-            </span>
-          </h1>
-          <div className={styles.buttons}></div>
-          <p className="text-2xl py-8 mx-auto w-2/3">
-            Deliver your prototype in no time, then joyfully refactor when
-            needed.{" "}
-            <strong>NeoHaskell prioritizes programmer happiness.</strong>
-          </p>
-          <div className="mx-auto p-5">
-            <Link to="/docs/intro">
-              <button className=" border-black border-2 p-2.5 bg-accent hover:bg-secondary hover:shadow-[3px_2px_0px_black] text-black hover:text-white active:bg-secondary rounded-full dark:border-white dark:shadow[3px_2px_0px_rgba(255,255,255,1)] ">
-                <h2 className="mx-4 my-2">Get Started!</h2>
-              </button>
-            </Link>
+    <header className={`${dynC("text", "text")} container grid text-center`}>
+      <div className="px-8 my-24 place-content-center">
+        <div className="flex mb-10 items-center">
+          <div className="flex flex-col gap-24">
+            <h1 className="text-7xl">
+              Don't fear shipping
+              <br />{" "}
+              <span className="dark:text-darkprimary text-lightsecondary underline decoration-wavy">
+                the MVP.
+              </span>
+            </h1>
+            <Frame rainbow>
+              <p className="text-2xl justify-normal my-10 mx-auto w-2/3">
+                From your head to the world in no time, without the fear of
+                future refactors.{" "}
+                <strong>NeoHaskell scales with your product.</strong>
+              </p>
+            </Frame>
           </div>
+        </div>
+        <div className="mx-auto p-5">
+          <Link to="/docs/intro">
+            <Button color="yellow" rounded="full" size="lg">
+              <h2 className="mx-4 my-2">Get Started!</h2>
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
@@ -46,11 +51,13 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <div className="bg-yellow-50 dark:bg-slate-950">
+    <div className="container">
       <Layout description={`${siteConfig.tagline}`}>
         <HomepageHeader />
         <div className="container grid grid-cols-1 gap-4">
-          <Dialog message="This is a dialog" width="full" />
+          <Frame width="full">
+            <h2 className="text-3xl font-bold">Hello, World!</h2>
+          </Frame>
           <div className="place-content-left">
             <CodeBlock language="haskell" title="src/Main.hs" showLineNumbers>
               {`module Main where

@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 
 type ButtonType = {
-  buttonText: string;
+  children?: React.ReactNode;
   rounded?: "none" | "md" | "full";
   size?: "sm" | "md" | "lg";
   color?:
@@ -18,7 +18,7 @@ type ButtonType = {
 };
 
 const Button = ({
-  buttonText = "Enabled",
+  children,
   rounded = "none",
   size = "md",
   color = "cyan",
@@ -27,7 +27,7 @@ const Button = ({
   return (
     <button
       className={classNames(
-        "border-black border-2",
+        "border-black border-2 text-black",
 
         {
           "bg-violet-200 hover:bg-violet-300 active:bg-violet-400":
@@ -70,7 +70,7 @@ const Button = ({
       )}
       disabled={disabled}
     >
-      {buttonText}
+      {children}
     </button>
   );
 };

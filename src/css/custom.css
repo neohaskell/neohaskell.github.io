@@ -7,25 +7,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@900&family=Ubuntu&display=swap');
 @tailwind base;
 
-@layer base {
-  code {
-  }
-}
-
 @tailwind components;
 @tailwind utilities;
 
 body {
-  /* background-color: theme('colors.background'); */
+  background-color: theme('colors.lightbackground');
+}
+
+[data-theme='dark'] body {
+  background-color: theme('colors.darkbackground');
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lexend Mega', sans-serif;
 }
 
+.underline {
+  text-decoration-skip-ink: none !important;
+  text-underline-offset: 2rem;
+}
+
 p, li {
   font-family: 'Ubuntu', sans-serif;
 }
+
 
 /* .navbar {
   flex: auto;
