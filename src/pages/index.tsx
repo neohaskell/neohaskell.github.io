@@ -16,19 +16,18 @@ const dynC = (className: string, color: string) =>
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={`${dynC("text", "text")} container grid text-center`}>
-      <div className="px-8 my-24 place-content-center">
-        <div className="flex mb-10 items-center">
-          <div className="flex flex-col gap-24">
-            <h1 className="text-7xl">
-              Don't fear shipping
-              <br />{" "}
+    <header className={`${dynC("text", "text")}`}>
+      <div className="px-8 my-24">
+        <div className="mb-10">
+          <div className="">
+            <h1 className="md:leading-snug text-center leading-normal mb-20 md:text-7xl text-5xl">
+              Don't fear shipping{" "}
               <span className="dark:text-darkprimary text-lightsecondary underline decoration-wavy">
                 the MVP.
               </span>
             </h1>
             <Frame rainbow>
-              <p className="text-2xl justify-normal my-10 mx-auto w-2/3">
+              <p className="text-center text-2xl justify-normal my-10 mx-auto md:w-2/3">
                 From your head to the world in no time, without the fear of
                 future refactors.{" "}
                 <strong>NeoHaskell scales with your product.</strong>
@@ -36,7 +35,7 @@ function HomepageHeader() {
             </Frame>
           </div>
         </div>
-        <div className="mx-auto p-5">
+        <div className="text-center mx-auto p-5">
           <Link to="/docs/intro">
             <Button color="yellow" rounded="full" size="lg">
               <h2 className="mx-4 my-2">Get Started!</h2>
