@@ -32,12 +32,13 @@ p, li {
 }
 
 
-/* .navbar {
+.navbar {
   flex: auto;
   border: 0;
   box-shadow: none;
   height: 96px;
 }
+/*
 
 .navbar__item {
   background-color: #A6FAFF;
