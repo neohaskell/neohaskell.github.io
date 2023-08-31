@@ -4,11 +4,15 @@
  * work well for content-centric websites.
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@900&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@600&family=Ubuntu&display=swap');
 @tailwind base;
 
 @tailwind components;
 @tailwind utilities;
+
+.tracking-supatight{
+  letter-spacing: -0.095em;
+}
 
 body {
   background-color: theme('colors.lightbackground');
@@ -24,7 +28,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .underline {
   text-decoration-skip-ink: none !important;
-  text-underline-offset: 2rem;
 }
 
 p, li {
@@ -65,20 +68,23 @@ p, li {
   font-size: 1.5rem;
 }
 
-.navbar__link {
-  text-decoration: underline;
-  text-decoration-style: wavy;
-}
 
 .navbar__link--active {
   font-weight: bolder;
   text-decoration-thickness: 2px;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-skip-ink: none !important;
+  text-underline-offset: 0.2em;
 }
 
 
 .navbar__link:hover {
+  text-decoration-skip-ink: none !important;
   text-decoration: underline;
   text-decoration-style: wavy;
+  text-underline-offset: 0.2em;
+  color: inherit;
 }
 
 /*
@@ -108,10 +114,11 @@ p, li {
 .navbar__logo > img {
   padding: 18px;
 }
+*/
 
 .navbar__items--right > .navbar__item > svg {
   display: none;
-} */
+}
 
 /* You can override the default Infima variables here. */
 :root {

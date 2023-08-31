@@ -27,6 +27,18 @@ const dark = Object.keys(darkColors).reduce((acc, key) => {
   return acc;
 }, {});
 
+const shadow = (px, py, color) => `${px}px ${py}px 0px ${color}`;
+const simpleShadow = (px, color) => shadow(px, px, color);
+const borderedShadow = (px, color) => {
+  const offset = 2;
+  const actualShadow = simpleShadow(px, color);
+  const rightBorder = simpleShadow(px + offset, "black");
+  const leftBorder = simpleShadow(px - offset, "black");
+  const leftCorner = shadow(px - offset, px + offset, "black");
+  const rightCorner = shadow(px + offset, px - offset, "black");
+  return `${actualShadow}, ${rightBorder}, ${leftBorder}, ${leftCorner}, ${rightCorner}`;
+};
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,mdx}"],
   darkMode: ["class", '[data-theme="dark"]'],
@@ -35,11 +47,20 @@ module.exports = {
       boxShadow: {
         neoblack: "8px 8px 0px rgba(0,0,0,1)",
         neowhite: "8px 8px 0px rgba(255,0,0,1)",
-        rainbow: `8px 8px 0px ${colors.cyan["400"]}, 16px 16px 0px ${colors.yellow["400"]}, 24px 24px 0px ${colors.violet["400"]}`,
+        rainbow: `${borderedShadow(8, colors.cyan["400"])}, ${borderedShadow(
+          8 * 2,
+          colors.yellow["400"]
+        )}, ${borderedShadow(8 * 3, colors.violet["400"])}`,
+        neocyan: borderedShadow(8, colors.cyan["400"]),
+        neoyellow: borderedShadow(8, colors.yellow["400"]),
+        neoviolet: borderedShadow(8, colors.violet["400"]),
       },
       colors: {
         ...light,
         ...dark,
+      },
+      tracking: {
+        supatight: "-0.5em",
       },
     },
   },
