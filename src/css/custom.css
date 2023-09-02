@@ -99,6 +99,14 @@ main > .container > .row > .col  article {
   @apply py-4;
 }
 
+.theme-doc-sidebar-container {
+  border: 0px !important;
+}
+
+.table-of-contents {
+  border: 0px !important;
+}
+
 .navbar__link--active {
   font-weight: bolder;
   text-decoration-thickness: 2px;
