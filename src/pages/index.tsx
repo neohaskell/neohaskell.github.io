@@ -22,20 +22,21 @@ function HomepageHeader() {
         <div className="mb-10">
           <div className="">
             <h1 className="text-center tracking-supatight leading-relaxed lg:text-7xl md:text-6xl sm:text-5xl text-3xl">
-              Don't fear shipping
+              A language that triggers
               <br />
               <span className="dark:text-darkprimary text-lightsecondary underline decoration-wavy underline-offset-8">
-                the MVP.
+                flow state.
               </span>
             </h1>
           </div>
         </div>
       </div>
-      <div className="mx-auto mb-4 md:w-1/2">
+      <div className="mx-auto mb-4 lg:w-2/3">
         <Frame rainbow>
-          <p className="text-center md:text-2xl sm:text-xl text-lg justify-normal my-10 mx-auto md:w-2/3">
-            From your head to the world in no time, without the fear of future
-            refactors. <strong>NeoHaskell scales with your product.</strong>
+          <p className="text-center md:text-2xl sm:text-xl text-lg justify-normal my-10 mx-auto md:w-3/4">
+            Triggering joy with every event, with elegance in every line. You
+            put the creativity, NeoHaskell gives you the reliability.{" "}
+            <strong>Learn on the fly, ship whenever you want.</strong>
           </p>
         </Frame>
       </div>

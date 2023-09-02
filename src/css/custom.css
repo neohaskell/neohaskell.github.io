@@ -5,8 +5,9 @@
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@600&family=Ubuntu&display=swap');
-@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@400&family=Ubuntu&display=swap');
 
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -24,6 +25,31 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lexend Mega', sans-serif;
+  font-weight: 600;
+}
+
+article h1 {
+  font-size: 2.488rem;
+}
+
+article h2 {
+  font-size: 2.074rem;
+}
+
+article h3 {
+  font-size: 1.728rem;
+}
+
+article h4 {
+  font-size: 1.44rem;
+}
+
+article h5 {
+  font-size: 1.2rem;
+}
+
+article h6 {
+  font-size: 1rem;
 }
 
 .underline {
@@ -34,40 +60,44 @@ p, li {
   font-family: 'Ubuntu', sans-serif;
 }
 
-
 .navbar {
   flex: auto;
   border: 0;
   box-shadow: none;
   height: 96px;
 }
-/*
 
 .navbar__item {
-  background-color: #A6FAFF;
-  border-color: black;
-  border-width: 2px;
-  border-radius: 10px;
-  margin: 0 0.5rem;
-  padding: 10px 15px;
+  font-family: 'Lexend Mega', sans-serif;
 }
 
 .navbar__item:hover {
-  background-color: #79F7FF;
-  box-shadow: 2px 2px 0px 0px black;
-  border-color: black;
-  color: black;
-  font-weight: bold;
-  border-width: 2px;
-  margin: 0 0.5rem;
+  font-family: 'Lexend Mega', sans-serif;
 }
-*/
 
 .navbar__title {
   font-family: Lexend Mega, sans-serif;
   font-size: 1.5rem;
 }
 
+.menu__list .theme-doc-sidebar-item-link-level-1  {
+  font-family: Lexend Mega, sans-serif;
+  font-size: 1rem;
+}
+
+.menu__list .theme-doc-sidebar-item-category-level-1  {
+  font-family: Lexend Mega, sans-serif;
+  font-size: 1rem;
+}
+
+main > .container > .row > .col  article {
+  @apply shadow-rainbow;
+  @apply bg-white;
+  @apply border-4;
+  @apply border-black;
+  @apply px-8;
+  @apply py-4;
+}
 
 .navbar__link--active {
   font-weight: bolder;
