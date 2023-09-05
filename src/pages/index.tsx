@@ -58,17 +58,6 @@ export default function Home(): JSX.Element {
       <Layout description={`${siteConfig.tagline}`}>
         <HomepageHeader />
         <div className="container grid grid-cols-1 gap-4">
-          <CodeFrame
-            language="haskell"
-            shadowClass="shadow-neocyan"
-            width="full"
-          >
-            {`module Main where
-
-main :: IO ()
-main = putStrLn "Hello, World!"`}
-          </CodeFrame>
-
           <p className="text-red-500 font-extrabold text-5xl">
             If you're reading this, you probably found it by accident. This is a
             WIP project, and the site is far from finished. If you're curious

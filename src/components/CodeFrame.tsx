@@ -19,18 +19,11 @@ const widthClasses = {
   "1/3": "w-1/3",
 };
 
-const dimensionClasses = ["border-4"];
+const dimensionClasses = ["border-4", "flex", "flex-row", "items-center"];
 
-const lightModeClasses = ["bg-white", "text-black", "border-black"];
+const lightModeClasses = ["bg-codeBg", "text-black", "border-black"];
 
-const darkModeClasses = [
-  "bg-slate-950",
-  "text-white",
-  "border-white",
-  "shadow-neowhite",
-].map((className) => `dark:${className}`);
-
-const classes = [...dimensionClasses, ...lightModeClasses, ...darkModeClasses];
+const classes = [...dimensionClasses, ...lightModeClasses];
 
 const Frame = ({
   rainbow,
@@ -47,7 +40,7 @@ const Frame = ({
   return (
     <div className={cls}>
       <CodeBlock
-        className="!rounded-none h-full"
+        className="!rounded-none !mb-0 px-4 py-2"
         language={language}
         title={title}
       >

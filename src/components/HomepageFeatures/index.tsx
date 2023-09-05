@@ -1,53 +1,94 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './styles.module.css';
+import React from "react";
+import clsx from "clsx";
+import styles from "./styles.module.css";
+import CodeFrame from "../CodeFrame";
+
+type ShowCase =
+  | { code: string; language: string }
+  | { img: React.ComponentType<React.ComponentProps<"img">> };
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
+  showcase: ShowCase;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: "Beautiful, Ready-to-Use Tools",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        NeoHaskell offers a clean and intuitive language design, complemented by
+        a core library that provides all the tools you need to start creating
+        amazing software right away.
+        <br />
+        START CODING
       </>
     ),
+    showcase: {
+      language: "haskell",
+      code: `processLogs rawLogs =
+  rawLogs
+  |> map parseLogs
+  |> collect
+  |> andThen (filter isImportant)
+  |> andThen (map toStructuredLog)`,
+    },
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: "Hassle-Free Development Environment",
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        NeoHaskell's CLI tool installs all required utilities and makes
+        multi-platform support a breeze. Whether you're compiling to native code
+        or generating WebAssembly for browser compatibility, you'll enjoy error
+        messages that guide, not hinder.
+        <br />
+        EMPOWER YOUR DEVELOPMENT
       </>
     ),
+    showcase: { code: "", language: "" },
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: "Focus-Driven, Event-Driven",
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        In NeoHaskell, you work directly events and functions that react to
+        them. Say goodbye to the cognitive overhead of managing state or
+        wrestling with dependency injection. Your focus stays where it belongs:
+        on solving problems and crafting solutions.
+        <br />
+        BEGIN YOUR JOURNEY
       </>
     ),
+    showcase: { code: "", language: "" },
+  },
+  {
+    title: "Naturally Full-Stack",
+    description: (
+      <>
+        Relish the ease of crafting full-stack applications in a unified
+        language environment. NeoHaskell takes care of frontend-backend
+        communication, allowing you to focus solely on your application's logic.
+        <br />
+        EXPERIENCE NATURAL FULL-STACK DEVELOPMENT
+      </>
+    ),
+    showcase: { code: "", language: "" },
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({ title, showcase, description }: FeatureItem) {
+  const showcaseComponent =
+    "code" in showcase ? (
+      <CodeFrame language={showcase.language}>{showcase.code}</CodeFrame>
+    ) : (
+      <showcase.img />
+    );
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
+    <div className="flex p-4">
+      {showcaseComponent}
+      <div className="p-7">
         <h3>{title}</h3>
         <p>{description}</p>
       </div>
@@ -57,9 +98,9 @@ function Feature({title, Svg, description}: FeatureItem) {
 
 export default function HomepageFeatures(): JSX.Element {
   return (
-    <section className={styles.features}>
+    <section>
       <div className="container">
-        <div className="row">
+        <div className="col">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

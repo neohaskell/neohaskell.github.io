@@ -56,6 +56,7 @@ module.exports = {
         neoviolet: borderedShadow(8, colors.violet["400"]),
       },
       colors: {
+        codeBg: "#2D2A55",
         ...light,
         ...dark,
       },
