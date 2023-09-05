@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 import CodeFrame from "../CodeFrame";
+import Button from "../Button";
 
 type ShowCase =
   | { code: string; language: string }
@@ -11,6 +12,8 @@ type FeatureItem = {
   title: string;
   description: JSX.Element;
   showcase: ShowCase;
+  buttonText: string;
+  shadowColor?: string;
 };
 
 const FeatureList: FeatureItem[] = [
@@ -21,10 +24,9 @@ const FeatureList: FeatureItem[] = [
         NeoHaskell offers a clean and intuitive language design, complemented by
         a core library that provides all the tools you need to start creating
         amazing software right away.
-        <br />
-        START CODING
       </>
     ),
+    buttonText: "Start Coding",
     showcase: {
       language: "haskell",
       code: `processLogs rawLogs =
@@ -43,10 +45,9 @@ const FeatureList: FeatureItem[] = [
         multi-platform support a breeze. Whether you're compiling to native code
         or generating WebAssembly for browser compatibility, you'll enjoy error
         messages that guide, not hinder.
-        <br />
-        EMPOWER YOUR DEVELOPMENT
       </>
     ),
+    buttonText: "Empower your Development",
     showcase: { code: "", language: "" },
   },
   {
@@ -57,10 +58,9 @@ const FeatureList: FeatureItem[] = [
         them. Say goodbye to the cognitive overhead of managing state or
         wrestling with dependency injection. Your focus stays where it belongs:
         on solving problems and crafting solutions.
-        <br />
-        BEGIN YOUR JOURNEY
       </>
     ),
+    buttonText: "Begin your Journey",
     showcase: { code: "", language: "" },
   },
   {
@@ -70,15 +70,14 @@ const FeatureList: FeatureItem[] = [
         Relish the ease of crafting full-stack applications in a unified
         language environment. NeoHaskell takes care of frontend-backend
         communication, allowing you to focus solely on your application's logic.
-        <br />
-        EXPERIENCE NATURAL FULL-STACK DEVELOPMENT
       </>
     ),
+    buttonText: "Experience Bliss",
     showcase: { code: "", language: "" },
   },
 ];
 
-function Feature({ title, showcase, description }: FeatureItem) {
+function Feature({ title, showcase, description, buttonText }: FeatureItem) {
   const showcaseComponent =
     "code" in showcase ? (
       <CodeFrame language={showcase.language}>{showcase.code}</CodeFrame>
@@ -88,9 +87,12 @@ function Feature({ title, showcase, description }: FeatureItem) {
   return (
     <div className="flex p-4">
       {showcaseComponent}
-      <div className="p-7">
-        <h3>{title}</h3>
-        <p>{description}</p>
+      <div className="bg-white -z-0 my-7 p-7 border-4 border-black">
+        <h3 className="text-xl">{title}</h3>
+        <p className="text-lg">{description}</p>
+        <Button rounded="full" color="lime">
+          <h3>{buttonText}</h3>
+        </Button>
       </div>
     </div>
   );
