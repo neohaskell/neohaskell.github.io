@@ -66,8 +66,10 @@ export default function Home(): JSX.Element {
           onOk={() => setDisclaimerOpen(!disclaimerOpen)}
           title="Greetings traveller!"
         >
-          You probably found this site by accident. It is far from finished, but
-          if you're curious about the project:
+          <p>
+            You probably found this site by accident. It is far from finished,
+            but if you're curious about the project:
+          </p>
           <a
             className="text-lightsecondary hover:underline hover:decoration-wavy underline-offset-4 py-4 block"
             href="https://discord.com/invite/wDj3UYzec8"
