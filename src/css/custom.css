@@ -15,7 +15,7 @@
   letter-spacing: -0.095em;
 }
 
-.announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
+/*#announcementBar {
   @apply h-60 !important;
   @apply m-7;
   @apply p-7;
@@ -27,6 +27,7 @@
   @apply shadow-neoyellow;
   font-family: 'Lexend Mega', sans-serif;
 }
+*/
 
 .close {
   opacity: 1 !important;

@@ -3,7 +3,7 @@ import Button from "./Button";
 import classNames from "classnames";
 
 type DialogType = {
-  message: string;
+  children?: React.ReactNode;
   width?: "fit" | "full" | "1/2" | "1/3";
   cancelButtonText?: string;
   actionButtonText?: string;
@@ -18,7 +18,7 @@ type DialogType = {
 };
 
 const Dialog = ({
-  message,
+  children,
   width,
   cancelButtonText,
   actionButtonText,
@@ -27,25 +27,26 @@ const Dialog = ({
   return (
     <div
       className={classNames(
-        "px-8 py-4 dark:bg-slate-850 bg-white  border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] grid place-content-center",
+        "p-9 dark:bg-slate-850 bg-white  border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] grid place-content-center",
         { "w-fit": width === "fit" },
         { "w-full": width === "full" },
         { "w-1/2": width === "1/2" },
         { "w-1/3": width === "1/3" }
       )}
     >
-      <div>
-        <h1 className="text-2xl mb-4">{message}</h1>
+      <div className="flex flex-col gap-4">
+        {children}
         <div className="flex space-x-2 mx-auto">
           {cancelButtonText && (
             <button className="text-base">{cancelButtonText}</button>
           )}
           {actionButtonText && (
             <Button
-              buttonText={actionButtonText}
               rounded="full"
               color={actionButtonColor && actionButtonColor}
-            />
+            >
+              <h3>{actionButtonText}</h3>
+            </Button>
           )}
         </div>
       </div>

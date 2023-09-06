@@ -10,6 +10,8 @@ import styles from "./index.module.css";
 import Frame from "../components/Frame";
 import Button from "../components/Button";
 import CodeFrame from "../components/CodeFrame";
+import Dialog from "../components/Dialog";
+import Modal from "../components/Modal";
 
 const dynC = (className: string, color: string) =>
   `dark:${className}-dark${color} ${className}-light${color}`;
@@ -53,8 +55,30 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+  const [disclaimerOpen, setDisclaimerOpen] = React.useState(true);
+  const message = "";
   return (
     <div className="container">
+      <div className="absolute left-1/2 top-1/2">
+        <Modal
+          open={disclaimerOpen}
+          okText="Continue on my own"
+          onOk={() => setDisclaimerOpen(!disclaimerOpen)}
+          title="Greetings traveller!"
+        >
+          You probably found this site by accident. It is far from finished, but
+          if you're curious about the project.{" "}
+          <b>It's dangerous to go alone!</b>
+          <a
+            className="text-lightsecondary hover:underline hover:decoration-wavy underline-offset-4 py-4 block"
+            href="https://discord.com/invite/wDj3UYzec8"
+            target="_blank"
+            onClick={() => setDisclaimerOpen(!disclaimerOpen)}
+          >
+            <h3>JOIN THE DISCORD SERVER!</h3>
+          </a>
+        </Modal>
+      </div>
       <Layout description={`${siteConfig.tagline}`}>
         <HomepageHeader />
         <main>

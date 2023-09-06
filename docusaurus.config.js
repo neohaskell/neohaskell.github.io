@@ -81,12 +81,6 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
-      announcementBar: {
-        content: `
-  <b>Greetings traveller!</b> You probably found this site by accident. <b>It is far from finished</b>, but if you\'re curious about the project, join the <a href="https://discord.com/invite/wDj3UYzec8">Discord server</a> and <b>say hello!</b>
-  `,
-        isCloseable: false,
-      },
       navbar: {
         title: "NeoHaskell",
         logo: {

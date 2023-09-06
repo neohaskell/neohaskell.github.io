@@ -15,19 +15,23 @@ type ButtonType = {
     | "cyan"
     | "";
   disabled?: boolean;
+  onClick?: () => void;
+  className?: string;
 };
 
 const Button = ({
   children,
-  rounded = "none",
+  onClick = () => {},
+  rounded = "full",
   size = "md",
   color = "cyan",
   disabled,
+  className,
 }: ButtonType) => {
   return (
     <button
       className={classNames(
-        "border-black border-2 text-black",
+        "border-black border-2 text-black " + className,
 
         {
           "bg-violet-200 hover:bg-violet-300 active:bg-violet-400":
@@ -68,6 +72,7 @@ const Button = ({
             disabled,
         }
       )}
+      onClick={onClick}
       disabled={disabled}
     >
       {children}

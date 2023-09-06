@@ -55,6 +55,9 @@ module.exports = {
         neoyellow: borderedShadow(8, colors.yellow["400"]),
         neoviolet: borderedShadow(8, colors.violet["400"]),
       },
+      zIndex: {
+        999: 999,
+      },
       colors: {
         codeBg: "#2D2A55",
         ...light,
