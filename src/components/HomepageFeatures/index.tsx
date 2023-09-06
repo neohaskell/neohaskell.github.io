@@ -9,6 +9,7 @@ type ShowCase =
   | { img: React.ComponentType<React.ComponentProps<"img">> };
 
 type FeatureItem = {
+  n?: number;
   title: string;
   description: JSX.Element;
   showcase: ShowCase;
@@ -77,7 +78,9 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({ title, showcase, description, buttonText }: FeatureItem) {
+function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
+  const k = n ?? 0;
+  const reverse = k % 2 === 0 ? "flex-row" : "flex-row-reverse";
   const showcaseComponent =
     "code" in showcase ? (
       <CodeFrame language={showcase.language}>{showcase.code}</CodeFrame>
@@ -85,7 +88,7 @@ function Feature({ title, showcase, description, buttonText }: FeatureItem) {
       <showcase.img />
     );
   return (
-    <div className="flex p-4">
+    <div className={`flex p-4 ${reverse}`}>
       {showcaseComponent}
       <div className="bg-white -z-0 my-7 p-7 border-4 border-black">
         <h3 className="text-xl">{title}</h3>
@@ -104,7 +107,7 @@ export default function HomepageFeatures(): JSX.Element {
       <div className="container">
         <div className="col">
           {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+            <Feature key={idx} {...props} n={idx} />
           ))}
         </div>
       </div>
