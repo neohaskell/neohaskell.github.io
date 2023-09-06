@@ -15,6 +15,23 @@
   letter-spacing: -0.095em;
 }
 
+.announcementBar_node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-styles-module {
+  @apply h-60 !important;
+  @apply m-7;
+  @apply p-7;
+  @apply text-5xl;
+  @apply text-black !important;
+  @apply bg-lightaccent !important;
+  @apply border-4 !important;
+  @apply border-black !important;
+  @apply shadow-neoyellow;
+  font-family: 'Lexend Mega', sans-serif;
+}
+
+.close {
+  opacity: 1 !important;
+}
+
 body {
   background-color: theme('colors.lightbackground');
 }
