@@ -61,6 +61,10 @@ const Button = ({
           "bg-cyan-200 hover:bg-cyan-300 active:bg-cyan-400":
             color === "cyan" && !disabled,
         },
+        {
+          "bg-none hover:bg-cyan-300 active:bg-cyan-400":
+            color === "" && !disabled,
+        },
         { "rounded-none": rounded === "none" },
         { "rounded-md": rounded === "md" },
         { "rounded-full": rounded === "full" },

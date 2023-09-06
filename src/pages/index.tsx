@@ -55,7 +55,7 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  const [disclaimerOpen, setDisclaimerOpen] = React.useState(true);
+  const [disclaimerOpen, setDisclaimerOpen] = React.useState(false);
   const message = "";
   return (
     <div className="container">
@@ -82,7 +82,7 @@ export default function Home(): JSX.Element {
       </div>
       <Layout description={`${siteConfig.tagline}`}>
         <HomepageHeader />
-        <main>
+        <main className="pt-32">
           <HomepageFeatures />
         </main>
       </Layout>

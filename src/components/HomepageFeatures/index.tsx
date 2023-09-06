@@ -3,6 +3,7 @@ import clsx from "clsx";
 import styles from "./styles.module.css";
 import CodeFrame from "../CodeFrame";
 import Button from "../Button";
+import CodeBlock from "@theme/CodeBlock";
 
 type ShowCase =
   | { code: string; language: string }
@@ -48,7 +49,7 @@ const FeatureList: FeatureItem[] = [
         messages that guide, not hinder.
       </>
     ),
-    buttonText: "Empower your Development",
+    buttonText: "Enjoy the Ride",
     showcase: { code: "", language: "" },
   },
   {
@@ -83,19 +84,31 @@ function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
   const reverse = k % 2 === 0 ? "flex-row" : "flex-row-reverse";
   const showcaseComponent =
     "code" in showcase ? (
-      <CodeFrame language={showcase.language}>{showcase.code}</CodeFrame>
+      // <CodeFrame language={showcase.language}>{showcase.code}</CodeFrame>
+      <CodeBlock
+        showLineNumbers
+        className="!rounded-none !mb-0 "
+        language={showcase.language}
+      >
+        {showcase.code}
+      </CodeBlock>
     ) : (
       <showcase.img />
     );
+  // <div className="bg-white -z-0 my-7 p-7 border-4 border-black"></div>
   return (
-    <div className={`flex p-4 ${reverse}`}>
-      {showcaseComponent}
-      <div className="bg-white -z-0 my-7 p-7 border-4 border-black">
-        <h3 className="text-xl">{title}</h3>
+    <div
+      className={`bg-violet-200 shadow-neocyan border-4 border-black p-32 flex mx-32 gap-16 ${reverse}`}
+    >
+      <div className="self-center bg-codeBg">{showcaseComponent}</div>
+      <div className="flex flex-col gap-4">
+        <h3 className="text-3xl">{title}</h3>
         <p className="text-lg">{description}</p>
-        <Button rounded="full" color="lime">
-          <h3>{buttonText}</h3>
-        </Button>
+        <div>
+          <Button rounded="full" color="cyan">
+            <h3>{buttonText}</h3>
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -105,7 +118,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section>
       <div className="container">
-        <div className="col">
+        <div className="flex flex-col gap-32">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} n={idx} />
           ))}
