@@ -36,9 +36,15 @@ function HomepageHeader() {
       <div className="mx-auto mb-4 lg:w-2/3">
         <Frame rainbow>
           <p className="text-center md:text-2xl sm:text-xl text-lg justify-normal my-10 mx-auto md:w-3/4">
-            Triggering joy with every event, with elegance in every line. You
-            put the creativity, NeoHaskell gives you the reliability.{" "}
-            <strong>Learn on the fly, ship whenever you want.</strong>
+            <strong>
+              NeoHaskell is a dialect of Haskell that is focused on
+              beginner-friendliness and productivity.
+            </strong>
+          </p>
+          <p className="text-center md:text-2xl sm:text-xl text-lg justify-normal my-10 mx-auto md:w-3/4">
+            It is designed to be easy to learn and use, while also being
+            powerful enough to release your app with minimum effort and maximum
+            confidence.
           </p>
         </Frame>
       </div>
@@ -55,31 +61,8 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  const [disclaimerOpen, setDisclaimerOpen] = React.useState(true);
-  const message = "";
   return (
     <div className="container">
-      <div className="absolute left-1/2 top-1/2">
-        <Modal
-          open={disclaimerOpen}
-          okText="Continue on my own"
-          onOk={() => setDisclaimerOpen(!disclaimerOpen)}
-          title="Greetings traveller!"
-        >
-          <p>
-            You probably found this site by accident. It is far from finished,
-            but if you're curious about the project:
-          </p>
-          <a
-            className="text-lightsecondary hover:underline hover:decoration-wavy underline-offset-4 py-4 block"
-            href="https://discord.com/invite/wDj3UYzec8"
-            target="_blank"
-            onClick={() => setDisclaimerOpen(!disclaimerOpen)}
-          >
-            <h3>JOIN THE DISCORD SERVER!</h3>
-          </a>
-        </Modal>
-      </div>
       <Layout description={`${siteConfig.tagline}`}>
         <HomepageHeader />
         <main className="pt-32">
