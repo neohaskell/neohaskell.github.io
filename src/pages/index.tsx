@@ -55,7 +55,7 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  const [disclaimerOpen, setDisclaimerOpen] = React.useState(false);
+  const [disclaimerOpen, setDisclaimerOpen] = React.useState(true);
   const message = "";
   return (
     <div className="container">
