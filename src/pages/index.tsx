@@ -12,6 +12,7 @@ import Button from "../components/Button";
 import CodeFrame from "../components/CodeFrame";
 import Dialog from "../components/Dialog";
 import Modal from "../components/Modal";
+import Disclaimer from "../components/Disclaimer";
 
 const dynC = (className: string, color: string) =>
   `dark:${className}-dark${color} ${className}-light${color}`;
@@ -48,10 +49,21 @@ function HomepageHeader() {
           </p>
         </Frame>
       </div>
+      <div className="width-full my-20">
+        <iframe
+          className="mx-auto"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/VM-2OVNt-eQ?si=A7JKcVobgEpi1fvt"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
       <div className="relative text-center mx-auto my-24">
         <Link to="/docs/intro">
           <Button color="yellow" rounded="full" size="lg">
-            <h2 className="mx-4 my-2 text-2xl">Get Started!</h2>
+            <h2 className="mx-4 my-2 text-2xl">Read the Dogma</h2>
           </Button>
         </Link>
       </div>
@@ -62,13 +74,15 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <div className="container">
-      <Layout description={`${siteConfig.tagline}`}>
+    <Layout description={`${siteConfig.tagline}`}>
+      <div className="container">
+        <Disclaimer />
         <HomepageHeader />
+
         <main className="pt-32">
           <HomepageFeatures />
         </main>
-      </Layout>
-    </div>
+      </div>
+    </Layout>
   );
 }

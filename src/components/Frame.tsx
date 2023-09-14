@@ -6,6 +6,7 @@ type FrameType = {
   children?: ReactElement | ReactElement[];
   rainbow?: boolean;
   shadowClass?: string;
+  background?: string;
   width?: "fit" | "full" | "1/2" | "1/3";
 };
 
@@ -34,11 +35,14 @@ const Frame = ({
   children,
   width,
   shadowClass = "shadow-neoblack",
+  background = "bg-white",
 }: FrameType) => {
   const s = rainbow
     ? classes.filter((c) => !c.includes("shadow")).concat("shadow-rainbow")
     : classes;
-  const cls = [...s, `${widthClasses[width]}`, shadowClass].join(" ");
+  const cls = [...s, `${widthClasses[width]}`, shadowClass, background].join(
+    " "
+  );
   return <div className={cls}>{children}</div>;
 };
 
