@@ -58,6 +58,9 @@ module.exports = {
       zIndex: {
         999: 999,
       },
+      padding: {
+        "16-9": "56.25%",
+      },
       colors: {
         codeBg: "#2D2A55",
         ...light,

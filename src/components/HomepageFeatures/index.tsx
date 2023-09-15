@@ -127,11 +127,11 @@ export default function HomepageFeatures(): JSX.Element {
             {/* horrible hack to hide the vertical bar */}
             <span className="absolute w-full h-full py-36 bg-lightbackground -z-20" />
             <img
-              className="absolute sm:h-36 h-24 bottom-1/4 right-2/3 -z-10"
+              className="absolute sm:h-36 h-24 bottom-1/4 lg:right-2/3 right-3/4 -z-10"
               src="img/Star2.svg"
             />
             <img
-              className="absolute sm:h-36 h-24 top-1/4 left-2/3 -z-10 "
+              className="absolute sm:h-36 h-24 top-1/4 lg:left-2/3 left-3/4 -z-10 "
               src="img/Star1.svg"
             />
             <h1 className="text-center">
