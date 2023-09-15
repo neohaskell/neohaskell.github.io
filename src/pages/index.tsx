@@ -49,18 +49,8 @@ function HomepageHeader() {
           </p>
         </Frame>
       </div>
-      <div className="mx-auto mt-24 width-full max-w-6xl">
-        <div className="relative overflow-hidden h-0 pb-16-9">
-          <iframe
-            className="absolute top-0 left-0 w-full h-full max-w-full"
-            src="https://www.youtube.com/embed/VM-2OVNt-eQ?si=A7JKcVobgEpi1fvt"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        </div>
-      </div>
-      <div className="relative text-center mx-auto my-10">
+      <VideoPlayer />
+      <div className="relative text-center mx-auto mt-20 mb-10">
         <Link to="/docs/intro">
           <Button color="yellow" rounded="full" size="lg">
             <h2 className="mx-4 my-2 sm:text-2xl text-xl">Read the Dogma</h2>
@@ -68,6 +58,24 @@ function HomepageHeader() {
         </Link>
       </div>
     </header>
+  );
+}
+
+function VideoPlayer({ enabled }: { enabled?: boolean }) {
+  return enabled ? (
+    <div className="mx-auto mt-24 width-full max-w-6xl">
+      <div className="relative overflow-hidden h-0 pb-16-9">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full max-w-full"
+          src="https://www.youtube.com/embed/VM-2OVNt-eQ?si=A7JKcVobgEpi1fvt"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  ) : (
+    <></>
   );
 }
 
