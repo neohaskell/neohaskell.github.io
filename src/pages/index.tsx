@@ -63,7 +63,7 @@ function HomepageHeader() {
       <div className="relative text-center mx-auto my-10">
         <Link to="/docs/intro">
           <Button color="yellow" rounded="full" size="lg">
-            <h2 className="mx-4 my-2 text-2xl">Read the Dogma</h2>
+            <h2 className="mx-4 my-2 sm:text-2xl text-xl">Read the Dogma</h2>
           </Button>
         </Link>
       </div>

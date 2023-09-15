@@ -88,7 +88,7 @@ function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
       // <CodeFrame language={showcase.language}>{showcase.code}</CodeFrame>
       <CodeBlock
         showLineNumbers
-        className="!rounded-none !mb-0"
+        className="!rounded-none !mb-0 !overflow-hidden"
         language={showcase.language}
       >
         {showcase.code}
