@@ -3,7 +3,7 @@ import { FeatureItem } from "./feature-item";
 
 export const ComingSoonFeatures: FeatureItem[] = [
   {
-    title: "Beautiful, Ready-to-Use Tools",
+    title: "A beautiful standard library",
     description: (
       <>
         NeoHaskell offers a clean and intuitive language design, complemented by
@@ -14,50 +14,84 @@ export const ComingSoonFeatures: FeatureItem[] = [
     buttonText: "Start Coding",
     showcase: {
       language: "haskell",
-      code: `processLogs rawLogs =
-  rawLogs
-  |> map parseLogs
-  |> collect
-  |> andThen (filter isImportant)
-  |> andThen (map toStructuredLog)`,
+      code: `"NeoHaskell is cool"
+  |> Text.toWordList
+  |> List.map Text.length
+  |> List.map (\\x -> x * x)
+  |> List.takeIf Int.isEven`,
     },
   },
   {
-    title: "Hassle-Free Development Environment",
+    title: "An integrated build system",
     description: (
       <>
         NeoHaskell's CLI tool installs all required utilities and makes
-        multi-platform support a breeze. Whether you're compiling to native code
-        or generating WebAssembly for browser compatibility, you'll enjoy error
-        messages that guide, not hinder.
+        multi-platform support a breeze. Whether you're compiling to native
+        code, installing dependencies, or packaging your application for
+        deployment, you'll enjoy a seamless experience.
       </>
     ),
     buttonText: "Enjoy the Ride",
-    showcase: { code: "", language: "" },
+    showcase: {
+      language: "bash",
+      code: `$ neo setup
+Setting up NeoHaskell...
+Downloading the latest version of the compiler...
+Installing build process plugins...
+Done!
+
+$ neo build
+Building...
+
+$ neo add scotty
+Adding 'scotty' to your project...
+Installing dependencies...
+Done!
+    `,
+    },
   },
   {
-    title: "Focus-Driven, Event-Driven",
+    title: "Mobile development",
     description: (
       <>
-        In NeoHaskell, you work directly events and functions that react to
-        them. Say goodbye to the cognitive overhead of managing state or
-        wrestling with dependency injection. Your focus stays where it belongs:
-        on solving problems and crafting solutions.
+        Build mobile applications with NeoHaskell. The CLI tool lets you
+        generate a client package with auto-update support, and the generation
+        of UIs is a breeze with the included UI library.
       </>
     ),
-    buttonText: "Begin your Journey",
-    showcase: { code: "", language: "" },
+    buttonText: "Conquer Mobile apps",
+    showcase: {
+      language: "haskell",
+      code: `screen = do
+  body [] do
+    image [source "/img.png"]
+    text [] "Hello World!"`,
+    },
   },
   {
-    title: "Naturally Full-Stack",
+    title: "Python interop",
     description: (
       <>
-        Relish the ease of crafting full-stack applications in a unified
-        language environment. NeoHaskell takes care of frontend-backend
-        communication, allowing you to focus solely on your application's logic.
+        <p>
+          With the rise of the AI era, it is now more important than ever to be
+          able to leverage the power of Python's AI ecosystem. NeoHaskell, with
+          its Python interoperability, lets you do just that.
+        </p>
+        <br />
+        <p>
+          Use LangChain, Stable Diffusion, PyTorch, and other Python libraries
+          right from your NeoHaskell code.
+        </p>
       </>
     ),
-    buttonText: "Experience Bliss",
-    showcase: { code: "", language: "" },
+    buttonText: "Engage Galaxy Brain",
+    showcase: {
+      language: "python",
+      code: `answer question = [python|
+  from langchain.llms import OpenAI
+  llm = OpenAI()
+  return llm.predict("hi!")
+  |]`,
+    },
   },
 ];

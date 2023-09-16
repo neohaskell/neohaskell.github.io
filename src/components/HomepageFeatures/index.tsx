@@ -9,9 +9,28 @@ import { FeatureItem } from "./feature-item";
 import { ReadyFeatures } from "./ready-features";
 import { ComingSoonFeatures } from "./coming-soon-features";
 
+const bgAndShadows = [
+  {
+    bg: "bg-violet-200",
+    shadow: "shadow-neocyan",
+    button: "yellow",
+  },
+  {
+    bg: "bg-yellow-200",
+    shadow: "shadow-neoviolet",
+    button: "cyan",
+  },
+  {
+    bg: "bg-green-200",
+    shadow: "shadow-neoyellow",
+    button: "violet",
+  },
+];
+
 function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
   const k = n ?? 0;
   const reverse = k % 2 === 0 ? "xl:flex-row" : "xl:flex-row-reverse";
+  const { bg, shadow, button } = bgAndShadows[k % bgAndShadows.length];
   const showcaseComponent =
     "code" in showcase ? (
       // <CodeFrame language={showcase.language}>{showcase.code}</CodeFrame>
@@ -28,7 +47,7 @@ function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
   // <div className="bg-white -z-0 my-7 p-7 border-4 border-black"></div>
   return (
     <div
-      className={`bg-violet-200 shadow-neocyan border-4 border-black xl:p-16 sm:p-8 p-0 flex sm:flex-col xl:flex-nowrap flex-wrap md:mx-32 sm:gap-16 gap-8 ${reverse}`}
+      className={`${bg} ${shadow} border-4 border-black xl:p-16 sm:p-8 p-0 flex sm:flex-col xl:flex-nowrap flex-wrap md:mx-32 sm:gap-16 gap-8 ${reverse}`}
     >
       <div className="self-center bg-codeBg flex-grow sm:overflow-visible overflow-hidden">
         {showcaseComponent}
@@ -37,7 +56,7 @@ function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
         <h3 className="text-3xl">{title}</h3>
         <p className="text-lg">{description}</p>
         <div className="xl:self-start self-center">
-          <Button rounded="full" color="cyan">
+          <Button rounded="full" color={button as any}>
             <h3>{buttonText}</h3>
           </Button>
         </div>
@@ -50,7 +69,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section>
       <div className="sm:container relative">
-        <span className="absolute left-1/2 w-4 h-full bg-violet-500 border-black border-2 -z-20" />
+        <span className="absolute left-1/2 w-4 h-full bg-black border-black border-2 -z-20" />
         <div className="flex flex-col gap-32">
           <div className="relative mb-10">
             {/* horrible hack to hide the vertical bar */}

@@ -3,7 +3,7 @@ import { FeatureItem } from "./feature-item";
 
 export const ReadyFeatures: FeatureItem[] = [
   {
-    title: "Static feels like Dynamic",
+    title: "A Static that feels like Dynamic",
     description: (
       <>
         NeoHaskell's type system is so powerful that you'll forget it's there.
@@ -14,7 +14,7 @@ export const ReadyFeatures: FeatureItem[] = [
     buttonText: "Start Coding",
     showcase: {
       language: "haskell",
-      code: `process = do
+      code: `verify = do
   joe <- getPerson "Joe"
   if joe.age > 18 then
     print "Joe is an adult"
@@ -23,41 +23,74 @@ export const ReadyFeatures: FeatureItem[] = [
     },
   },
   {
-    title: "Hassle-Free Development Environment",
+    title: "Lazy Evaluation for Eager Minds",
     description: (
       <>
-        NeoHaskell's CLI tool installs all required utilities and makes
-        multi-platform support a breeze. Whether you're compiling to native code
-        or generating WebAssembly for browser compatibility, you'll enjoy error
-        messages that guide, not hinder.
+        NeoHaskell won't evaluate an expression until it's absolutely needed.
+        This lets you create more efficient code and focus on what to compute
+        rather than how to compute it.
       </>
     ),
-    buttonText: "Enjoy the Ride",
-    showcase: { code: "", language: "" },
+    buttonText: "Get Lazy, Be Efficient",
+    showcase: {
+      language: "haskell",
+      code: `let infiniteList = [1..]
+let doubledList = List.map (*2) infiniteList
+print (List.toString doubledLis)`,
+    },
   },
   {
-    title: "Focus-Driven, Event-Driven",
+    title: "Fearless Concurrency",
     description: (
       <>
-        In NeoHaskell, you work directly events and functions that react to
-        them. Say goodbye to the cognitive overhead of managing state or
-        wrestling with dependency injection. Your focus stays where it belongs:
-        on solving problems and crafting solutions.
+        <p>
+          Concurrency is not an afterthought in NeoHaskell; it's baked right in.
+          Write concurrent code without the common pitfalls, and get more done,
+          faster.
+        </p>
+        <br />
+        <p>
+          Functions like <code>async</code> and <code>race</code> make it easy
+          to write concurrent code. And with concepts like Channels, you'll be
+          able to write concurrent code without the headaches.
+        </p>
       </>
     ),
-    buttonText: "Begin your Journey",
-    showcase: { code: "", language: "" },
+    buttonText: "Unlock Concurrency",
+    showcase: {
+      language: "haskell",
+      code: `foo = do
+  threadDelay 500
+  print "foo"
+
+bar = do
+  threadDelay 1000
+  print "bar"
+
+-- will print "foo" and exit
+main = race foo bar`,
+    },
   },
   {
-    title: "Naturally Full-Stack",
+    title: "Event Sourcing and CQRS Ready",
     description: (
       <>
-        Relish the ease of crafting full-stack applications in a unified
-        language environment. NeoHaskell takes care of frontend-backend
-        communication, allowing you to focus solely on your application's logic.
+        NeoHaskell aligns well with modern architectural patterns like Event
+        Sourcing and CQRS, making it easier for you to build scalable and
+        maintainable systems.
       </>
     ),
-    buttonText: "Experience Bliss",
-    showcase: { code: "", language: "" },
+    buttonText: "Build Modern Systems",
+    showcase: {
+      language: "haskell",
+      code: `reduction = do
+  myEvents <- getEvents "myAggregate"
+  return (
+    Stream.reduce
+      myReducer
+      initialState
+      myEvents
+  )`,
+    },
   },
 ];
