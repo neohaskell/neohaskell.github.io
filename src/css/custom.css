@@ -29,6 +29,18 @@
 }
 */
 
+.footer {
+  @apply bg-black
+}
+
+.footer__links {
+  text-align: center;
+}
+
+.footer__link-item svg {
+  display: none;
+}
+
 .close {
   opacity: 1 !important;
 }

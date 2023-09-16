@@ -89,52 +89,64 @@ export default function Home(): JSX.Element {
 
         <main className="pt-32">
           <HomepageFeatures />
-          <div className="lg:mx-32 mx-0 mb-32">
-            <Frame>
-              <div className="lg:p-16 p-0 flex flex-col gap-8">
-                <h2 className="text-center md:text-4xl text-2xl">
-                  A Community for People Like You
-                </h2>
-                <div className="flex flex-col gap-8 text-lg">
-                  <p>
-                    NeoHaskell is a community of people who are passionate about
-                    delivering software in an efficient and enjoyable way. We
-                    believe that programming should be fun, and that the best
-                    way to learn is to build things.
-                  </p>
-                  <p>
-                    Therefore, NeoHaskell is a work in progress project. We are
-                    aiming to build a language that is delightful to learn and
-                    use,{" "}
-                    <b>strongly focusing on optimizing developers' happiness</b>
-                    .
-                  </p>
-                  <p>
-                    Whether you're a freshman or a senior, a hacker or a rocket
-                    scientist, you'll find a place in our community.
-                  </p>
-                  <p>
-                    Together, we are building the best language for the next
-                    generation of developers. Join us!
-                  </p>
-                </div>
-                <div className="mx-auto">
-                  <Button
-                    className="mx-auto"
-                    color="violet"
-                    rounded="full"
-                    size="lg"
-                  >
-                    <a
-                      href="https://discord.com/invite/wDj3UYzec8"
-                      target="_blank"
+          <div className="relative">
+            <img
+              className="absolute sm:h-36 h-24 top-0 -z-10"
+              src="img/Star1.svg"
+            />
+            <img
+              className="absolute sm:h-36 h-24 bottom-0 right-0 -z-10 "
+              src="img/Star2.svg"
+            />
+            <div className="lg:mx-32 mx-0 mb-32">
+              <Frame>
+                <div className="lg:p-16 p-0 flex flex-col gap-8">
+                  <h2 className="text-center md:text-4xl text-2xl">
+                    A Community for People Like You
+                  </h2>
+                  <div className="flex flex-col gap-8 text-lg">
+                    <p>
+                      NeoHaskell is a community of people who are passionate
+                      about delivering software in an efficient and enjoyable
+                      way. We believe that programming should be fun, and that
+                      the best way to learn is to build things.
+                    </p>
+                    <p>
+                      Therefore, NeoHaskell is a work in progress project. We
+                      are aiming to build a language that is delightful to learn
+                      and use,{" "}
+                      <b>
+                        strongly focusing on optimizing developers' happiness
+                      </b>
+                      .
+                    </p>
+                    <p>
+                      Whether you're a freshman or a senior, a hacker or a
+                      rocket scientist, you'll find a place in our community.
+                    </p>
+                    <p>
+                      Together, we are building the best language for the next
+                      generation of developers. Join us!
+                    </p>
+                  </div>
+                  <div className="mx-auto">
+                    <Button
+                      className="mx-auto"
+                      color="violet"
+                      rounded="full"
+                      size="lg"
                     >
-                      <h3>JOIN THE DISCORD SERVER!</h3>
-                    </a>
-                  </Button>
+                      <a
+                        href="https://discord.com/invite/wDj3UYzec8"
+                        target="_blank"
+                      >
+                        <h3>JOIN THE DISCORD SERVER!</h3>
+                      </a>
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </Frame>
+              </Frame>
+            </div>
           </div>
         </main>
       </div>
