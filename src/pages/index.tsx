@@ -39,7 +39,7 @@ function HomepageHeader() {
           <p className="text-center md:text-2xl sm:text-xl text-lg justify-normal my-10 mx-auto md:w-3/4">
             <strong>
               NeoHaskell is a dialect of Haskell that is focused on
-              beginner-friendliness and productivity.
+              newcomer-friendliness and productivity.
             </strong>
           </p>
           <p className="text-center md:text-2xl sm:text-xl text-lg justify-normal my-10 mx-auto md:w-3/4">
