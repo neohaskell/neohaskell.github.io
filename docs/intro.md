@@ -2,46 +2,52 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# The NeoHaskell Dogma
 
-Let's discover **Docusaurus in less than 5 minutes**.
+> A Dogma is not bad if it is aligned with the principles of the individual, and flexible enough for the moments it isn't.
 
-## Getting Started
+## The Complexity Generation
 
-Get started by **creating a new site**.
+Once upon a time, there was a developer who embarked on a project written in Haskell—a language known for its expressive power and strong type system. Consumed by the allure of purely functional programming, this developer started off with enthusiasm and hope. Yet as time passed, the Haskell codebase, once a work of intellectual beauty, turned increasingly cumbersome and enigmatic, as the team
+kept adding on newer and fancier features.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+The project was eventually pulled from production, but its lessons were far from lost. Over the subsequent five years, the developer turned to TypeScript, Python, and Java—languages celebrated for their wide utility and enterprise appeal. While the code-bases in these languages weren't inherently complex in their syntax, a new challenge emerged: cognitive overload, exacerbated by the side effects and unpredictability that came with these languages. Though the lines of code were straightforward, the resulting complexity was covertly overwhelming.
 
-### What you'll need
+## The Awakening: NeoHaskell Emerges
 
-- [Node.js](https://nodejs.org/en/download/) version 16.14 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Confronted by these extremes, it became clear that a middle ground was sorely needed. And so, the concept of NeoHaskell was conceived, drawing wisdom from experiences in Domain-Driven Design, Event Sourcing, CQRS, and the craftsmanship intrinsic to software development.
 
-## Generate a new site
+The ambition? To rebuild Haskell from its foundations, creating a language designed to combat both code complexity and accidental complexity—those problems that don't arise from the domain but from the tools and methodologies employed.
 
-Generate a new Docusaurus site using the **classic template**.
+## The goal: Focus on what's important
 
-The classic template will automatically be added to your project after you run the command:
+### Beginner-Friendliness
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+The first lesson from the initial Haskell venture was its steep learning curve. NeoHaskell, therefore, aims to be approachable. It adopts a syntax and paradigms that are less intimidating for newcomers while still preserving the essential capabilities that Haskell offers.
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+### Productivity
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+In crafting NeoHaskell, an emphasis has been placed on developer productivity. It encourages the creation of rich, bounded contexts and aggregate roots, allowing the developer to focus more on solving actual domain problems rather than wrestling with technicalities.
 
-## Start your site
+### Complexity Mitigation
 
-Run the development server:
+Inspired by CQRS and Event Sourcing, NeoHaskell promotes a clean architecture where read and write operations are distinctly separated. By keeping an immutable record of state changes, it brings predictability into the system, thereby mitigating both cognitive and code complexity.
 
-```bash
-cd my-website
-npm run start
-```
+### Joy of Use
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+NeoHaskell is not merely a tool; it is a craft. It aspires to make coding not just functional but also pleasurable. The language aims to trigger a flow state, making each moment of development a joyful experience.
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+## The NeoHaskell Statements
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+* Beautiful is better han ugly
+* Simple is better than complex
+* Duplicate and easy is better than concise and complex
+* Mathematics are good when not seen
+* The 80% of type-safety should be done with 20-or-less% of the effort
+* Instead of investing effort in the other 20%, better release to prod
+* If it takes more than 5 minutes to understand, it's a bug
+* The functional way is better, unless the imperative one is easier
+
+## The NeoHaskell Promise
+
+As it continues to evolve, NeoHaskell aspires to be a nexus of balance: simple yet potent, utilitarian yet principled, designed to cut through complexity while offering a pleasurable user experience. It doesn't just aim to be another programming language; it hopes to be a landmark in the landscape of software development—a testament to the hard-won lessons from a history rife with complexities.

@@ -79,7 +79,7 @@ p, li {
 }
 
 .navbar {
-  flex: auto;
+  /* flex: auto; */
   border: 0;
   box-shadow: none;
   height: 96px;
@@ -117,6 +117,11 @@ main > .container > .row > .col  article {
   @apply py-4;
 }
 
+.title_node_modules-\@docusaurus-theme-classic-lib-theme-DocCategoryGeneratedIndexPage-styles-module{
+  font-family: Lexend Mega, sans-serif;
+  font-size: 2rem;
+}
+
 .theme-doc-sidebar-container {
   border: 0px !important;
 }
@@ -141,6 +146,13 @@ main > .container > .row > .col  article {
   text-decoration-style: wavy;
   text-underline-offset: 0.2em;
   color: inherit;
+}
+
+.markdown {
+  @apply prose;
+  @apply lg:prose-xl;
+  @apply max-w-none;
+  @apply lg:p-8;
 }
 
 /*

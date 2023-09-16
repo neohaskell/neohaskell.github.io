@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "./Modal";
 
 export default function Disclaimer() {
-  const [disclaimerOpen, setDisclaimerOpen] = React.useState(true);
+  const [disclaimerOpen, setDisclaimerOpen] = React.useState(false);
   return (
     <div className="absolute left-1/2 top-1/2">
       <Modal
