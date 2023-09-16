@@ -39,7 +39,7 @@ NeoHaskell is not merely a tool; it is a craft. It aspires to make coding not ju
 
 ## The NeoHaskell Statements
 
-* Beautiful is better han ugly
+* Beautiful is better than ugly
 * Simple is better than complex
 * Duplicate and easy is better than concise and complex
 * Mathematics are good when not seen
