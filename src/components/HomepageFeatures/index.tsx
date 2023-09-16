@@ -30,7 +30,7 @@ function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
     <div
       className={`bg-violet-200 shadow-neocyan border-4 border-black xl:p-16 sm:p-8 p-0 flex sm:flex-col xl:flex-nowrap flex-wrap md:mx-32 sm:gap-16 gap-8 ${reverse}`}
     >
-      <div className="self-center bg-codeBg flex-grow !overflow-hidden">
+      <div className="self-center bg-codeBg flex-grow sm:overflow-visible overflow-hidden">
         {showcaseComponent}
       </div>
       <div className="flex flex-col gap-4 sm:p-0 p-8">
