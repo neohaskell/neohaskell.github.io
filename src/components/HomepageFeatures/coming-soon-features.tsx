@@ -69,6 +69,27 @@ Done!
     },
   },
   {
+    title: "Pre-thought architecture",
+    description: (
+      <>
+        Whether you're building a command-line script, a backend, or a UI
+        application, NeoHaskell has the architecture pre-thought, for you. Just
+        generate your project from one of our templates, or just follow the
+        guides in the documentation to setup your project for success!
+      </>
+    ),
+    buttonText: "Don't reinvent the wheel",
+    showcase: {
+      language: "haskell",
+      code: `main = eventSourcing
+  { entities = myEntities
+  , events = myEvents
+  , reducer = myReducer
+  , ...
+  } |> runApp`,
+    },
+  },
+  {
     title: "Python interop",
     description: (
       <>
