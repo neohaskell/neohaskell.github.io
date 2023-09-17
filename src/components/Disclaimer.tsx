@@ -13,8 +13,16 @@ export default function Disclaimer() {
       >
         <p>
           The NeoHaskell project is a work-in-progress effort in it's early
-          days. Mostly everything is missing. If you're curious about the
-          project:
+          days. Mostly everything is missing (
+          <a
+            className="underline"
+            href="https://github.com/neohaskell/NeoHaskell/milestones"
+            target="_blank"
+            onClick={() => setDisclaimerOpen(!disclaimerOpen)}
+          >
+            click here for a status report
+          </a>
+          ). But, if you really want to know more about the project:
         </p>
         <a
           className="text-lightsecondary hover:underline hover:decoration-wavy underline-offset-4 py-4 block"
