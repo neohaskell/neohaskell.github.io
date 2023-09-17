@@ -101,6 +101,7 @@ export default function Home(): JSX.Element {
             <div className="lg:mx-32 mx-0 mb-32">
               <Frame>
                 <div className="lg:p-16 p-0 flex flex-col gap-8">
+                  <img src="img/logo.svg" className="mx-auto lg:h-64 h-32" />
                   <h2 className="text-center md:text-4xl text-2xl">
                     A Community for People Like You
                   </h2>
