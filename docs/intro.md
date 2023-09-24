@@ -14,7 +14,7 @@ sidebar_position: 1
 * Mathematics are good when not seen
 * The 95% of type-safety should be done with 5-or-less% of the effort
 * Instead of investing effort in the other 5%, better release to prod
-* If it takes more than 5 minutes to understand, it's a bug
+* If it takes more than 15 minutes to understand, it's a bug
 * The functional way is better, unless the imperative one is easier
 
 ## The Beginning: Complexity Generation
