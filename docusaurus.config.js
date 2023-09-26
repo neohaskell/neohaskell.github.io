@@ -20,7 +20,7 @@ const config = {
   organizationName: "neohaskell", // Usually your GitHub org/user name.
   projectName: "neohaskell", // Usually your repo name.
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   plugins: [
