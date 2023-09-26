@@ -1,0 +1,3 @@
+[submodule "blog/nhep"]
+	path = blog/nhep
+	url = https://github.com/neohaskell/NHEP

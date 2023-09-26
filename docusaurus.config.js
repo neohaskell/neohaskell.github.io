@@ -57,6 +57,17 @@ const config = {
           editUrl:
             "https://github.com/neohaskell/neohaskell.github.io/tree/main/",
         },
+        blog: {
+          path: "blog/nhep/nhep",
+          exclude: ["README.md"],
+          sortPosts: "ascending",
+          blogTitle: "NHEP",
+          blogDescription: "NeoHaskell Evolution Proposals",
+          blogSidebarTitle: "Proposals Index",
+          blogSidebarCount: "ALL",
+          editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
+            `https://github.com/neohaskell/nhep/edit/main/nhep/${blogPath}`,
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -85,7 +96,12 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "Fundamentals",
+            label: "Documentation",
+          },
+          {
+            to: "blog",
+            label: "Evolution Proposals",
+            position: "left",
           },
           {
             href: "https://github.com/neohaskell/",
