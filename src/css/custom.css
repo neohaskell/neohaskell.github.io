@@ -129,6 +129,21 @@ main > .container > .row > .col  article {
   @apply py-4;
 }
 
+.container.margin-vert--lg {
+  @apply max-w-full !important;
+  font-family: 'Lexend Mega', sans-serif;
+}
+
+main >  article {
+  @apply shadow-rainbow;
+  @apply bg-white;
+  @apply border-4;
+  @apply border-black;
+  @apply px-16;
+  @apply py-16;
+}
+
+
 .title_node_modules-\@docusaurus-theme-classic-lib-theme-DocCategoryGeneratedIndexPage-styles-module{
   font-family: Lexend Mega, sans-serif;
   font-size: 2rem;
