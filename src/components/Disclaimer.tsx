@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Modal from "./Modal";
 
+const localStorageLabel = "has-seen-discord-disclaimer";
+const latestDisclaimerVersion = 1;
+
 export default function Disclaimer() {
-  const [disclaimerOpen, setDisclaimerOpen] = React.useState(true);
+  const [disclaimerOpen, setDisclaimerOpen] = React.useState(false);
+  useEffect(() => {
+    setDisclaimerOpen((0|parseInt(localStorage.getItem(localStorageLabel))) < latestDisclaimerVersion)
+  }, []);
+
+  function dismissDisclaimer() {
+    setDisclaimerOpen(false);
+    localStorage.setItem(localStorageLabel, latestDisclaimerVersion.toString());
+  }
   return (
     <div className="absolute left-1/2 top-1/2">
       <Modal
         open={disclaimerOpen}
         okText="Continue on my own"
-        onOk={() => setDisclaimerOpen(!disclaimerOpen)}
+        onOk={dismissDisclaimer}
         title="Greetings traveller!"
       >
         <p>
@@ -18,7 +29,7 @@ export default function Disclaimer() {
             className="underline"
             href="https://github.com/neohaskell/NeoHaskell/milestones"
             target="_blank"
-            onClick={() => setDisclaimerOpen(!disclaimerOpen)}
+            onClick={dismissDisclaimer}
           >
             click here for a status report
           </a>
@@ -28,7 +39,7 @@ export default function Disclaimer() {
           className="text-lightsecondary hover:underline hover:decoration-wavy underline-offset-4 py-4 block"
           href="https://discord.com/invite/wDj3UYzec8"
           target="_blank"
-          onClick={() => setDisclaimerOpen(!disclaimerOpen)}
+          onClick={dismissDisclaimer}
         >
           <h3>JOIN THE DISCORD SERVER!</h3>
         </a>
