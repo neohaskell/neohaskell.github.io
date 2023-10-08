@@ -1,0 +1,8 @@
+{
+  "label": "Enjoying our Craft",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "This section is dedicated to understand what makes software complex, how does that affect our cognitive overhead, and how NeoHaskell reduces it in order to make software development more enjoyable."
+  }
+}
