@@ -2,27 +2,66 @@
 sidebar_position: 1
 ---
 
-# Complexity, what complexity?
+# Understanding Complexity
 
 ## **Introduction**
 
-Navigating the intricate world of software development can be likened to voyaging through a dense, uncharted jungle for beginners. Understanding _software complexity_, which emerges from various components like mutable state, third-party integrations, complex abstractions, and a plethora of development tools, is pivotal. As junior developers dive into the ocean of languages and frameworks like NeoHaskell, React, NestJS, and TypeScript, comprehending this complexity is crucial for crafting robust, scalable, and maintainable software.
+Navigating the intricate world of software development can be likened to voyaging through a dense, uncharted jungle for beginners. Understanding _complexity_ that emerges from various components like mutable state, third-party integrations, complex abstractions, and a plethora of development tools, is important, as it will become a point of reference for the things that we want to avoid.
 
-## **Section 1: Mutable State and Cognitive Overhead**
+For example, imagine a massive social networking platform suddenly losing its entire development team, who held all knowledge of the intricate code and architecture. The complex codebase left behind would make even the most skilled developers confused and slow to make progress.
 
-Imagine a busy intersection in a city where traffic signals, if not in a perfect sync, could lead to chaos. This chaos mirrors the concept of _mutable state_ in software, where variables or objects change their state unexpectedly. Managing mutable state, especially in the context of concurrent operations, can be a labyrinthine task, making debugging akin to untangling a bowl of spaghetti and ensuring that data remains consistent throughout the application. Developers often juggle numerous states, experiencing cognitive overload that impedes efficiency and introduces potential for errors.
+Probably, in the face of such complexity and potential for numerous errors, the decision made would be to not wrestle with the old, dense code, but to rebuild the platform from scratch using current technologies and practices.
 
-## **Section 2: Complexity Through Third-Party Integration**
+This exemplifies the challenges in software development where technical debt and complexity can sometimes outweigh the potential benefits of continuing with an existing system.
 
-Consider assembling a puzzle where each piece comes from different manufacturers, representing third-party integrations. Developers can grapple with issues arising from dependencies, unexpected API changes, and security vulnerabilities. Adopting an encapsulation approach (imagine keeping each puzzle piece in its separate, labeled box), adhering to the principle of least privilege (only using and exposing necessary piece aspects), and maintaining loose coupling (ensuring each piece isn’t overly dependent on the others) can ameliorate challenges and safeguard the application.
+The point of NeoHaskell is to help you avoid these kind of pitfalls as much as possible, writing code that is easy to understand, maintain, and extend. Or at least easier than in traditional, mainstream languages.
 
-## **Section 3: Navigating Complex Abstractions**
+This page is about understanding complexity, and how to avoid it. Later in the documentation, you will be learning NeoHaskell and all the concepts attached to it, and how they help you.
 
-Embarking into abstract concepts like monads and mtl is somewhat like learning to navigate using a celestial map in the night sky - it's dazzling yet bewildering. These abstractions, while offering powerful ways to manage side effects and enhance code reuse and composability, bring forth an added layer of cognitive complexity for developers attempting to perceive and apply them effectively.
+## **Mutable State**
 
-## **Section 4: Tool Overhead in Modern Development**
+Mutable state means that variables in a program can change their values over time. This can make software complex because when something goes wrong, it might be hard to figure out which part of the code changed the variable's value and caused the issue.
 
-Envision walking into a colossal library, each book a different development tool. The abundance of tools – IDEs, libraries, frameworks, and deployment solutions – while enriching the ecosystem, can befuddle junior developers. A judicious strategy entails prioritizing and mastering essential tools related to your tech stack, e.g., becoming proficient with JSX for React or understanding decorators in NestJS, instead of getting sidetracked by every new library or tool that emerges.
+Imagine several people trying to write a story together but they can change what others have written at any time - it's tough to keep track!
+
+In coding, especially when different parts of the program are running at the same time (concurrently), managing and ensuring variables change in a controlled and expected way becomes tricky and can lead to unexpected problems and bugs.
+
+### Solution: Avoiding Mutable State
+
+Avoiding mutable state can be achieved through a concept called immutability.
+
+Immutability as a solution means that once a variable is created, it cannot be changed. If we want a different value, we create a new variable instead of changing the old one. This makes our code easier to understand and troubleshoot because we don't have to track down all the places where a variable might be changed.
+
+Going back to our group story-writing example, it's like saying once someone writes a sentence, it stays written that way. Anyone else who wants to add to the story writes a new sentence instead of changing the old ones. This makes it clear what each person wrote and in what order, removing the chaos of changes happening everywhere.
+
+In coding, immutability can make our programs simpler and safer, especially when different parts of the program run at the same time, by avoiding unexpected changes to our variables.
+
+This could be seen as something hard and inefficient, but in reality, if the language is designed with immutability in mind, it can be very easy and efficient.
+
+## **Avoiding Complex Abstractions**
+
+In the quest to achieve clean and efficient code, developers often employ abstractions to encapsulate complex logic and foster reuse. However, abstractions, when overly complex or misapplied, can shroud the codebase in a veil of opacity, particularly bewildering for newcomers who must unravel these intricate webs. An abstraction, no matter how well known it is, might encapsulate a multitude of operations, variables, and dependencies under its umbrella. Yet, for a developer unfamiliar with its intricacies, discerning its functionality, applications, and impact on the code can be a perplexing endeavor. These abstractions can become like a convoluted labyrinth where the logical flow gets lost amidst the myriad of intertwined paths, thereby elevating the cognitive load and stifling the code's readability and maintainability.
+
+### Solution: Embracing Declarative Code
+
+In mitigating the complexities introduced by abstractions, adopting a declarative coding approach offers a serene middle-ground, making code logic explicit while still maintaining a level of abstraction that guards against descending into the weeds of overly detailed implementations. Declarative code emphasizes describing the “what” over the “how”, focusing on the desired outcome without getting bogged down in the intricate mechanics of implementation.
+
+For instance, instead of complex abstractions, we might employ utility functions, as well as using descriptive variable and function names. By harnessing declarative code, we create a transparent, comprehensible codebase where functionality is clear, intentions are explicit, and new developers can understand and contribute without having to decode a maze of abstractions. The delicate balance of making intentions clear while avoiding over-engineering is critical in maintaining a clean, manageable, and developer-friendly environment.
+
+## **Tool Overhead in Modern Development**
+
+In the multifaceted environment of software development, the incorporation of various tools - from version control systems like Git to containerization technologies like Docker - is ostensibly inevitable and ostensibly beneficial, aimed at streamlining, optimizing, and enhancing the development workflow.
+
+However, an aspect often overlooked is the inherent complexity and cognitive overhead these tools can introduce, particularly for developers new to the ecosystem.
+The necessity to climb multiple learning curves simultaneously - understanding the project code and concurrently mastering myriad tools - can morph into a strenuous juggling act. Each tool, while powerful, demands an investment of time and cognitive energy to learn its functionalities, interfaces, and best practices.
+
+The complexity amplifies when these tools interplay, introducing additional layers of intricacies and potential for issues that developers must navigate, sometimes diverting attention and resources from the primary development tasks.
+
+### Solution: Unified Tooling with NeoHaskell's `neo`
+
+Embracing a simplified, unified tooling approach, NeoHaskell introduces `neo`, a single Command Line Interface (CLI) tool designed to alleviate the complexity often associated with using multiple development tools. Instead of requiring developers to grapple with a variety of tools, each with its unique syntax and intricacies, `neo` consolidates numerous functionalities into a single, coherent interface that supports building, testing, code generation, and more. This multipurpose tool helps in minimizing the cognitive load and the time investment typically required to learn and navigate through multiple platforms.
+
+## Third-Party Integrations
 
 ## **Section 5: Addressing and Managing Software Complexity as a Junior Developer**
 
