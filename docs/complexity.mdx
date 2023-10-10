@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Understanding Complexity
 
-## **Introduction**
+## Introduction
 
 Navigating the intricate world of software development can be likened to voyaging through a dense, uncharted jungle for beginners. Understanding _complexity_ that emerges from various components like mutable state, complex abstractions, and a plethora of development tools, is important, as it will become a point of reference for the things that we want to avoid.
 
@@ -18,7 +18,7 @@ The point of NeoHaskell is to help you avoid these kind of pitfalls as much as p
 
 This page is about understanding complexity, and how to avoid it. Later in the documentation, you will be learning NeoHaskell and all the concepts attached to it, and how they help you.
 
-## **Mutable State**
+## Mutable State
 
 Mutable state means that variables in a program can change their values over time. This can make software complex because when something goes wrong, it might be hard to figure out which part of the code changed the variable's value and caused the issue.
 
@@ -38,7 +38,7 @@ In coding, immutability can make our programs simpler and safer, especially when
 
 This could be seen as something hard and inefficient, but in reality, if the language is designed with immutability in mind, it can be very easy and efficient.
 
-## **Avoiding Complex Abstractions**
+## Avoiding Complex Abstractions
 
 In the quest to achieve clean and efficient code, developers often employ abstractions to encapsulate complex logic and foster reuse. However, abstractions, when overly complex or misapplied, can shroud the codebase in a veil of opacity, particularly bewildering for newcomers who must unravel these intricate webs. An abstraction, no matter how well known it is, might encapsulate a multitude of operations, variables, and dependencies under its umbrella. Yet, for a developer unfamiliar with its intricacies, discerning its functionality, applications, and impact on the code can be a perplexing endeavor. These abstractions can become like a convoluted labyrinth where the logical flow gets lost amidst the myriad of intertwined paths, thereby elevating the cognitive load and stifling the code's readability and maintainability.
 
@@ -48,7 +48,7 @@ In mitigating the complexities introduced by abstractions, adopting a declarativ
 
 For instance, instead of complex abstractions, we might employ utility functions, as well as using descriptive variable and function names. By harnessing declarative code, we create a transparent, comprehensible codebase where functionality is clear, intentions are explicit, and new developers can understand and contribute without having to decode a maze of abstractions. The delicate balance of making intentions clear while avoiding over-engineering is critical in maintaining a clean, manageable, and developer-friendly environment.
 
-## **Tool Overhead in Modern Development**
+## Tool Overhead in Modern Development
 
 In the multifaceted environment of software development, the incorporation of various tools - from version control systems like Git to containerization technologies like Docker - is ostensibly inevitable and ostensibly beneficial, aimed at streamlining, optimizing, and enhancing the development workflow.
 
@@ -61,7 +61,7 @@ The complexity amplifies when these tools interplay, introducing additional laye
 
 Embracing a simplified, unified tooling approach, NeoHaskell introduces `neo`, a single Command Line Interface (CLI) tool designed to alleviate the complexity often associated with using multiple development tools. Instead of requiring developers to grapple with a variety of tools, each with its unique syntax and intricacies, `neo` consolidates numerous functionalities into a single, coherent interface that supports building, testing, code generation, and more. This multipurpose tool helps in minimizing the cognitive load and the time investment typically required to learn and navigate through multiple platforms.
 
-## **Complexity Without Defined Contracts**
+## Complexity Without Defined Contracts
 
 A lack of defined contracts in software development, meaning clear specifications about how code components interact and communicate, introduces complexity and cognitive load. Without these established expectations regarding function inputs and outputs, developers face ambiguity and potential miscommunications between code segments, which increases the likelihood of errors and makes the code harder to understand and maintain.
 
@@ -71,7 +71,7 @@ Utilizing static typing helps enforce clear contracts by validating data types a
 
 In some languages like Java, or C, static typing can be very verbose and cumbersome, but in NeoHaskell, the compiler will figure out most of the types for you, so you don't have to write them out. This makes static typing a very powerful tool, without the downsides of verbosity.
 
-## **Conclusion**
+## Conclusion
 
 We've explored several challenges in software development in this guide: the difficulties caused by **Mutable State**, the confusion from **Avoiding Complex Abstractions**, the extra work due to **Tool Overhead**, and the problems from **Complexity Without Defined Contracts**. These topics are vital but are only part of the picture. Issues like handling dependencies, maintaining scalable architecture, and keeping good documentation also add complexity and cognitive stress in developing software.
 
