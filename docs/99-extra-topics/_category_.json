@@ -1,0 +1,8 @@
+{
+  "label": "Extra Topics",
+  "position": 99,
+  "link": {
+    "type": "generated-index",
+    "description": "Here we talk about other topics that are related to NeoHaskell, but are not directly related to helping you understand the language."
+  }
+}
