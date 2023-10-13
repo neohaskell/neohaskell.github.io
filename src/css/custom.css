@@ -170,11 +170,23 @@ main >  article {
   @apply my-0;
 }
 
+.tabs-container > ul > li:hover {
+  @apply bg-inherit;
+  @apply rounded-none;
+  @apply !decoration-wavy;
+  @apply !underline;
+  @apply !underline-offset-8;
+  @apply !border-none;
+  text-decoration: underline;
+}
+
 .tabs__item {
+  @apply font-normal;
   @apply rounded-none;
 }
 
 .tabs__item--active {
+  @apply font-bold;
   @apply rounded-none;
   @apply !decoration-wavy;
   @apply !underline;
