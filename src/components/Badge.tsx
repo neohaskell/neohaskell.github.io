@@ -29,7 +29,7 @@ const Badge = ({ issue }: Props) => {
 
   const colorClass = {
     open: "badge-warning",
-    closed: "badge-success",
+    closed: "hidden",
     loading: "badge-primary",
   };
 
