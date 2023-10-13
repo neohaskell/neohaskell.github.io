@@ -4,39 +4,31 @@ sidebar_position: 3
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
-import CodeFrame from "@site/src/components/CodeFrame";
+import Badge from "@site/src/components/Badge";
 
 # Installing NeoHaskell
 
-All of NeoHaskell's tasks are handled by the `neo` command line tool. You might think of it as the chosen one _(matrix pun, sorry)_.
+All of NeoHaskell's tasks are handled by the `neo` command line tool. You might think of it as the chosen one _(The Matrix™️ pun, sorry)_.
 
 `neo` will install all the required stuff for you, so you don't have to worry about it.
 
 ## Getting Neo
 
-In order to install `neo` copy and paste the following command in your terminal (if you're on Windows, use PowerShell as Administrator):
+In order to install `neo` copy and paste the following command in your terminal (if you're on Windows, use PowerShell as Administrator): <Badge issue="66" />
 
 <Tabs groupId="os">
-<TabItem value="mac" label="MacOS">
+<TabItem value="mac" label="MacOS/Linux/WSL2">
 
-```haskell
-main :: IO ()
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.neohaskell.org | sh
 ```
 
 </TabItem>
 
 <TabItem value="windows" label="Windows">
 
-```haskell
-main :: IO ()
-```
-
-</TabItem>
-
-<TabItem value="linux" label="Linux">
-
-```haskell
-main :: IO ()
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; try { Invoke-Command -ScriptBlock ([ScriptBlock]::Create((Invoke-WebRequest https://ps.neohaskell.org -UseBasicParsing))) -ArgumentList $true } catch { Write-Error $_ }
 ```
 
 </TabItem>

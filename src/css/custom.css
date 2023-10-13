@@ -172,11 +172,9 @@ main >  article {
 
 .tabs-container > ul > li:hover {
   @apply bg-inherit;
-  @apply rounded-none;
   @apply !decoration-wavy;
   @apply !underline;
   @apply !underline-offset-8;
-  @apply !border-none;
   text-decoration: underline;
 }
 

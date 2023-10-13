@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 
 interface Props {
   issue: string;
+  absolute?: boolean;
 }
 
 const url = (issue: string) =>
   `https://img.shields.io/github/issues/detail/state/NeoHaskell/NeoHaskell/${issue}?style=for-the-badge&logo=github`;
 
-const Badge = ({ issue }: Props) => {
+const Badge = ({ issue, absolute }: Props) => {
   const [issueState, setIssueState] = React.useState("loading");
   const [issueTitle, setIssueTitle] = React.useState<string>();
 
@@ -33,11 +34,16 @@ const Badge = ({ issue }: Props) => {
     loading: "badge-primary",
   };
 
-  const issueInfo = issueState ? `#${issue} - ${issueTitle}` : "LOADING";
+  const issueInfo = issueState
+    ? `NOT IMPLEMENTED YET: #${issue} - ${issueTitle}`
+    : "LOADING";
+
+  const absoluteClass = absolute ? "absolute z-10 p-4" : "";
+  const cls = `tooltip ${absoluteClass}`;
 
   return (
     <a
-      className="tooltip"
+      className={cls}
       data-tip={issueInfo}
       target="_blank"
       href={`https://github.com/neohaskell/neohaskell/issues/${issue}`}
