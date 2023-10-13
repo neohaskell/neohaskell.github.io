@@ -9,6 +9,7 @@ type FrameType = {
   title?: string;
   rainbow?: boolean;
   shadowClass?: string;
+  simple?: boolean;
   width?: "fit" | "full" | "1/2" | "1/3";
 };
 
@@ -31,12 +32,15 @@ const Frame = ({
   language,
   title,
   width,
+  simple,
   shadowClass = "shadow-neoblack",
 }: FrameType) => {
   const s = rainbow
     ? classes.filter((c) => !c.includes("shadow")).concat("shadow-rainbow")
     : classes;
-  const cls = [...s, `${widthClasses[width]}`, shadowClass].join(" ");
+  const cls = simple
+    ? ""
+    : [...s, `${widthClasses[width]}`, shadowClass].join(" ");
   return (
     <div className={cls}>
       <CodeBlock

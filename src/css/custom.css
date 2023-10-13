@@ -149,6 +149,48 @@ main >  article {
   font-size: 2rem;
 }
 
+.tabs-container {
+  @apply border-4;
+  @apply border-black;
+}
+
+.tabs-container > div {
+  @apply !my-0;
+  @apply !bg-codeBg;
+}
+
+.tabs-container > ul {
+  @apply px-0;
+  @apply my-0;
+}
+
+.tabs-container > ul > li {
+  @apply py-2;
+  @apply px-4;
+  @apply my-0;
+}
+
+.tabs__item {
+  @apply rounded-none;
+}
+
+.tabs__item--active {
+  @apply rounded-none;
+  @apply !decoration-wavy;
+  @apply !underline;
+  @apply !underline-offset-8;
+  @apply !border-none;
+  text-decoration: underline;
+}
+
+div[class*="language-"] ,
+pre[class*="language-"] ,
+code[class*="language-"]  {
+  @apply bg-codeBg;
+  @apply rounded-none;
+  @apply p-4;
+}
+
 .theme-doc-sidebar-container {
   border: 0px !important;
 }
@@ -224,6 +266,7 @@ main >  article {
   --ifm-color-primary-light: #a52ada;
   --ifm-color-primary-lighter: #a934dc;
   --ifm-color-primary-lightest: #b652e1;
+  --prism-background-color: #2D2A55;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -235,4 +278,5 @@ main >  article {
   --ifm-color-primary-light: #a3fbff;
   --ifm-color-primary-lighter: #b6fcff;
   --ifm-color-primary-lightest: #effeff;
+  --prism-background-color: #2D2A55;
 }
