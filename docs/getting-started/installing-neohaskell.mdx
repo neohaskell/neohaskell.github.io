@@ -1,0 +1,161 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+
+# Installing NeoHaskell
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+All of NeoHaskell's tasks are handled by the **Neo** command line tool. You might think of it as the chosen one _(The Matrix™️ pun, sorry)_.
+
+Neo will install all the required stuff for you, so you don't have to worry about it.
+
+## Getting Neo
+
+In order to install Neo, copy and paste the following command in your terminal (if you're on Windows, use PowerShell as Administrator): <Badge issue="66" />
+
+<Tabs groupId="os">
+<TabItem value="mac" label="MacOS/Linux/WSL2">
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.neohaskell.org | sh
+```
+
+</TabItem>
+
+<TabItem value="windows" label="Windows">
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; try { Invoke-Command -ScriptBlock ([ScriptBlock]::Create((Invoke-WebRequest https://ps.neohaskell.org -UseBasicParsing))) -ArgumentList $true } catch { Write-Error $_ }
+```
+
+</TabItem>
+
+</Tabs>
+
+When you run Neo, for the first time, it will perform some system checks
+and ask you if you want to install some additional tools. If you're
+doubtful, just say yes, as most of them are for making your life easier:
+
+```text
+Neo: It looks like you don't have a text editor set up.
+     I've looked for the common ones, but couldn't find any.
+     The recommended editor is VSCode (https://code.visualstudio.com/)
+     Would you like me to install it for you? [Y/n]
+
+Answer: Y
+Installing VSCode................................
+
+
+Neo: I couldn't find Git on your system.
+     Would you like me to install it for you? [Y/n]
+
+Answer: Y
+Installing Git...................................
+
+
+Neo: I'm in.
+     Call me when you need me by running `neo` in your terminal.
+```
+
+## Trying the Installation
+
+Once everything is installed, usually the common thing is to try that
+some commands do work. Let's do it the opposite way, let's try some
+command that doesn't exist: <Badge issue="68" />
+
+```text
+$ neo learn-kung-fu
+
+Neo: I'm sorry, I don't know how to `learn-kung-fu`.
+     Try `neo help` to see what I can do.
+
+     It looks like your last command failed. Remember, if it is taking
+     you more than 15 minutes to figure it out, it is a bug in the system.
+
+     Please go to:
+
+     https://github.com/neohaskell/neohaskell/issues/new
+
+     And report it. I'll be waiting for you.
+```
+
+Remember that, if you're having trouble figuring stuff out, and it is
+taking you more than 15 minutes, we consider it a bug in the system.
+
+Let's actually try the installation now by running `neo version`:
+
+```text
+$ neo version
+v0.1.0
+```
+
+## Updating Neo
+
+Neo is a very young project, so it is constantly changing. In order to
+keep up with the latest changes, you can run `neo update:self`: <Badge issue="69" />
+
+```text
+$ neo update:self
+Neo: Updating Neo...........................
+
+     The Matrix feels different after this update.
+```
+
+## Using Neo Effectively
+
+Neo is a very powerful tool, and it can do a lot of things. In order to
+learn how to use it, you can run `neo help` to see all the available
+commands: <Badge issue="70" />
+
+```text
+$ neo help
+Neo: I'm here to help you.
+
+     Usage: neo <command> [options]
+
+     Commands:
+       help      Show this help message
+       version   Show version
+       new       Create new things
+       update    Update things
+       build     Build things
+       run       Run things
+       watch     Run things on file changes
+       clean     Clean the project
+       install   Install a package
+       uninstall Uninstall a package
+       search    Search for a package
+       list      List installed packages
+```
+
+What does these commands that say "things" mean? Well, they are
+commands that have subcommands. If we run `neo run help`, we'll see
+something like this:
+
+```text
+$ neo run help
+Neo: I'm here to help you.
+
+     Usage: neo run <command> [options]
+
+     Commands:
+       app       Run the application
+       repl      Run the interactive console
+       test      Run the tests
+       format    Run the formatter
+```
+
+You can keep using the `help` command to see what each command does!
+
+## Next Steps
+
+Now that you have Neo installed, we're going to start getting our hands
+dirty, with the Neo interactive console. Let's go to the next section!

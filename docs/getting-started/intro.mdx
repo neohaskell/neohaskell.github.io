@@ -1,0 +1,113 @@
+---
+sidebar_position: 2
+---
+
+import Badge from "@site/src/components/Badge";
+
+# Introduction
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+## What is NeoHaskell?
+
+NeoHaskell is a language for building and maintaining applications with the minimal amount
+of headaches possible. It builds on top of industrial-grade tools like GHC to allow developers of any level to be productive in a wide range of fields.
+It compiles to native code, and runs natively on your machine, allowing it
+to interoperate natively with languages like C, as well as it's way of working makes integration with other codebases very easy.
+
+Here's what it looks like:
+
+```haskell
+"NeoHaskell is cool"
+  |> String.replace "cool" "awesome"
+  |> String.toWordsList
+
+-- > ["NeoHaskell", "is", "awesome"]
+```
+
+As you can see in the example above, NeoHaskell favors **semantic and readable code** that is easy to understand, while providing tools that guide the developer towards a more maintainable solution.
+
+By reading the code, it is easy to infer what it is doing. There's no need for code comments, because the code is self-explanatory.
+
+You might have some questions already, don't worry about it. We will cover
+every little detail in the rest of the docs. Just read along so you can have
+a high-level understanding of what NeoHaskell offers.
+
+:::info Prerequisites
+The NeoHaskell documentation is tailored for beginners, but it does make some assumptions like familiarity with a text editor like [Visual Studio Code](https://code.visualstudio.com/),
+at least some level of fluency with the terminal (like changing directories and executing commands), and at least that some other experience with coding
+in general.
+
+Many examples will be accompanied with a counter example in TypeScript, it is not a requirement to know TypeScript, but it helps as it is a good middle-ground to make an anchor for helping you
+learn through similarity.
+:::
+
+## A Batteries-Included Language
+
+NeoHaskell is a language, a framework, and ecosystem that tries to aid in
+software development for a wide range of fields. While some might argue that
+it is not the best tool for each of those specific tasks, it for sure is the
+one that makes the development process more enjoyable.
+
+It could be possible that you are an experienced developer, and you have
+an already working application. NeoHaskell allows you easily integrate it
+into many applications, you can read more about it in the [Integrating NeoHaskell](/docs/extra-topics/integrating-neohaskell.mdx) page.
+
+We all left a coding
+project for a period of time and then found ourselves completely lost when
+coming back into it. NeoHaskell mitigates that by adopting a strong opinion
+on how stuff should be done, and in exchange, you get back a predictable
+application that is easy to extend and maintain.
+
+NeoHaskell aims to help you in fields as:
+
+- Backend Development <Badge issue="40" />
+- Command Line Scripting <Badge issue="39" />
+- Website Pages <Badge issue="41" />
+- Mobile/Desktop Apps <Badge issue="42" />
+
+Those look like completely disconnected fields that don't have much in
+common. In reality, the NeoHaskell way of working works well with all of
+them, and makes everything a bliss.
+
+NeoHaskell comes with a extensive core library that helps you with a wide
+range of tasks like:
+
+- File System Management <Badge issue="58" />
+- Command Line Interfaces <Badge issue="59" />
+- Create HTTP APIs <Badge issue="60" />
+- Consume HTTP APIs <Badge issue="61" />
+- Serialization for JSON and friends <Badge issue="62" />
+- HTML Rendering <Badge issue="63" />
+
+And much more! The NeoHaskell compiler allows you to produce optimized
+builds that only have the required code that your app needs. <Badge issue="64" />
+
+## A User-Centered Language
+
+Everything in NeoHaskell is designed and implemented with the user in mind.
+Therefore, everything is packed into the `neo` command line tool. <Badge issue="65" />
+
+What is everything? Well, everything that you need for developing your
+application:
+
+- Installing NeoHaskell <Badge issue="66" />
+- Generating a new project <Badge issue="31" />
+- Generating commonly-shaped files <Badge issue="38" />
+- Generating documentation <Badge issue="38" />
+- Managing dependencies <Badge issue="32" />
+- Compiling your code <Badge issue="31" />
+- Linting <Badge issue="34" />
+- Formatting <Badge issue="34" />
+- Running your tests <Badge issue="33" />
+- Packing your application for deployment <Badge issue="36" />
+
+And every use case that helps you to be more happy along the way.
+
+## Begin your Journey
+
+This has been a high-level introduction into the language, now we will
+roll up our sleeves and get our hands dirty. Happy hacking!

@@ -51,7 +51,7 @@ function HomepageHeader() {
       </div>
       <VideoPlayer />
       <div className="relative text-center mx-auto mt-20 mb-10">
-        <Link to="/docs/intro">
+        <Link to="/docs/getting-started/dogma">
           <Button color="yellow" rounded="full" size="lg">
             <h2 className="mx-4 my-2 sm:text-2xl text-xl">Read the Dogma</h2>
           </Button>

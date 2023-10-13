@@ -154,7 +154,7 @@ const config = {
       },
       prism: {
         theme: lightCodeTheme,
-        additionalLanguages: ["haskell"],
+        additionalLanguages: ["haskell", "powershell"],
         defaultLanguage: "haskell",
       },
     }),
