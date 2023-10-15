@@ -1,0 +1,118 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+
+# Create a New Project
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+Trying stuff in the REPL is cool and all that, but if you want to build something
+that you can share with the world, you need to create a project.
+
+## Generating a New Project
+
+Let's run `neo help` one moment to see what commands are available:
+
+```text
+$ neo help
+Neo: I'm here to help you.
+
+     Usage: neo <command> [options]
+
+     Commands:
+       help      Show this help message
+       version   Show version
+       new       Create new things
+       update    Update things
+       build     Build things
+       run       Run things
+       watch     Run things on file changes
+       clean     Clean the project
+       install   Install a package
+       uninstall Uninstall a package
+       search    Search for a package
+       list      List installed packages
+```
+
+Take a moment to read the description of each command. We're interested in creating
+something new, so let's run `neo new help` to see what options are available:
+
+```text
+$ neo new help
+Neo: The `new` command is used to create new things.
+
+      Usage: neo new:<command> [options]
+
+      Commands:
+        project Create a new project
+        ...
+```
+
+Cool! We can create a new project. Let's run `neo new:project help` to see what it
+can do:
+
+```text
+$ neo new:project help
+Neo: The `new:project` command is used to create a new project.
+I will ask the user questions about their project and generate
+a project based on the answers. You can always skip the
+questions by passing the options directly.
+
+      Usage: neo new:project <project-directory> [options]
+
+      Options:
+        --version      -v    Project version
+        --author       -a    Project author
+        --license      -l    Project license
+        --no-git-init  -G    Skip Git init
+```
+
+Let's go ahead and create a new project by running `neo new:project`:
+
+```text
+$ neo new:project learning-neohaskell
+Neo: I will ask you a few questions about your project.
+     Press enter to select the default value (in brackets).
+
+? Project name (Learning NeoHaskell):
+? Project version (0.1.0):
+? Project author:
+? Project license (MIT):
+? Skip Git init [y/N]: No
+
+Neo: Creating project...
+     Project created!
+```
+
+After a while, Neo will create a new project for you, in the directory
+specified after the command. Let's take a look at the project structure:
+
+```text
+learning-neohaskell
+├── .vscode
+├── .gitignore
+├── README.md
+├── LICENSE
+├── neo.yaml
+├── src
+│   └── App
+│   │   └── ToDo.hs
+│   └── Main.hs
+└── test
+    └── App
+    │   └── ToDo.hs
+    └── Main.hs
+```
+
+:::caution
+**UNDER CONSTRUCTION**
+
+![Work in progress](../img/construction-worker.gif)
+:::
