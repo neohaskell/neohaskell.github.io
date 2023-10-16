@@ -49,6 +49,10 @@ body {
   background-color: theme('colors.lightbackground');
 }
 
+.main-wrapper {
+  background-color: theme('colors.lightbackground');
+}
+
 [data-theme='dark'] body {
   background-color: theme('colors.darkbackground');
 }
