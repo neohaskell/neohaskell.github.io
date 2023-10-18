@@ -86,6 +86,20 @@ article h6 {
   font-size: 1rem;
 }
 
+.markdown table {
+  display: table;
+}
+
+
+.markdown th {
+  @apply p-4;
+}
+
+.markdown td {
+  @apply p-4;
+}
+
+
 .underline {
   text-decoration-skip-ink: none !important;
 }
