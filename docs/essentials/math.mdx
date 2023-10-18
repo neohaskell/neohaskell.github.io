@@ -1,0 +1,106 @@
+---
+sidebar_position: 0
+---
+
+# Doing Math
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+As the Professor Walter White said once, "Jesse, let's cook some math", or something like that, I don't know.
+
+Anyways, let's get to the point.
+
+## Basic Math
+
+Here's a table of the typical math operators in NeoHaskell and what they do:
+
+| Operator | Description                      |
+| -------- | -------------------------------- |
+| `+`      | Adds two numbers                 |
+| `-`      | Subtracts two numbers            |
+| `*`      | Multiplies two numbers           |
+| `/`      | Divides two numbers              |
+| `^`      | Raises a number to a power       |
+| `%`      | Gets the remainder of a division |
+
+## Trying it in the REPL
+
+**Addition Example:** Lets say that I want to add 56 and 72 and find its result, I can do it as shown:
+
+```haskell
+neo> 56+72
+128
+```
+
+**Subtraction Example:** In this example I am subtracting 64 from 112
+
+```haskell
+neo> 112-64
+48
+```
+
+**Division Example:** Lets say I want to divide 117 by 12 and find the quotient, I can do it in NeoHaskell like this
+
+```haskell
+neo> 117/12
+9
+```
+
+**Power Example:** Lets say I want to find what we will get by cubing five (five raised to the power of three), I can do it in NeoHaskell as shown
+
+```haskell
+neo> 5^3
+125
+```
+
+Modulus or Remainder Example: I want to know what we will get as remainder when we divide 21 by 4, I can do it as shown
+
+```haskell
+neo> 21%4
+1
+```
+
+### Spacing doesn't matter
+
+NeoHaskell doesn't care about spacing, you can write the above examples as shown below and it will still work
+
+```haskell
+neo> 56 + 72
+128
+
+neo> 112         - 64
+48
+
+neo> 117 /              12
+9
+
+neo> 5 ^3
+125
+```
+
+## More Advanced Math
+
+More advanced math functions are available in the `Math` module. It is
+available by default, so you don't need to import it.
+
+> Modules? Import? What??
+
+Don't worry, we'll get to that later. For now, just know that you can use
+do some math operations like this:
+
+```haskell
+neo> Math.sin 90
+0.8939966636005579
+
+neo> Math.sqrt 64
+8
+
+neo> Math.log 10
+2.302585092994046
+```
+
+You can experiment and explore the advanced math functions available by
+typing `Math.` and then pressing `TAB` to see the list of functions.

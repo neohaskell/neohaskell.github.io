@@ -1,0 +1,115 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+
+# Using a Text Editor
+
+An alternative to typing everything into Neo's REPL is to use a text editor to write your code.
+
+You can use any text editor you like, but we recommend [Visual Studio Code](https://code.visualstudio.com/). It is the most popular editor according to [StackOverflow's 2023 survey](https://survey.stackoverflow.co/2023/#most-popular-technologies-new-collab-tools), and therefore the NeoHaskell
+team ensures that it is well integrated, given that the interaction
+user-editor is a key part of the development experience, and therefore has
+to be as smooth as possible.
+
+If for any reasons, you dislike Visual Studio Code, you can use any other editor you like. However, you will have to figure out how to set it up yourself. There's a 100% open source alternative to Visual Studio Code
+called [VSCodium](https://vscodium.com/) that _might_ support the
+NeoHaskell extensions.
+
+## Installing the NeoHaskell Extension Pack
+
+Usually, when opening a NeoHaskell project in Visual Studio Code, it will
+prompt you to install the recommended extensions. <Badge issue="73"/>
+
+For now, we won't be delving deep into all the details of creating a new
+NeoHaskell project, as this page just serves as a guide for you for the
+case if you prefer writing your code in a text editor instead of in the REPL. So we will install the NeoHaskell extension pack manually. <Badge issue="74"/>
+
+You can install the NeoHaskell extension pack by following these steps:
+
+- Open up Visual Studio Code
+- Press <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>P</kbd> (on MacOS)
+  - or <kbd>Ctrl</kbd> + <kbd>⇧</kbd> + <kbd>P</kbd> (on Windows/Linux)
+- Type `Extensions: Install Extensions` and pressing <kbd>Enter</kbd>
+- Search for `NeoHaskell` in the search bar
+- Click on the `NeoHaskell extension pack` extension
+- Click on the `Install` button
+
+## Printing stuff
+
+Create a new file using the `File > New File` menu item, and save it as
+`UsingTextEditor.hs`.
+
+:::caution
+Throughout the docs, you will see code snippets like the following, where
+there are two tabs, one called NeoHaskell and one called TypeScript. The
+NeoHaskell tab **contains the code that you should type into your file**, and
+the TypeScript tab **serves as a counter example** to help you anchor into your
+existing knowledge of programming. You can click on the tabs to switch
+between them, and see how they compare.
+:::
+
+In the file, type the following:
+
+<Tabs groupId="lang">
+<TabItem value="nh" label="NeoHaskell">
+
+```haskell
+main = do
+  print "Hello World!"
+  print "I'm using a text editor!"
+```
+
+</TabItem>
+
+<TabItem value="ts" label="TypeScript">
+
+```ts
+const main = () => {
+  console.log("Hello World!");
+  console.log("I'm using a text editor!");
+};
+```
+
+</TabItem>
+
+</Tabs>
+
+In NeoHaskell, all programs begin with a `main` function. This is tells
+NeoHaskell where to start executing your program. The `do` keyword is
+used delimit a _block_ of code, similar to how curly braces are used in
+languages like TypeScript, but here we use indentation instead.
+
+To run this, you can either do it from the console, or from within Visual
+Studio Code.
+
+### Running from the console
+
+To run this from the console, open your terminal, and navigate to the
+directory where you saved the file. Then, run the following command: <Badge issue="75"/>
+
+```text
+$ neo run UsingTextEditor.hs
+Hello World!
+I'm using a text editor!
+```
+
+### Running from Visual Studio Code
+
+To run this from Visual Studio Code, open the file, and press
+
+- <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>P</kbd> (on MacOS)
+- or <kbd>Ctrl</kbd> + <kbd>⇧</kbd> + <kbd>P</kbd> (on Windows/Linux)
+
+and type `NeoHaskell: Run Current File`. <Badge issue="76"/>
+
+The `OUTPUT` tab should open up, and you should see the output of your
+program there:
+
+```text
+Hello World!
+I'm using a text editor!
+```
