@@ -27,7 +27,7 @@ const Dialog = ({
   return (
     <div
       className={classNames(
-        "p-9 dark:bg-slate-850 bg-white  border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] grid place-content-center",
+        "p-9 bg-slate-850 bg-white  border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] grid place-content-center",
         { "w-fit": width === "fit" },
         { "w-full": width === "full" },
         { "w-1/2": width === "1/2" },

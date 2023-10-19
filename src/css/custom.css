@@ -53,10 +53,6 @@ body {
   background-color: theme('colors.lightbackground');
 }
 
-[data-theme='dark'] body {
-  background-color: theme('colors.darkbackground');
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lexend Mega', sans-serif;
   font-weight: 600;

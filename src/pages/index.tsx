@@ -15,7 +15,7 @@ import Modal from "../components/Modal";
 import Disclaimer from "../components/Disclaimer";
 
 const dynC = (className: string, color: string) =>
-  `dark:${className}-dark${color} ${className}-light${color}`;
+  `${className}-light${color}`;
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -27,7 +27,7 @@ function HomepageHeader() {
             <h1 className="text-center tracking-supatight leading-relaxed lg:text-7xl md:text-6xl sm:text-5xl text-3xl">
               A language that triggers
               <br />
-              <span className="dark:text-darkprimary text-lightsecondary underline decoration-wavy underline-offset-8">
+              <span className=" text-lightsecondary underline decoration-wavy underline-offset-8">
                 flow state.
               </span>
             </h1>

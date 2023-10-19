@@ -17,18 +17,12 @@ const widthClasses = {
   "1/3": "w-1/3",
 };
 
-const dimensionClasses = ["px-8", "py-4", "dark:bg-slate-950", "border-4"];
+const dimensionClasses = ["px-8", "py-4", "border-4"];
 
 const lightModeClasses = ["bg-white", "text-black", "border-black"];
 
-const darkModeClasses = [
-  "bg-slate-950",
-  "text-white",
-  "border-white",
-  "shadow-neowhite",
-].map((className) => `dark:${className}`);
 
-const classes = [...dimensionClasses, ...lightModeClasses, ...darkModeClasses];
+const classes = [...dimensionClasses, ...lightModeClasses];
 
 const Frame = ({
   rainbow,
