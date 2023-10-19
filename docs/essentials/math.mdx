@@ -3,6 +3,7 @@ sidebar_position: 0
 ---
 
 import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
 
 # Doing Math
 
@@ -27,42 +28,84 @@ Here's a table of the typical math operators in NeoHaskell and what they do:
 | `/`      | Divides two numbers              |
 | `^`      | Raises a number to a power       |
 | `%`      | Gets the remainder of a division |
+| `>>`     | Shift right binary operation     |
+| `<<`     | [Shift left binary operation     |
 
 ## Trying it in the REPL
 
-**Addition Example:** Lets say that I want to add 56 and 72 and find its result, I can do it as shown:
+### Addition Example
+
+Lets say that I want to add 56 and 72 and find its result, I can do it as shown:
 
 ```haskell
 neo> 56+72
 128
 ```
 
-**Subtraction Example:** In this example I am subtracting 64 from 112
+### Subtraction Example
+
+In this example I am subtracting 64 from 112
 
 ```haskell
 neo> 112-64
 48
 ```
 
-**Division Example:** Lets say I want to divide 117 by 12 and find the quotient, I can do it in NeoHaskell like this
+### Division Example
+
+Lets say I want to divide 117 by 12 and find the quotient, I can do it in NeoHaskell like this
 
 ```haskell
 neo> 117/12
 9
 ```
 
-**Power Example:** Lets say I want to find what we will get by cubing five (five raised to the power of three), I can do it in NeoHaskell as shown
+### Power Example
+
+Lets say I want to find what we will get by cubing five (five raised to the power of three), I can do it in NeoHaskell as shown
 
 ```haskell
 neo> 5^3
 125
 ```
 
-Modulus or Remainder Example: I want to know what we will get as remainder when we divide 21 by 4, I can do it as shown
+### Remainder Example
+
+I want to know what we will get as remainder when we divide -21 by 4, I can do it as shown
 
 ```haskell
 neo> 21%4
+-1
+```
+
+### Right Shift Example
+
+This operator shifts the bits (the 1's and 0's of the computer representation) of a number to the right by a specified number of bits. For example, if we shift the bits of 5 to the right by 2 bits, we will get 1. This is because 5 in binary is 101, and when we shift it to the right by 2 bits, we get 1, which is 001 in binary.
+
+<Figure
+  src={require("./img/Bitwise-operator-right-shift.png").default}
+  alt="Graphical explanation of the above"
+  sourceLink="https://www.geeksforgeeks.org/left-shift-right-shift-operators-c-cpp/"
+/>
+
+```haskell
+neo> 5>>2
 1
+```
+
+### Left Shift Example
+
+This operator shifts the bits (the 1's and 0's of the computer representation) of a number to the left by a specified number of bits. For example, if we shift the bits of 5 to the left by 2 bits, we will get 20. This is because 5 in binary is 101, and when we shift it to the left by 2 bits, we get 20, which is 10100 in binary.
+
+<Figure
+  src={require("./img/Bitwise-operator-left-shift.png").default}
+  alt="Graphical explanation of the above"
+  sourceLink="https://www.geeksforgeeks.org/left-shift-right-shift-operators-c-cpp/"
+/>
+
+```haskell
+neo> 5<<2
+20
 ```
 
 ### Spacing doesn't matter
