@@ -47,7 +47,7 @@ function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
   // <div className="bg-white -z-0 my-7 p-7 border-4 border-black"></div>
   return (
     <div
-      className={`${bg} ${shadow} border-4 border-black xl:p-16 sm:p-8 p-0 flex sm:flex-col xl:flex-nowrap flex-wrap md:mx-32 sm:gap-16 gap-8 ${reverse}`}
+      className={`${bg} ${shadow} border-4 border-black xl:p-16 sm:p-8 p-0 flex sm:flex-col xl:flex-nowrap flex-wrap md:mx-32 sm:gap-16 gap-8 ${reverse} z-10`}
     >
       <div className="self-center bg-codeBg flex-grow sm:overflow-visible overflow-hidden">
         {showcaseComponent}
@@ -69,22 +69,24 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section>
       <div className="sm:container relative">
-        <span className="absolute left-1/2 w-4 h-full bg-black border-black border-2 -z-20" />
+        <span className="absolute left-1/2 w-4 h-full bg-black border-black border-2" />
         <div className="flex flex-col gap-32">
-          <div className="relative mb-10">
-            {/* horrible hack to hide the vertical bar */}
-            <span className="absolute w-full h-full py-36 bg-lightbackground -z-20" />
-            <img
-              className="absolute sm:h-36 h-24 bottom-1/4 lg:right-2/3 right-3/4 -z-10"
-              src="img/Star2.svg"
-            />
-            <img
-              className="absolute sm:h-36 h-24 top-1/4 lg:left-2/3 left-3/4 -z-10 "
-              src="img/Star1.svg"
-            />
-            <h1 className="text-center">
-              <span className="text-4xl sm:text-6xl">Features</span>
-            </h1>
+          <div>
+            <span className="absolute w-full py-36 bg-lightbackground" />
+            <div className="relative mb-10">
+              {/* horrible hack to hide the vertical bar */}
+              <img
+                className="absolute sm:h-36 h-24 bottom-1/4 lg:right-2/3 right-3/4 z-10"
+                src="img/Star2.svg"
+              />
+              <img
+                className="absolute sm:h-36 h-24 top-1/4 lg:left-2/3 left-3/4 z-10"
+                src="img/Star1.svg"
+              />
+              <h1 className="text-center z-10">
+                <span className="text-4xl sm:text-6xl">Features</span>
+              </h1>
+            </div>
           </div>
           <div className="flex flex-col gap-32 mb-24">
             {ReadyFeatures.map((props, idx) => (
