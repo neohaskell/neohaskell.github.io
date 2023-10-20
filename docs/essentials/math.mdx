@@ -26,10 +26,10 @@ Here's a table of the typical math operators in NeoHaskell and what they do:
 | `-`      | Subtracts two numbers            |
 | `*`      | Multiplies two numbers           |
 | `/`      | Divides two numbers              |
-| `^`      | Raises a number to a power       |
+| `**`     | Raises a number to a power       |
 | `%`      | Gets the remainder of a division |
 | `>>`     | Shift right binary operation     |
-| `<<`     | [Shift left binary operation     |
+| `<<`     | Shift left binary operation      |
 
 ## Trying it in the REPL
 
@@ -53,7 +53,7 @@ neo> 112-64
 
 ### Division Example
 
-Lets say I want to divide 117 by 12 and find the quotient, I can do it in NeoHaskell like this
+Lets say I want to divide 117 by 12 and find the quotient, I can do it in NeoHaskell like this:
 
 ```haskell
 neo> 117/12
@@ -62,16 +62,16 @@ neo> 117/12
 
 ### Power Example
 
-Lets say I want to find what we will get by cubing five (five raised to the power of three), I can do it in NeoHaskell as shown
+Lets say I want to find what we will get by cubing five (five raised to the power of three), I can do it in NeoHaskell as shown:
 
 ```haskell
-neo> 5^3
+neo> 5**3
 125
 ```
 
 ### Remainder Example
 
-I want to know what we will get as remainder when we divide -21 by 4, I can do it as shown
+I want to know what we will get as remainder when we divide -21 by 4, I can do it as shown:
 
 ```haskell
 neo> 21%4
@@ -110,7 +110,7 @@ neo> 5<<2
 
 ### Spacing doesn't matter
 
-NeoHaskell doesn't care about spacing, you can write the above examples as shown below and it will still work
+NeoHaskell doesn't care about spacing, you can write the above examples as shown below and it will still work:
 
 ```haskell
 neo> 56 + 72
