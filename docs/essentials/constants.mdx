@@ -1,0 +1,127 @@
+---
+sidebar_position: 1
+---
+
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# Constants
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+NeoHaskell promotes the usage of _variables that do not change over time_. These kinds of variables are named
+**constants**.
+
+In most of programming languages, what you expect is to use regular variables that can change, and then only
+if you think that some variable should not change, you create a constant. In NeoHaskell, the approach is the
+opposite: you should use constants by default, and only if you think that some variable should change, you
+create a **mutable variable** (we will talk about mutable variables in later sections).
+
+In software development, mutable variables introduce cognitive overhead because **developers must track changes to their values throughout the code**, which can lead to unpredictable side effects and bugs. On the other hand, constants offer clarity and predictability. When you see a constant, **you instantly know its value will remain consistent everywhere**, eliminating the mental effort of tracking potential changes and simplifying the code's comprehension.
+
+## Declaring Constants
+
+Declaring constants is easy, just write the name of the constant, followed by an equals sign and the value of the constant:
+
+```haskell
+neo> myConstant = 10
+```
+
+The above code declares a constant named `myConstant` with the value `10`. You can now use it to perform operations:
+
+```haskell
+neo> myConstant + 5
+15
+```
+
+## A Note on Naming Convention
+
+Note how the constant name is written with the first letter in lowercase, and then for each word, the first letter is written in uppercase. This is called **camelCase** and is the naming convention in NeoHaskell for **constants**, **variables** and **functions**.
+
+Another thing that might have caught your attention is that it is not written in all caps, like `MY_CONSTANT`. This is because in NeoHaskell, everything is a constant, and variables have special syntax to declare them as mutable. So, there is no need to write constants in all caps.
+
+If you try to define a constant in all caps, you will get an error message: <Badge issue="79"/>
+
+```text
+neo> MY_CONSTANT = 10
+error:
+  It looks like you're trying to define a constant in all caps. In NeoHaskell, constants are defined in `camelCase`,
+  as names that start with uppercase letters are reserved for types.
+
+  Read more about constants in the docs: https://neohaskell.io/docs/essentials/constants
+```
+
+## They Are Really Constant, Tho
+
+You might be wondering, what happens if I try to change the value of a constant? Let's try it:
+
+```haskell
+neo> myConstant = 10
+neo> myConstant
+10
+neo> myConstant = 20
+neo> myConstant
+20
+```
+
+> Hey, you lied to me! You said that constants are constant, but I just changed the value of `myConstant`!
+
+Well, not really. What you did was to create a new constant named `myConstant` with the value `20`. The old constant named `myConstant` with the value `10` is still there, but you can't access it anymore.
+
+Let's try doing one thing, incrementing the constant by one:
+
+```haskell
+neo> myConstant = 10
+neo> myConstant = myConstant + 1
+neo> myConstant
+
+-- oops! the REPL froze! 🥶
+```
+
+Nope, it's not your computer, the REPL just froze (you can press `Ctrl + C` to cancel the operation), and it is an expected behavior.
+
+Why is this happening? What's happening here is that when defining a constant, the compiler is not really calculating the
+value on the right side of the equals sign, but instead, it is **just storing the expression as it is**.
+
+When you try to use it (like when you write `myConstant` in the REPL), the compiler will calculate and store the value of the
+constant at that moment, as it is the first time that you are using it. This is called **lazy evaluation**, and we will go more
+in depth in the next section.
+
+So, why is this freezing when you try to increment the constant?
+
+The compiler tries to calculate the value like this (imagine that the comments are being said by the compiler):
+
+```haskell
+neo> myConstant = myConstant + 1
+-- I received `myConstant = myConstant + 1`!
+-- I'm storing the expression `myConstant + 1` as the value of `myConstant`!
+
+neo> myConstant
+-- Oh, I need to calculate the value of `myConstant`, in order to print it!
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+```
+
+And so on. The compiler will keep trying to calculate the value of `myConstant` forever, because it is defined as `myConstant = myConstant + 1`, and it will never be able to calculate the value of `myConstant`.
+
+This is a suprirising behavior for newcomers, but it is actually a very useful feature that allows the compiler to perform many
+optimizations to make your code more performant.
+
+Let's talk about it in the next section!
