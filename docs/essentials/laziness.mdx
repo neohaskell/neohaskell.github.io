@@ -1,0 +1,138 @@
+---
+sidebar_position: 2
+---
+
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# Laziness
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+NeoHaskell is a lazy language. Not only because it gives you a lot of tools so you can focus on what matters in your app,
+but also because it is **lazily evaluated**.
+
+Lazy evaluation is especially beneficial because it can improve application load time, and it can also improve performance
+in some cases.
+
+## What is lazy evaluation?
+
+Normally, in programming languages like JavaScript, when we create a variable and assign it a value, the value is calculated
+immediately. We say that this value has been evaluated **eagerly**:
+
+```javascript
+const myConstant = 1 + 1;
+
+console.log(myConstant); // 2
+```
+
+When we load that JavaScript code, the first that would happen is that the value of `myConstant` would be calculated and stored
+in memory.
+
+Then, whenever we wanted to use the value (like in the `console.log`), we would just retrieve the value from memory.
+
+Imagine that instead of `1 + 1`, we had a very complex expression that took a long time to calculate. If we were to load that
+JavaScript code, we would have to wait for the expression to be calculated before we could use the value.
+
+```javascript
+const myConstant = get500thDigitOfPi();
+
+console.log(myConstant);
+```
+
+This JavaScript code would take a lot of time to load, because it would have to wait for `get500thDigitOfPi` to finish.
+
+A technique that is usually used in these cases is to wrap the calculation in a function, so that the calculation is only
+performed when the function is called:
+
+```javascript
+const myConstant = () => get500thDigitOfPi();
+
+console.log(myConstant); // [Function]
+```
+
+Now we have a problem: we can't use the value of `myConstant` directly, because it is a function. We have to call the function
+first:
+
+```javascript
+const myConstant = () => get500thDigitOfPi();
+
+console.log(myConstant()); // 2
+
+// Let's call that again
+console.log(myConstant()); // 2
+```
+
+Now we have another problem, which is that each time that we call `myConstant`, the function `get500thDigitOfPi` is called again,
+taking a long time to calculate the value, which doesn't change. So in languages like JavaScript, we would need to implement some
+kind of method to store the value of `myConstant` after it has been calculated, so that we don't have to calculate it again.
+
+## Laziness in NeoHaskell
+
+In NeoHaskell, by default all values are lazy. As we saw in the previous section, this means that the value of a variable is not
+calculated until it is needed.
+
+The cool part of having this as a first-class feature of the language is that we don't have to be thinking about wrapping the
+value in a function, calling the function, or storing the value after it has been calculated. The compiler will do that for us automatically.
+
+When you define a constant in NeoHaskell, it is lazy by default:
+
+```haskell
+neo> myConstant = 1 + 1
+```
+
+It doesn't matter if the calculation is `1 + 1` or `get500thDigitOfPi`, the creation of the constant is instant, because it is
+not calculated.
+
+## Fixing the Freeze from the Constants Page
+
+In the previous page, we tried to increment a constant by one, but it froze.
+
+The reason for this, is that due to lazy evaluation, the compiler allows us to define a constant in terms of itself, but
+when it tries to calculate it freezes.
+
+The compiler tries to calculate the value like this (imagine that the comments are being said by the compiler):
+
+```haskell
+neo> myConstant = myConstant + 1
+-- I received `myConstant = myConstant + 1`!
+-- I'm storing the expression `myConstant + 1` as the value of `myConstant`!
+
+neo> myConstant
+-- Oh, I need to calculate the value of `myConstant`, in order to print it!
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+
+-- Let me check the value of `myConstant`...
+-- Ok, it is the expression `myConstant + 1`! Let me calculate that...
+-- First, I need to get the value of `myConstant`...
+```
+
+And so on. The compiler will keep trying to calculate the value of `myConstant` forever, because it is defined as `myConstant = myConstant + 1`, and it will never be able to calculate the value of `myConstant`.
+
+This is a suprirising behavior for newcomers, but it is actually a very useful feature that allows the compiler to perform many
+optimizations to make your code more performant.
+
+A cool, but not very useful, example of this is that you can create infinite things, like infinite lists. Try running this in
+the NeoHaskell REPL (remember to press `Ctrl + C` to stop it):
+
+```haskell
+neo> unlimitedPower = unlimitedPower |> List.prepend 1
+neo> unlimitedPower
+```
+
+You might be already asking yourself, what does (`|>`) mean? What is `List.prepend`? Don't worry, we'll get to that in the next
+sections.

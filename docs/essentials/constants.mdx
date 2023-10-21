@@ -89,39 +89,3 @@ value on the right side of the equals sign, but instead, it is **just storing th
 When you try to use it (like when you write `myConstant` in the REPL), the compiler will calculate and store the value of the
 constant at that moment, as it is the first time that you are using it. This is called **lazy evaluation**, and we will go more
 in depth in the next section.
-
-So, why is this freezing when you try to increment the constant?
-
-The compiler tries to calculate the value like this (imagine that the comments are being said by the compiler):
-
-```haskell
-neo> myConstant = myConstant + 1
--- I received `myConstant = myConstant + 1`!
--- I'm storing the expression `myConstant + 1` as the value of `myConstant`!
-
-neo> myConstant
--- Oh, I need to calculate the value of `myConstant`, in order to print it!
-
--- Let me check the value of `myConstant`...
--- Ok, it is the expression `myConstant + 1`! Let me calculate that...
--- First, I need to get the value of `myConstant`...
-
--- Let me check the value of `myConstant`...
--- Ok, it is the expression `myConstant + 1`! Let me calculate that...
--- First, I need to get the value of `myConstant`...
-
--- Let me check the value of `myConstant`...
--- Ok, it is the expression `myConstant + 1`! Let me calculate that...
--- First, I need to get the value of `myConstant`...
-
--- Let me check the value of `myConstant`...
--- Ok, it is the expression `myConstant + 1`! Let me calculate that...
--- First, I need to get the value of `myConstant`...
-```
-
-And so on. The compiler will keep trying to calculate the value of `myConstant` forever, because it is defined as `myConstant = myConstant + 1`, and it will never be able to calculate the value of `myConstant`.
-
-This is a suprirising behavior for newcomers, but it is actually a very useful feature that allows the compiler to perform many
-optimizations to make your code more performant.
-
-Let's talk about it in the next section!
