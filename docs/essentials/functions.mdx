@@ -1,0 +1,181 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# Functions
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+NeoHaskell promotes the style of programming that's called **functional programming**. There are so many definitions of
+functional programming, but it boils down to one thing: **programming with functions**.
+
+Functions can be divided in two types: **Calculations** and **Actions**.
+
+A **calculation** is a function that will always return the same result for the same input. **In NeoHaskell, they cannot crash/throw an error**. Examples of calculations are:
+
+- Performing mathematical operations (adding, subtracting, etc)
+- Returning the length of a list
+- Converting one object to another
+- Doing operations with strings
+
+An **action** is a function that usually relies on some external thing to perform its job. **These can throw errors.** Examples of actions are:
+
+- Reading a file from the disk
+- Sending an email
+- Modifying some data in the state of the application
+- Printing something to the screen
+
+This distinction is crucial, because when looking for a crash in your application, you can be sure that the problem is
+in an action.
+
+**In NeoHaskell, by default all functions are calculations**. The compiler won't let you perform an action without explicitly
+telling it that you're doing so. We will cover actions in later sections, so for now, just know **that all functions you see are calculations, and cannot fail/crash.**
+
+## Calling a Function
+
+In NeoHaskell, to call a function, you **write its name and then the arguments separated by spaces**. This usually baffles people coming from other languages, but it helps you write more readable and beautiful code.
+
+Suppose we want to call a function called `estimateShipping` that returns the cost based on weight in kilos, distance in kilometers, and cost per kilometer. Here's how you would do it. Compare the NeoHaskell code, and the JavaScript code (click on the tabs to switch languages):
+
+<Tabs>
+<TabItem value="neohaskell" label="NeoHaskell">
+
+```haskell
+estimateShipping 15 100 2
+```
+
+</TabItem>
+
+<TabItem value="js" label="JavaScript">
+
+```python
+estimateShipping(15, 100, 2)
+```
+
+</TabItem>
+</Tabs>
+
+The only time that we use parentheses is when we want to pack another function call or using an operator as an argument. For example, if we wanted to call `estimateShipping` adding the weights as the first argument, and with the result of `calculateDistance` as the second argument, we would do it like this:
+
+<Tabs>
+<TabItem value="neohaskell" label="NeoHaskell">
+
+```haskell
+estimateShipping (7 + 8) (calculateDistance 10 20) 2
+```
+
+</TabItem>
+
+<TabItem value="js" label="JavaScript">
+
+```python
+estimateShipping(7 + 8, calculateDistance(10, 20), 2)
+```
+
+</TabItem>
+</Tabs>
+
+At this point, it is definitely not clear that one style is more beautiful than another. But it is because that also it is
+advised to extract the arguments to constants, and then call the function with the constants, inside of a function that you've
+defined.
+
+## Defining Functions
+
+To define a function in NeoHaskell, you write the name of the function, followed by the arguments, and then an equal sign, and then a block for the body of the function. This is too much information to process in a sentence, so let's see an example.
+
+Let's write a function that calculates the shipping cost, given the weight, distance, and cost per kilometer:
+
+<Tabs>
+<TabItem value="neohaskell" label="NeoHaskell">
+
+```haskell
+estimateShipping weight distance costPerKm = do
+  let distanceCost = distance * costPerKm
+  let weightCost = weight * 2
+  return (distanceCost + weightCost)
+```
+
+</TabItem>
+
+<TabItem value="js" label="JavaScript">
+
+```js
+function estimateShipping(weight, distance, costPerKm) {
+  const distanceCost = distance * costPerKm;
+  const weightCost = weight * 2;
+  return distanceCost + weightCost;
+}
+```
+
+</TabItem>
+</Tabs>
+
+In the example above, we're using a **block** to define a function, so it allows us to define constants with the `let` keyword, and to return a value with the `return` keyword. Note how that the `return` keyword requires you to wrap the return value in parentheses.
+
+**Blocks are optional**, and if we wanted to write the same function without it, removing all the constants,
+and writing the calculation inline, we could do it like this:
+
+<Tabs>
+<TabItem value="neohaskell" label="NeoHaskell">
+
+```haskell
+estimateShipping weight distance costPerKm =
+  return (distance * costPerKm + weight * 2)
+```
+
+</TabItem>
+
+<TabItem value="js" label="JavaScript">
+
+```js
+function estimateShipping(weight, distance, costPerKm) {
+  return distance * costPerKm + weight * 2;
+}
+```
+
+</TabItem>
+</Tabs>
+
+In fact, the last line of a NeoHaskell function will be always returned, so we can remove the `return` keyword.
+In JavaScript, this is not possible with a regular function, so we have to change the JavaScript code so it is an arrow function:
+
+<Tabs>
+<TabItem value="neohaskell" label="NeoHaskell">
+
+```haskell
+estimateShipping weight distance costPerKm =
+  distance * costPerKm + weight * 2
+```
+
+</TabItem>
+
+<TabItem value="js" label="JavaScript">
+
+```js
+const estimateShipping = (weight, distance, costPerKm) =>
+  distance * costPerKm + weight * 2;
+```
+
+</TabItem>
+</Tabs>
+
+This way of writing code helps writing data processing code and validation rules in a very readable way. **But be careful**,
+because one-liners can easily become hard to read, so **it is advised to use blocks for more complex functions.**
+
+## A Note on Cognitive Overhead
+
+In the function we've defined above, we're naming our arguments `weight`, and `distance`. Is the weight in kilograms or pounds? Is the distance in kilometers, miles, [or alligators](https://edition.cnn.com/2020/04/04/us/social-distancing-florida-alligator-trnd/index.html)? We don't know, and we might have to look at the implementation of the function to know. And still, we'd have no clue, because there aren't even comments in the function.
+
+This is extra work that our brains must have to do, and when you're trying to navigate a codebase with hundreds (or thousands) of functions, it can become a nightmare. These kinds of issues might seem anecdotic, but actually [the NASA lost millions due to a similar situation](https://www.simscale.com/blog/nasa-mars-climate-orbiter-metric/).
+
+NeoHaskell takes an approach that helps you define explicit contracts for all of the functions. We do so by **modeling our domain** (the problem we're trying to solve) **with types**.
+
+Let's hop into the next section to learn more about them!
