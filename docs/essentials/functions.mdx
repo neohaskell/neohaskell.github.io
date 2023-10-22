@@ -100,7 +100,7 @@ Let's write a function that calculates the shipping cost, given the weight, dist
 estimateShipping weight distance costPerKm = do
   let distanceCost = distance * costPerKm
   let weightCost = weight * 2
-  return (distanceCost + weightCost)
+  distanceCost + weightCost
 ```
 
 </TabItem>
@@ -118,34 +118,12 @@ function estimateShipping(weight, distance, costPerKm) {
 </TabItem>
 </Tabs>
 
-In the example above, we're using a **block** to define a function, so it allows us to define constants with the `let` keyword, and to return a value with the `return` keyword. Note how that the `return` keyword requires you to wrap the return value in parentheses.
+In the example above, we're using a **block** to define a function, so it allows us to define constants with the `let` keyword. Note how that the last line in a block is
+returned, so there's no need to write `return` like in
+other languages.
 
 **Blocks are optional**, and if we wanted to write the same function without it, removing all the constants,
 and writing the calculation inline, we could do it like this:
-
-<Tabs>
-<TabItem value="neohaskell" label="NeoHaskell">
-
-```haskell
-estimateShipping weight distance costPerKm =
-  return (distance * costPerKm + weight * 2)
-```
-
-</TabItem>
-
-<TabItem value="js" label="JavaScript">
-
-```js
-function estimateShipping(weight, distance, costPerKm) {
-  return distance * costPerKm + weight * 2;
-}
-```
-
-</TabItem>
-</Tabs>
-
-In fact, the last line of a NeoHaskell function will be always returned, so we can remove the `return` keyword.
-In JavaScript, this is not possible with a regular function, so we have to change the JavaScript code so it is an arrow function:
 
 <Tabs>
 <TabItem value="neohaskell" label="NeoHaskell">
@@ -160,8 +138,9 @@ estimateShipping weight distance costPerKm =
 <TabItem value="js" label="JavaScript">
 
 ```js
-const estimateShipping = (weight, distance, costPerKm) =>
-  distance * costPerKm + weight * 2;
+function estimateShipping(weight, distance, costPerKm) {
+  return distance * costPerKm + weight * 2;
+}
 ```
 
 </TabItem>
