@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 import Badge from "@site/src/components/Badge";
 import Figure from "@site/src/components/Figure";
 
@@ -23,11 +25,17 @@ in some cases.
 Normally, in programming languages like JavaScript, when we create a variable and assign it a value, the value is calculated
 immediately. We say that this value has been evaluated **eagerly**:
 
+<Tabs>
+<TabItem value="js" label="JavaScript">
+
 ```javascript
 const myConstant = 1 + 1;
 
 console.log(myConstant); // 2
 ```
+
+</TabItem>
+</Tabs>
 
 When we load that JavaScript code, the first that would happen is that the value of `myConstant` would be calculated and stored
 in memory.
@@ -37,16 +45,25 @@ Then, whenever we wanted to use the value (like in the `console.log`), we would 
 Imagine that instead of `1 + 1`, we had a very complex expression that took a long time to calculate. If we were to load that
 JavaScript code, we would have to wait for the expression to be calculated before we could use the value.
 
+<Tabs>
+<TabItem value="js" label="JavaScript">
+
 ```javascript
 const myConstant = get500thDigitOfPi();
 
 console.log(myConstant);
 ```
 
+</TabItem>
+</Tabs>
+
 This JavaScript code would take a lot of time to load, because it would have to wait for `get500thDigitOfPi` to finish.
 
 A technique that is usually used in these cases is to wrap the calculation in a function, so that the calculation is only
 performed when the function is called:
+
+<Tabs>
+<TabItem value="js" label="JavaScript">
 
 ```javascript
 const myConstant = () => get500thDigitOfPi();
@@ -54,17 +71,26 @@ const myConstant = () => get500thDigitOfPi();
 console.log(myConstant); // [Function]
 ```
 
+</TabItem>
+</Tabs>
+
 Now we have a problem: we can't use the value of `myConstant` directly, because it is a function. We have to call the function
 first:
+
+<Tabs>
+<TabItem value="js" label="JavaScript">
 
 ```javascript
 const myConstant = () => get500thDigitOfPi();
 
-console.log(myConstant()); // 2
+console.log(myConstant()); // 2  (after a long time)
 
-// Let's call that again
-console.log(myConstant()); // 2
+// If we call this again, the calculation gets performed twice.
+console.log(myConstant()); // 2  (after a long time, again)
 ```
+
+</TabItem>
+</Tabs>
 
 Now we have another problem, which is that each time that we call `myConstant`, the function `get500thDigitOfPi` is called again,
 taking a long time to calculate the value, which doesn't change. So in languages like JavaScript, we would need to implement some
@@ -87,7 +113,7 @@ neo> myConstant = 1 + 1
 It doesn't matter if the calculation is `1 + 1` or `get500thDigitOfPi`, the creation of the constant is instant, because it is
 not calculated.
 
-## Fixing the Freeze from the Constants Page
+## Understanding the Freeze from the Constants Page
 
 In the previous page, we tried to increment a constant by one, but it froze.
 
@@ -126,13 +152,29 @@ And so on. The compiler will keep trying to calculate the value of `myConstant` 
 This is a suprirising behavior for newcomers, but it is actually a very useful feature that allows the compiler to perform many
 optimizations to make your code more performant.
 
-A cool, but not very useful, example of this is that you can create infinite things, like infinite lists. Try running this in
-the NeoHaskell REPL (remember to press `Ctrl + C` to stop it):
+**For example**, imagine that you have a single-page application that defines two completely different pages for registering a
+user: In one, the registered user is a person, in another the registered user is a company.
 
-```haskell
-neo> unlimitedPower = unlimitedPower |> List.prepend 1
-neo> unlimitedPower
+A naive implementation in JavaScript would be to have a single `registerUser` function that receives a `userType` parameter,
+and depending on the value of that parameter, it would perform a different action:
+
+<Tabs>
+<TabItem value="js" label="JavaScript">
+
+```javascript
+const registerPersonPage = // ...
+const registerCompanyPage = // ...
+
+if (userType === "person") {
+  return registerPersonPage;
+} else {
+  return registerCompanyPage;
+}
 ```
 
-You might be already asking yourself, what does (`|>`) mean? What is `List.prepend`? Don't worry, we'll get to that in the next
-sections.
+</TabItem>
+</Tabs>
+
+You see the issue here, both pages are being loaded when the code is loaded, even though only one of them will be used.
+
+In contrast, in NeoHaskell, the pages wouldn't be loaded until they are needed, because their values would be lazily evaluated.
