@@ -1,0 +1,94 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# Types
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+One of the key features of NeoHaskell is its type system. Some people have preconceived
+ideas about types, and they think that they get in the way of development process too
+much. This is usually because either the type system of the programming language they
+are using is not flexible enough, or that types come as an afterthought of the 
+development process of their system, like if it is a "necessary bad thing".
+
+In NeoHaskell, types become your best friends. Not only because NeoHaskell's type 
+system is quite different to type systems from other programming languages (e.g. 
+it doesn't support inheritance, but supports _super-generics_) but also because
+it becomes a very useful design tool for your software development toolbox.
+
+With the NeoHaskell type system, you can sketch an outline of your system, that then
+you can fill with the colors of an implementation. If your sketch outlines a dog,
+you might color it better or worse, but it will still be a dog.
+
+## Primitive types
+
+In NeoHaskell, you've got the typical primitive types out of the box:
+
+| Type | Description |
+|-----|---------|
+| Int | For storing integer numbers between .....|
+| Float | For storing decimal numbers between ...|
+| Bool | For storing either True or False |
+
+Out of all of these types, the most simple one is `Bool`. Why? Because it can only
+become two values: True or False.
+
+This might look like something without importance, but think about it:
+
+> You can be absolutely sure that a value of type Bool can only be either True or False
+
+This means that in no case it can become something that it is not one of those two values
+and that we can mentally (or on paper) take notes on what happens on each of those values.
+
+Compare that with `Int`. Yes, in a computer the number of possible values is finite,
+but its definitely much more bigger than we can hold in our heads.
+
+In NeoHaskell, we tend to simplify the types of the data we manage in our apps, so 
+the thinking process during development is easier. And the most important tool for 
+this are the **enums**.
+
+## Enums 
+
+If you come from other languages, you might already know what enums are. Yet, in 
+NeoHaskell, they are quite more powerful, take a look:
+
+Enums on one hand, are a type that define a set of possible values that a value can 
+become. We declare enums with the `data` keyword, like the following example. E.g. 
+if we wanted to define the possible colors of a product, we can create a `Color` 
+like so:
+
+```haskell 
+data Color = Red | Blue | Green
+```
+
+You can also write them in multiple lines like this:
+
+```haskell 
+data Color 
+  = Red 
+  | Blue 
+  | Green
+```
+
+If we wanted to create a constant of type `Color`, you do so by using the name of 
+the `Color` variant directly:
+
+```haskell 
+myColor = Red
+```
+
+A fun fact about the `Bool` type, is that it is just an enum too:
+
+```haskell
+data Bool = True | False 
+```
+
