@@ -36,59 +36,105 @@ In NeoHaskell, you've got the typical primitive types out of the box:
 | Type | Description |
 |-----|---------|
 | Int | For storing integer numbers between .....|
+| BigInt | For storing integer numbers between .....|
 | Float | For storing decimal numbers between ...|
+| Double | For storing decimal numbers between ...|
 | Bool | For storing either True or False |
+| Char | For storing single characters |
 
-Out of all of these types, the most simple one is `Bool`. Why? Because it can only
-become two values: True or False.
+Of course there are much more many types, but you can consider these as the 
+most basic ones.
 
-This might look like something without importance, but think about it:
+## Annotating Constants
 
-> You can be absolutely sure that a value of type Bool can only be either True or False
-
-This means that in no case it can become something that it is not one of those two values
-and that we can mentally (or on paper) take notes on what happens on each of those values.
-
-Compare that with `Int`. Yes, in a computer the number of possible values is finite,
-but its definitely much more bigger than we can hold in our heads.
-
-In NeoHaskell, we tend to simplify the types of the data we manage in our apps, so 
-the thinking process during development is easier. And the most important tool for 
-this are the **enums**.
-
-## Enums 
-
-If you come from other languages, you might already know what enums are. Yet, in 
-NeoHaskell, they are quite more powerful, take a look:
-
-Enums on one hand, are a type that define a set of possible values that a value can 
-become. We declare enums with the `data` keyword, like the following example. E.g. 
-if we wanted to define the possible colors of a product, we can create a `Color` 
-like so:
-
-```haskell 
-data Color = Red | Blue | Green
-```
-
-You can also write them in multiple lines like this:
-
-```haskell 
-data Color 
-  = Red 
-  | Blue 
-  | Green
-```
-
-If we wanted to create a constant of type `Color`, you do so by using the name of 
-the `Color` variant directly:
-
-```haskell 
-myColor = Red
-```
-
-A fun fact about the `Bool` type, is that it is just an enum too:
+Until now, when we wanted to create a constant, we just assigned a value to a name.
+In the NeoHaskell repl, we could do it like so:
 
 ```haskell
-data Bool = True | False 
+neo> myConstant = 42
+```
+
+In this case, the compiler will automatically _infer_ that the type of `myConstant`
+is `Int`. But it could be possible that we want it to be of type `BigInt`, instead of 
+`Int`.
+
+Given that types are a powerful tool for designing our programs, in NeoHaskell they 
+get to be on their own line. This means, that for annotating the type of a constant,
+we write the type on a line above the assignment line.
+
+We write the type of a constant by using the `::` symbol, which reads as "is of type".
+
+```haskell
+myConstant :: BigInt
+myConstant = 42
+```
+
+:::tip
+In the NeoHaskell REPL, use the command `:{` to begin writing multiple lines,
+use the command `:}` to end the multi-line input.
+:::
+
+If we wanted to try this on the REPL, we could do it like so:
+
+```haskell
+neo> :{
+  myConstant :: BigInt
+  myConstant = 42
+  :}
+
+neo> myConstant
+42
+```
+
+## Checking the type of something
+
+In the NeoHaskell REPL, you have a pretty useful command to check the type of stuff,
+you can write `:type` and the name of something, and it will tell you the type:
+
+```haskell
+neo> :type myConstant
+myConstant :: BigInt
+```
+
+It replies with "myConstant is of type BigInt".
+
+## Avoiding primitive obsession
+
+There's this concept in software development called "primitive obsession" which
+essentially says that using primitive types for everything is bad.
+
+This is because they don't really tell you a story about how your program is 
+structured, or how your data gets transformed.
+
+A counter-argument that people usually say against "wrapper types", or types whose
+only reason of life is to give a name to a primitive type, is that they are not 
+very efficient. You now would need to have both the primitive value in memory, and 
+the wrapper that gives the type a name.
+
+In NeoHaskell, you get to create these wrapper types for free.
+
+In memory, it is only stored the actual value of the primitive type, but in compilation,
+the compiler thinks that it is a different type.
+
+To create a type of this kind, you use the `newtype` keyword and do it this way:
+
+```haskell
+newtype Age = Age Int
+```
+
+This creates a new type called `Age` whose sole purpose is to be differentiated from 
+other `Int`s.
+
+To create a constant with this type, you use it's name before the actual `Int` value:
+
+```haskell
+neo> catAge = Age 2
+```
+
+Note how now, you cannot use it as another Int 
+
+```haskell
+neo> catAge + 4
+error: Attempting to use operator `+` on Age and Int, they do not match...
 ```
 
