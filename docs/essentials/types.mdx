@@ -7,7 +7,7 @@ import TabItem from "@theme/TabItem";
 import Badge from "@site/src/components/Badge";
 import Figure from "@site/src/components/Figure";
 
-# Types
+# Basic Types
 
 :::caution
 The documentation that you're reading is a design document where most of
@@ -17,11 +17,11 @@ the features you're reading are yet to be implemented. Check the [Note on the Do
 One of the key features of NeoHaskell is its type system. Some people have preconceived
 ideas about types, and they think that they get in the way of development process too
 much. This is usually because either the type system of the programming language they
-are using is not flexible enough, or that types come as an afterthought of the 
+are using is not flexible enough, or that types come as an afterthought of the
 development process of their system, like if it is a "necessary bad thing".
 
-In NeoHaskell, types become your best friends. Not only because NeoHaskell's type 
-system is quite different to type systems from other programming languages (e.g. 
+In NeoHaskell, types become your best friends. Not only because NeoHaskell's type
+system is quite different to type systems from other programming languages (e.g.
 it doesn't support inheritance, but supports _super-generics_) but also because
 it becomes a very useful design tool for your software development toolbox.
 
@@ -33,16 +33,16 @@ you might color it better or worse, but it will still be a dog.
 
 In NeoHaskell, you've got the typical primitive types out of the box:
 
-| Type | Description |
-|-----|---------|
-| Int | For storing integer numbers between .....|
-| BigInt | For storing integer numbers between .....|
-| Float | For storing decimal numbers between ...|
-| Double | For storing decimal numbers between ...|
-| Bool | For storing either True or False |
-| Char | For storing single characters |
+| Type     | Description                      | Example                                    |
+| -------- | -------------------------------- | ------------------------------------------ |
+| `Int`    | Integer numbers                  | `42`                                       |
+| `BigInt` | Big integer numbers              | `1234567890123456789012345678901234567890` |
+| `Float`  | Simple precision decimal numbers | `3.1415`                                   |
+| `Double` | Double precision decimal numbers | `3.141592653589793`                        |
+| `Bool`   | True or False                    | `True`                                     |
+| `Char`   | Single characters                | `'a'`                                      |
 
-Of course there are much more many types, but you can consider these as the 
+Of course there are much more many types, but you can consider these as the
 most basic ones.
 
 ## Annotating Constants
@@ -55,19 +55,34 @@ neo> myConstant = 42
 ```
 
 In this case, the compiler will automatically _infer_ that the type of `myConstant`
-is `Int`. But it could be possible that we want it to be of type `BigInt`, instead of 
+is `Int`. But it could be possible that we want it to be of type `BigInt`, instead of
 `Int`.
 
-Given that types are a powerful tool for designing our programs, in NeoHaskell they 
+Given that types are a powerful tool for designing our programs, in NeoHaskell they
 get to be on their own line. This means, that for annotating the type of a constant,
 we write the type on a line above the assignment line.
 
 We write the type of a constant by using the `::` symbol, which reads as "is of type".
 
+<Tabs>
+<TabItem value="neohaskell" label="NeoHaskell">
+
 ```haskell
 myConstant :: BigInt
 myConstant = 42
 ```
+
+</TabItem>
+
+<TabItem value="ts" label="TypeScript">
+
+```typescript
+const myConstant: BigInt = 42;
+// Note, `BigInt` does not actually exist in TypeScript
+```
+
+</TabItem>
+</Tabs>
 
 :::tip
 In the NeoHaskell REPL, use the command `:{` to begin writing multiple lines,
@@ -103,12 +118,12 @@ It replies with "myConstant is of type BigInt".
 There's this concept in software development called "primitive obsession" which
 essentially says that using primitive types for everything is bad.
 
-This is because they don't really tell you a story about how your program is 
+This is because they don't really tell you a story about how your program is
 structured, or how your data gets transformed.
 
 A counter-argument that people usually say against "wrapper types", or types whose
-only reason of life is to give a name to a primitive type, is that they are not 
-very efficient. You now would need to have both the primitive value in memory, and 
+only reason of life is to give a name to a primitive type, is that they are not
+very efficient. You now would need to have both the primitive value in memory, and
 the wrapper that gives the type a name.
 
 In NeoHaskell, you get to create these wrapper types for free.
@@ -118,12 +133,30 @@ the compiler thinks that it is a different type.
 
 To create a type of this kind, you use the `newtype` keyword and do it this way:
 
+<Tabs>
+<TabItem value="neohaskell" label="NeoHaskell">
+
 ```haskell
 newtype Age = Age Int
 ```
 
-This creates a new type called `Age` whose sole purpose is to be differentiated from 
-other `Int`s.
+</TabItem>
+
+<TabItem value="ts" label="TypeScript">
+
+```typescript
+// Note: In TypeScript there is no such thing as newtype, so the closest thing
+// would be to emulate it with a workaround like the following:
+type Age = number & { __tag: "Age" };
+const Age = (age: number): Age => age as Age;
+```
+
+</TabItem>
+</Tabs>
+
+This creates a new type called `Age` whose sole purpose is to be differentiated from
+other `Int`s. It also gives us a _constructor function_ called `Age` that we can use to create a
+new `Age` value.
 
 To create a constant with this type, you use it's name before the actual `Int` value:
 
@@ -131,10 +164,46 @@ To create a constant with this type, you use it's name before the actual `Int` v
 neo> catAge = Age 2
 ```
 
-Note how now, you cannot use it as another Int 
+Note how now, you cannot use it as another `Int`: <Badge issue="80" />
 
 ```haskell
 neo> catAge + 4
-error: Attempting to use operator `+` on Age and Int, they do not match...
+-- TYPE MISMATCH ----------------------------
+Attempting to add two values, but the first value doesn't match the type of the second value:
+
+    catAge + 4
+    ^^^^^^
+
+`catAge` is of type:
+
+    Age
+
+But `(+)` needs the 1st argument to be:
+
+    Int
+
+Hint: Maybe try `cast`ing `catAge` to `Int`?
 ```
 
+## Wrapper type reference
+
+Here's a cheatsheet for defining and creating wrapper types:
+
+```haskell
+-- This part
+-- is the type
+-- name  ⬇️
+newtype Foo = Bar Int
+--              ↖️  This part is the
+--                 constructor
+--                 function
+
+-- The type annotation must match the
+-- type name of the wrapper type
+--             ⬇️
+myConstant :: Foo
+myConstant = Bar 42
+--            ⬆️
+-- The creation of the value must
+-- match the constructor function
+```
