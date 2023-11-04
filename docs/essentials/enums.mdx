@@ -1,0 +1,53 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# Enums
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+In the previous section, we learned how to start using NeoHaskell's type system, we learned how to annotate constants
+and functions, and also we saw how to start modelling our domain using wrapper types, which allowed us to
+avoid primitive obssession and to give concrete more meaningful names to our types, more according to the domain of our
+application.
+
+There are certain cases where we might want to model a thing that can only have a finite number of values, for example,
+the state of a lightbulb, the colors of a rainbow, the days of the week, etc. Instead of using strings (by the way, did you
+notice that we haven't talked about them? This is on purpose 🤭) to represent these values, we use **enums**.
+
+Similar to wrapper types, enums allow you to avoid primitive obsession. For example, instead of using a `Bool` to represent
+the state of a lightbulb, we can use an enum with two cases: `On` and `Off`. This way, we can't accidentally pass a `Bool`
+that represents the state of a lightbulb to a function that expects a `Bool` that represents the state of a TV.
+
+## Defining an enum
+
+To define an enum, we use the `data` keyword followed by the name of the enum and the cases that it can have, separated by
+vertical bars (`|`). For example, to define an enum that represents the state of a lightbulb, we can do the following:
+
+<Tabs>
+  <TabItem value="Haskell">
+
+```haskell
+data LightbulbState = On | Off
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+enum LightbulbState {
+  On,
+  Off,
+}
+```
+
+  </TabItem>
+</Tabs>
