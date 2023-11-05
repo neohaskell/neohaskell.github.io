@@ -33,10 +33,12 @@ To define an enum, we use the `data` keyword followed by the name of the enum an
 vertical bars (`|`). For example, to define an enum that represents the state of a lightbulb, we can do the following:
 
 <Tabs>
-  <TabItem value="Haskell">
+  <TabItem value="NeoHaskell">
 
 ```haskell
-data LightbulbState = On | Off
+data LightbulbState
+  = On
+  | Off
 ```
 
   </TabItem>
@@ -47,6 +49,95 @@ enum LightbulbState {
   On,
   Off,
 }
+```
+
+  </TabItem>
+</Tabs>
+
+You can add as many cases as you want. In fact, if your application handles some specific values of a type with infinite values like
+`Int`, it is much better to use an enum instead of an `Int` because it will be much more clear what the function expects and
+what it returns.
+
+Imagine that you're developing a videogame, and you want to represent with how many lives does a player start. Let's suppose that a
+player can only start with between two and six lives. Instead of using `Int`, which has no limits, we can use an enum with different
+cases. This way, we can't accidentally pass a `1` to a function that expects the number of starting lives of a
+player, or have a bug down there in our code that makes the player accidentally start with one million lives:
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+data PlayerLives
+  = Two
+  | Three
+  | Four
+  | Five
+  | Six
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+enum PlayerLives {
+  Two,
+  Three,
+  Four,
+  Five,
+  Six,
+}
+```
+
+  </TabItem>
+</Tabs>
+
+One advantage of NeoHaskell's enums over TypeScript's (and most mainstream languages) enums is that the values of a NeoHaskell enum
+are the values themselves and they are not usable in place of other types that are not the enum itself, while in TypeScript,
+for example, the values of an enum are numbers that represent the position of the case in the enum, and they can be used in any place
+where a number is expected. Compare the following examples:
+
+<Tabs>
+  <TabItem value="Haskell">
+
+```haskell
+data PlayerLives
+  = Two
+  | Three
+  | Four
+  | Five
+  | Six
+
+neo> Two + 4
+-- TYPE MISMATCH ----------------------------
+Attempting to add two values, but the first value doesn't match the type of the second value:
+
+    Two + 4
+    ^^^
+
+`Two` is of type:
+
+    PlayerLives
+
+But `(+)` needs the 1st argument to be:
+
+    Int
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+enum PlayerLives {
+  Two,
+  Three,
+  Four,
+  Five,
+  Six,
+}
+
+console.log(PlayerLives.Two + 4); // 4
+
+// The above weirdly prints 4 because the value of `PlayerLives.Two` is 0, and 0 + 4 = 4
 ```
 
   </TabItem>
