@@ -6,6 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@600&family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@400&family=Ubuntu&display=swap');
+@import "@fontsource/comic-mono";
 
 @tailwind base;
 @tailwind components;
@@ -175,13 +176,13 @@ main >  article {
 
 .tabs-container > ul {
   @apply px-0;
-  @apply my-0;
+  @apply !my-0;
 }
 
 .tabs-container > ul > li {
   @apply py-2;
   @apply px-4;
-  @apply my-0;
+  @apply !my-0;
 }
 
 .tabs-container > ul > li:hover {
@@ -210,9 +211,11 @@ main >  article {
 div[class*="language-"] ,
 pre[class*="language-"] ,
 code[class*="language-"]  {
-  @apply bg-codeBg;
-  @apply rounded-none;
-  @apply p-4;
+  font-family: "Comic Mono", monospace;
+  @apply !bg-codeBg;
+  @apply !rounded-none;
+  @apply !p-4;
+  @apply !m-0;
 }
 
 .theme-doc-sidebar-container {
