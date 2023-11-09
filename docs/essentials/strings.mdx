@@ -1,0 +1,170 @@
+---
+sidebar_position: 8
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# Strings
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+NeoHaskell embraces strings as a versatile and indispensable part of programming, especially when dealing with data that is inherently variable and not known until runtime.
+
+## Crafting and Utilizing Strings
+
+Defining a string in NeoHaskell is as simple as in any language—just a matter of enclosing your text within double quotes:
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+greeting :: String
+greeting = "Hello, NeoHaskell!"
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+let greeting: string = "Hello, TypeScript!";
+```
+
+  </TabItem>
+</Tabs>
+
+## Purposeful Use of Strings
+
+While strings are powerful, they should be used judiciously. In NeoHaskell, like in any language that supports strong typing, strings are ideal for representing text values that are inherently unpredictable or user-defined, such as names, email addresses, or free-form text input.
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+userName :: String
+userName = "Jesse123"
+
+userEmail :: String
+userEmail = "jesse@example.com"
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+let userName: string = "Jesse123";
+let userEmail: string = "jesse@example.com";
+```
+
+  </TabItem>
+</Tabs>
+
+## Enums vs. Strings
+
+For values that are known and finite, enums are a more type-safe option than strings. Using enums can prevent errors like typos at compile time rather than at runtime, making your code more reliable and easier to maintain.
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+data UserRole
+  = Admin
+  | User
+  | Guest
+
+-- Correct use of enums for known, finite values
+assignRole :: String -> UserRole
+assignRole roleStr =
+  case roleStr of
+    "admin" ->
+      Admin
+
+    "user" ->
+      User
+
+    _ ->
+      Guest
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+enum UserRole {
+  Admin,
+  User,
+  Guest,
+}
+
+// Using enums in TypeScript to represent predefined roles
+function assignRole(roleStr: string): UserRole {
+  switch (roleStr) {
+    case "admin":
+      return UserRole.Admin;
+    case "user":
+      return UserRole.User;
+    default:
+      return UserRole.Guest;
+  }
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Embracing Type Safety
+
+NeoHaskell encourages embracing type safety by using strings only when necessary and opting for enums or other more specific types when possible. This practice aids in avoiding common pitfalls associated with string manipulation, such as unexpected mutations or case sensitivity issues.
+
+## String Operations
+
+NeoHaskell provides a comprehensive set of functions for string manipulation, allowing you to perform common operations such as concatenation, case conversion, and more, without the overhead of object-oriented methods.
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+import String
+
+-- Joining strings together
+combinedString :: String
+combinedString = String.concat ["Neo", "Haskell"]
+
+-- Changing to uppercase
+uppercaseString :: String
+uppercaseString = String.toUpper "NeoHaskell"
+
+-- Replacing text within a string
+replacedText :: String
+replacedText str = String.replace "Old" "Neo" "OldHaskell"
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+// Joining strings together
+let combinedString = ["Type", "Script"].join("");
+
+// Changing to uppercase
+let uppercaseString = "TypeScript".toUpperCase();
+
+// Replacing text within a string
+let replacedText = "JavaScript".replace("Java", "Type");
+```
+
+  </TabItem>
+</Tabs>
+
+## Interacting with Strings
+
+In NeoHaskell, strings are not merely static entities but dynamic constructs that can be inspected, dissected, and transformed, providing robust capabilities for developers to handle text data.
+
+## Conclusion and Next Steps
+
+Strings are a fundamental tool in your NeoHaskell toolkit, to be used when the situation demands flexibility and dynamism. As you grow in your NeoHaskell journey, understanding when to use strings and when to opt for more rigid types like enums will be key to writing clean, effective code.
