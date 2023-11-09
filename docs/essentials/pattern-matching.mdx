@@ -1,0 +1,188 @@
+---
+sidebar_position: 7
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# Pattern Matching
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+Now that you've got a handle on conditional expressions with `if-then-else`, let's elevate your code with NeoHaskell's pattern matching. Unlike the `if-then-else` which branches based on boolean conditions, pattern matching allows you to decompose and examine data directly, making your functions more intuitive and declarative.
+
+## Understanding Pattern Matching
+
+Pattern matching in NeoHaskell is akin to a more powerful switch-case statement you might know from TypeScript, but with supercharged capabilities. You can match patterns against any value, as well as data types, such as enums and custom types, and execute code based on the structure of the data itself.
+
+## Pattern Matching with Integers
+
+Pattern matching isn't just for complex types. Even with integers, a fundamental type, pattern matching can streamline your code. Let's explore how NeoHaskell handles this with a straightforward example.
+
+Suppose you want to execute different code based on whether an integer is 0, 1, or any other number. Here's how you would use pattern matching for that:
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+describeNumber :: Int -> String
+describeNumber n =
+  case n of
+    0 ->
+      "Zero, the absence of quantity."
+
+    1 ->
+      "One, the first natural number."
+
+    _ ->
+      "Some other number."
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+function describeNumber(n: number): string {
+  switch (n) {
+    case 0:
+      return "Zero, the absence of quantity.";
+    case 1:
+      return "One, the first natural number.";
+    default:
+      return "Some other number.";
+  }
+}
+```
+
+  </TabItem>
+</Tabs>
+
+In the NeoHaskell snippet, `describeNumber` is a function that takes an integer and uses a `case..of` expression to match it against the patterns `0`, `1`, and `_`, which is a wildcard that matches any number not previously matched.
+
+## Advantages of Pattern Matching
+
+- **Readability**: It makes the different cases you're checking against explicit, improving readability.
+- **Refactor Safety**: The compiler will warn you if a new case is added to a data type but not handled in your pattern matches.
+
+Remember, the power of pattern matching in functional programming is that it lets you work with the shape of your data, rather than just the values. Even with simple types like integers, it can make your code more expressive and intent-driven.
+
+## Pattern Matching with Enums
+
+Let's put this into practice by matching against the `LightbulbState` enum we previously defined in the
+[Enums](/docs/essentials/enums) section. Here's how you would use pattern matching to describe the state of a lightbulb:
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+describeLightbulb :: LightbulbState -> String
+describeLightbulb state =
+  case state of
+    On ->
+      "The lightbulb is shining bright."
+
+    Off ->
+      "It's dark; the lightbulb is off."
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+// TypeScript doesn't support pattern matching natively,
+// so we have to use a switch-case or if-else instead.
+function describeLightbulb(state: LightbulbState): string {
+  switch (state) {
+    case LightbulbState.On:
+      return "The lightbulb is shining bright.";
+    case LightbulbState.Off:
+      return "It's dark; the lightbulb is off.";
+  }
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Dealing with Complex Patterns
+
+Pattern matching truly shines when you're dealing with complex data types that have attached values. Let's see how you can match and extract these values in a pattern. We'll use the `Color` type we defined in the [Enums](/docs/essentials/enums) section.
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+describeColor :: Color -> String
+describeColor color =
+  case color of
+    -- This case only matches if it is an RGB with all 0s.
+    Rgb 0 0 0 ->
+      "This is actually black."
+
+    -- This case only matches if it is an RGB with all 255s.
+    Rgb 255 255 255 ->
+      "This is actually white."
+
+    -- This case matches any RGB with any values.
+    Rgb r g b ->
+      "A colorful RGB with red #{r}, green #{g}, and blue #{b}"
+
+    Grayscale intensity ->
+      "A grayscale color with intensity #{intensity}"
+
+    Hex code ->
+      "A hex color #{code}"
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+function describeColor(color: Color): string {
+  switch (color.type) {
+    // Note how in TypeScript, it is not possible to match
+    // against the values of the attached colors, instead
+    // we have to match against the type and then extract
+    // the values from the color object.
+    case ColorType.Rgb:
+      // We have to use an `if` statement to check the values
+      if (color.r === 0 && color.g === 0 && color.b === 0)
+        return "This is actually black.";
+
+      // Same here
+      if (color.r === 255 && color.g === 255 && color.b === 255)
+        return "This is actually white.";
+
+      return `A colorful RGB with red ${color.r}, green ${color.g}, and blue ${color.b}`;
+
+    case ColorType.Grayscale:
+      return `A grayscale color with intensity ${color.intensity}`;
+
+    case ColorType.Hex:
+      return `A hex color ${color.hexStr}`;
+  }
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Best Practices and Pitfalls
+
+- **Exhaustiveness**: Always cover all cases in your pattern matches. NeoHaskell will fail to compile your code if any are missing, helping prevent runtime errors.
+- **Wildcards**: Use the wildcard `_` pattern to catch all other cases that you haven't explicitly handled, although use it judiciously to not mask missing cases that should be handled explicitly.
+
+:::warning
+Avoid overusing the wildcard pattern as it can hide potential match cases that should be explicitly handled, leading to unexpected behaviors.
+
+As a best practice, it is always recommended to delete the wildcard pattern and handle all cases explicitly.
+:::
+
+## Conclusion and Next Steps
+
+With pattern matching, you can write more expressive and safer code. It's a cornerstone of functional programming in NeoHaskell, allowing for clear and concise data manipulation. As you grow more comfortable with pattern matching, you'll begin to see its power in simplifying complex data operations.
