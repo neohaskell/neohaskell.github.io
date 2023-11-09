@@ -156,7 +156,7 @@ When defining an enum in NeoHaskell, you can specify one or more values to be at
 Consider a `Color` enum where a color can be represented in different color spaces. Some colors might be represented in the RGB color space, others in grayscale, and yet others as hexadecimal strings. Here's how you can define such an enum:
 
 <Tabs>
-  <TabItem value="Haskell">
+  <TabItem value="NeoHaskell">
 
 ```haskell
 data Color
@@ -165,7 +165,6 @@ data Color
   | Hex String       -- Hexadecimal string
 
 -- To create a value of type `Color`, you use the following syntax:
-myFavoriteColor :: Color
 myFavoriteColor = Rgb 0 255 0
 ```
 
