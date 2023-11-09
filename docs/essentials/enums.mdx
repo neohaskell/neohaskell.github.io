@@ -20,8 +20,7 @@ avoid primitive obssession and to give concrete more meaningful names to our typ
 application.
 
 There are certain cases where we might want to model a thing that can only have a finite number of values, for example,
-the state of a lightbulb, the colors of a rainbow, the days of the week, etc. Instead of using strings (by the way, did you
-notice that we haven't talked about them? This is on purpose 🤭) to represent these values, we use **enums**.
+the state of a lightbulb, the colors of a rainbow, the days of the week, etc. Instead of using strings to represent these values, we use **enums**.
 
 Similar to wrapper types, enums allow you to avoid primitive obsession. For example, instead of using a `Bool` to represent
 the state of a lightbulb, we can use an enum with two cases: `On` and `Off`. This way, we can't accidentally pass a `Bool`
@@ -97,7 +96,7 @@ for example, the values of an enum are numbers that represent the position of th
 where a number is expected. Compare the following examples:
 
 <Tabs>
-  <TabItem value="Haskell">
+  <TabItem value="NeoHaskell">
 
 ```haskell
 data PlayerLives
@@ -142,3 +141,98 @@ console.log(PlayerLives.Two + 4); // 4
 
   </TabItem>
 </Tabs>
+
+It definitely is much better to have this fail at compile time than to have a weird bug where there's a value called
+`Two` that is actually `0` and that can be used in place of a number.
+
+## Enums with Attached Values
+
+In addition to simple enums, NeoHaskell allows the creation of more complex enums by attaching values to enum cases. These are powerful constructs that enable enums to carry additional, context-specific data. This feature is particularly useful when a simple label (like `On` or `Off`) isn't sufficient to express all the necessary information about an enumeration case.
+
+### Defining Enums with Attached Values
+
+When defining an enum in NeoHaskell, you can specify one or more values to be attached to each case. These values can be of any type, including other enums or complex types. This makes enums a flexible tool for modeling a wide variety of data.
+
+Consider a `Color` enum where a color can be represented in different color spaces. Some colors might be represented in the RGB color space, others in grayscale, and yet others as hexadecimal strings. Here's how you can define such an enum:
+
+<Tabs>
+  <TabItem value="Haskell">
+
+```haskell
+data Color
+  = Rgb Int Int Int  -- Red, Green, Blue components
+  | Grayscale Int    -- Intensity of gray
+  | Hex String       -- Hexadecimal string
+
+-- To create a value of type `Color`, you use the following syntax:
+myFavoriteColor :: Color
+myFavoriteColor = Rgb 0 255 0
+```
+
+  </TabItem>
+
+  <TabItem value="TypeScript">
+
+```typescript
+// In Typescript there's no way to attach values to enum cases, so we have to use a workaround
+
+// First we define a type that represents the different color types
+enum ColorType {
+  Rgb = "Rgb",
+  Grayscale = "Grayscale",
+  Hex = "Hex",
+}
+
+// Then we define a type that represents a color
+type Color =
+  | { type: ColorType.Rgb; r: number; g: number; b: number }
+  | { type: ColorType.Grayscale; intensity: number }
+  | { type: ColorType.Hex; hexStr: string };
+
+// And now we define a couple of functions to create colors
+const Rgb = (r: number, g: number, b: number): Color => ({
+  type: ColorType.Rgb,
+  r,
+  g,
+  b,
+});
+
+const Grayscale = (intensity: number): Color => ({
+  type: ColorType.Grayscale,
+  intensity,
+});
+
+const Hex = (hexStr: string): Color => ({
+  type: ColorType.Hex,
+  hexStr,
+});
+
+// To create a value of type `Color`, we use the functions that we defined above
+const myFavoriteColor = Rgb(0, 255, 0);
+```
+
+  </TabItem>
+</Tabs>
+
+Each case of the `Color` enum carries different types of values:
+
+- `RGB` carries three `Int` values representing the red, green, and blue components of a color.
+- `Grayscale` carries a single `Int` representing the intensity of gray.
+- `Hex` carries a `String` representing the color in hexadecimal format.
+
+This design encapsulates the concept that a color can be represented in different ways, but ultimately, it's still a color within the domain of your application.
+
+### Benefits of Enums with Attached Values
+
+Using enums with attached values has several benefits:
+
+- **Richer Data Modeling**: You can model complex data structures in a type-safe manner, ensuring that the attached data aligns with the specific case of the enum.
+- **Clarity**: The code clearly communicates what data is expected with each enum case, leading to self-documenting code.
+- **Safety**: The compiler can enforce that all possible cases are handled in functions, reducing the likelihood of runtime errors. A function that doesn't handle all possible cases for an enum will fail to compile.
+
+In summary, enums with attached values in NeoHaskell are a powerful feature for developers to express complex data structures cleanly and safely. They extend the utility of simple enums by allowing the carrying of additional information, which can be crucial for many applications that require detailed data representation and manipulation. And given the event-driven nature of NeoHaskell, enums with attached values are a natural fit for modeling events and their associated data.
+
+## Next Steps
+
+We've learned how to define enums, and how to attach values to enum cases, but we haven't seen how to use them yet.
+In the next section, we'll learn about pattern matching, which is a useful tool to work with enums and other types.
