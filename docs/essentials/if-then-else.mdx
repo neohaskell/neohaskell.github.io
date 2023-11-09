@@ -1,0 +1,97 @@
+---
+sidebar_position: 6
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+import Figure from "@site/src/components/Figure";
+
+# If-Then-Else
+
+:::caution
+The documentation that you're reading is a design document where most of
+the features you're reading are yet to be implemented. Check the [Note on the Docs](/docs/docs-intro)
+:::
+
+After exploring the robust type system of NeoHaskell and learning about enums, let's turn our attention to making decisions in our code with conditional expressions. The `if-then-else` expression is a fundamental construct that you, as a TypeScript developer, might recognize as similar to `if...else`. It's the bread and butter of decision-making in programming.
+
+## The Basics of `if-then-else`
+
+In NeoHaskell, `if-then-else` allows your program to execute different expressions based on a boolean condition. The structure is simple:
+
+```haskell
+if <condition> then
+  <expression if true>
+else
+  <expression if false>
+```
+
+- `<condition>`: A boolean expression evaluated by the program.
+- `<expression if true>`: The result when the condition is `True`.
+- `<expression if false>`: The result when the condition is `False`.
+
+:::tip
+Remember, the `if-then-else` construct in NeoHaskell is an expression, not a statement. This means it always results in a value, making your code more predictable and easier to understand.
+:::
+
+## Example in Action
+
+Consider a function that determines if a number is positive, negative, or zero. Here's how it might look:
+
+<Tabs>
+  <TabItem value="NeoHaskell">
+
+```haskell
+-- We create a simple enum for the example
+data Sign
+  = Positive
+  | Negative
+  | Zero
+
+-- Gets the sign of a number
+getSign :: Int -> Sign
+getSign n =
+  if n > 0 then
+    Positive
+  -- To handle multiple conditions, we can use `else if`
+  else if n < 0 then
+    Negative
+  else
+    Zero
+```
+
+  </TabItem>
+  <TabItem value="TypeScript">
+
+```typescript
+// We create a simple enum for the example
+enum Sign {
+  Positive,
+  Negative,
+  Zero,
+}
+
+// Note how the NeoHaskell `if` is equivalent to a ternary,
+// not a TypeScript `if` statement
+function getSign(n: number): Sign {
+  return n > 0 ? Sign.Positive : n < 0 ? Sign.Negative : Sign.Zero;
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Key Points to Remember
+
+- **Complete Expressions**: Every `if` must be accompanied by a `then` and an `else` in NeoHaskell to ensure the expression is complete.
+- **Indentation is Key**: Proper indentation is crucial in NeoHaskell; it delineates the branches of your `if-then-else` expressions clearly.
+- **No Parentheses Needed**: Unlike TypeScript, you don't need to wrap the condition in parentheses.
+
+:::note
+In NeoHaskell, every expression must return a value, which is why an `else` clause is mandatory. This guarantees that your function always has a value to return, no matter what the condition evaluates to.
+:::
+
+## Wrapping Up and Looking Forward
+
+With the understanding of `if-then-else`, you're now equipped to handle basic conditional logic in your NeoHaskell programs. It's a stepping stone towards more complex decision-making structures like pattern matching, which we will explore soon. In the next section, we'll delve into the powerful world of pattern matching, where you'll learn to handle various cases of enums and other data types elegantly.
