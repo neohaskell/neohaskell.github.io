@@ -36,6 +36,28 @@
 - Building the Chat Application
   - Designing the Chat Model
     - Explanation of the chat domain model
+      - Define entities such as User, Message, and Conversation
+      - Describe attributes and relationships between entities
+    - Leveraging CQRS and Event Sourcing to structure the application's data flow
+      - Discuss the benefits of CQRS for separating read and write operations
+      - Explain how Event Sourcing provides an audit log and helps with state reconstruction
+  - Implementing Chat Functionality
+    - Detailed walkthrough of coding the core chat features
+      - Set up user authentication and session management
+      - Implement message sending and receiving logic
+      - Handle real-time updates using WebSockets or similar technologies
+    - Message sending and receiving using NeoHaskell
+      - Utilize NeoHaskell's features for handling concurrent connections
+      - Ensure efficient message delivery and state management
+  - Creating a Simple User Interface
+    - Instructions on building a user interface for the chat application
+      - Design a clean and intuitive layout for the chat interface
+      - Create interactive elements for sending and viewing messages
+    - Discussing NeoHaskell's approach to UI development
+      - Explore libraries and frameworks available in NeoHaskell for UI development
+      - Apply functional programming principles to manage UI state and events
+  - Designing the Chat Model
+    - Explanation of the chat domain model
     - Leveraging CQRS and Event Sourcing to structure the application's data flow
   - Implementing Chat Functionality
     - Detailed walkthrough of coding the core chat features
