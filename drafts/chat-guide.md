@@ -4,14 +4,26 @@
 
 - Quick Start Guide
   - Introduction to NeoHaskell and Chat Application
-    - Overview of NeoHaskell's capabilities
+    - Understanding the functional programming paradigm
+      - Explanation of functional programming concepts
+      - Benefits of using NeoHaskell for functional programming
     - Goals of the chat application project
+      - Learning project structure and organization
+      - Building a real-world application with NeoHaskell
   - Setting Up Your Development Environment
     - Steps to prepare your development environment for NeoHaskell
+      - Requirements for setting up the environment
+      - Detailed setup instructions for different operating systems
     - Installation and tooling setup
+      - Installing the NeoHaskell compiler and associated tools
+      - Configuring the development environment for optimal workflow
   - Creating Your First Chat Application
     - Guided instructions to create a basic chat application
+      - Step-by-step tutorial to build the application's backend
+      - Creating the user interface for the chat application
     - Introducing fundamental concepts of NeoHaskell
+      - Exploring the type system and syntax of NeoHaskell
+      - Writing and understanding basic NeoHaskell functions
 - Building the Chat Application
   - Designing the Chat Model
     - Explanation of the chat domain model
