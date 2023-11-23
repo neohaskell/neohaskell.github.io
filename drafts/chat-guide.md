@@ -23,14 +23,14 @@
   - Creating Read Models
   - Subscribing to Events
   - Projecting Data for the UI
-- Building the User Interface with Elm-Inspired Architecture
-  - Setting Up Elm Architecture in NeoHaskell
-  - Designing Components and Messages
-  - Managing Application State
+- Defining the User Interface with Read Models
+  - Understanding Read Models in NeoHaskell
+  - Creating Dynamic HTML with HTMX
+  - Componentizing UI with HTMX
 - Connecting the Frontend and Backend
-  - Using WebSockets for Real-Time Communication
-  - Sending and Receiving Messages
-  - Handling Connection Lifecycle
+  - Serving Dynamic HTML with HTMX
+  - Managing Real-Time Communication with HTMX
+  - Handling Connection Lifecycle and HTMX Events
 - Testing Your Application
   - Writing Unit Tests for Commands and Events
   - Testing Read Models and UI Components
