@@ -30,9 +30,10 @@
 - Testing Your Application
   - Writing Unit Tests for Commands and Events
   - Testing Read Models and UI Components
-- Deploying the Application
-  - Preparing for Production
-  - Deployment Options and Considerations
+- Running the Application
+  - Starting the Application Locally
+  - Monitoring Application Logs
+  - Troubleshooting Common Issues
 - Conclusion and Next Steps
   - Expanding Your Application
   - Learning More About NeoHaskell and CQRS/Event Sourcing
