@@ -1,0 +1,75 @@
+---
+sidebar_position: 1
+---
+
+# Creating a New NeoHaskell Project
+
+## Introduction
+
+Welcome to your journey of **developing a chat application with NeoHaskell**! This guide is designed to lead you through the creation of a chat application that leverages the unique capabilities of NeoHaskell. We aim to make this experience enriching, whether you are new to programming or an experienced developer.
+
+You'll learn **how to set up your development environment, make sense of the project structure, and implement the core functionalities of a chat application.** Prepare to explore the world of NeoHaskell and develop an application that showcases your creativity and technical skills.
+
+Let's embark on this exciting development adventure **together**!
+
+:::tip Remember!
+
+If there's something that you don't understand, leave a comment in the comment section below, and we'll fix it as soon as possible.
+
+:::
+
+### Setting Up Your Development Environment
+
+Before diving into building your chat application with NeoHaskell, it's crucial to set up a proper development environment. A key component of this setup is selecting an appropriate code editor. For NeoHaskell, **Visual Studio Code** (VSCode) is the recommended choice due to its comprehensive support, ease of use, and free availability.
+
+#### Steps to Set Up VSCode:
+
+1. **Download and Install VSCode:**
+   - Visit the [VSCode website](https://code.visualstudio.com/) and download the installer for your operating system (Windows, macOS, or Linux).
+   - Follow the installation instructions provided on the website or with the installer package.
+
+2. **Configure VSCode for NeoHaskell:**
+   - Once installed, open VSCode.
+   - Customize the settings to your preference, and explore extensions specifically designed for NeoHaskell to enhance your coding experience.
+
+3. **Familiarize Yourself with VSCode:**
+   - Spend some time exploring VSCode's interface and features, such as the integrated terminal, source code management, and debugging tools. This will streamline your development process.
+
+With VSCode set up, you now have a powerful and flexible editor that will aid you throughout your NeoHaskell development journey.
+
+## Asking Neo to Create a New Project
+
+To create a new NeoHaskell chat application, leveraging the ease of development provided by the framework, you would start by opening a terminal and navigating to a directory where you can create files.
+
+
+We will use Neo, the NeoHaskell helper CLI tool to create the project. In the terminal you've opened run the following command:
+
+```bash
+$ neo new:project chat-app
+```
+
+This will create a NeoHaskell application named `chat-app` in a dedicated directory and install the necessary dependencies.
+
+For a complete list of options available with the NeoHaskell application generator, you can execute `neo new:project --help`.
+
+After creating the chat application, navigate to its directory:
+
+```bash
+$ cd chat-app
+```
+
+The structure of your NeoHaskell chat application, will likely include:
+
+- `config/`: Configuration files for database connections, and other settings.
+- `src/`: Contains all the entities, events, models, commands, views, and other components of your chat application. We will focus on this directory for the rest of this guide.
+- `log/`: Log files for monitoring and debugging the application.
+- `public/`: Static files and compiled assets.
+- `README.md`: This is a brief instruction manual for your application. You should edit this file to tell others what your application does, how to set it up, and so on.
+- `test/`: Test suites for your chat application's features.
+- `tmp/`: Temporary files like cache and PID files.
+- `.gitignore`: Lists files and patterns for Git to ignore.
+- `neo.yaml`: Configuration file for the NeoHaskell project.
+
+This structure supports the development of an efficient, event-driven chat application, maintaining a clean separation of concerns between the application's logic and its configuration.
+
+Let's proceed to the next section where we'll guide you through the process of starting and managing the NeoHaskell web server, where we can start bringing your chat application to life.
