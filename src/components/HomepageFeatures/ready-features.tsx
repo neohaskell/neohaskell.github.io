@@ -36,7 +36,7 @@ export const ReadyFeatures: FeatureItem[] = [
       language: "haskell",
       code: `let infiniteList = [1..]
 let doubledList = List.map (*2) infiniteList
-print (List.toString doubledLis)`,
+print (List.toString doubledList)`,
     },
   },
   {
