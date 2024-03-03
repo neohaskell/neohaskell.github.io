@@ -37,6 +37,15 @@ const config = {
         },
       };
     },
+    [
+      "posthog-docusaurus",
+      {
+        apiKey: "phc_OV9vt2ooQmPSMBRvLLoeTGpOh5aZTQOrfpDHpqwqRqO",
+        appUrl: "https://app.posthog.com", // optional
+        enableInDevelopment: false, // optional
+        // other options are passed to posthog-js init as is
+      },
+    ],
   ],
 
   // Even if you don't use internalization, you can use this field to set useful
