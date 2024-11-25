@@ -7,7 +7,10 @@ const latestDisclaimerVersion = 1;
 export default function Disclaimer() {
   const [disclaimerOpen, setDisclaimerOpen] = React.useState(false);
   useEffect(() => {
-    setDisclaimerOpen((0|parseInt(localStorage.getItem(localStorageLabel))) < latestDisclaimerVersion)
+    setDisclaimerOpen(
+      (0 | parseInt(localStorage.getItem(localStorageLabel))) <
+        latestDisclaimerVersion
+    );
   }, []);
 
   function dismissDisclaimer() {
@@ -27,7 +30,7 @@ export default function Disclaimer() {
           days. Mostly everything is missing (
           <a
             className="underline"
-            href="https://github.com/neohaskell/NeoHaskell/milestones"
+            href="/docs/extra-topics/news-announcements"
             target="_blank"
             onClick={dismissDisclaimer}
           >
