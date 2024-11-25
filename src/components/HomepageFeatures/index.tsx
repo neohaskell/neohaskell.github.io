@@ -55,11 +55,6 @@ function Feature({ n, title, showcase, description, buttonText }: FeatureItem) {
       <div className="flex flex-col gap-4 sm:p-0 p-8">
         <h3 className="text-3xl">{title}</h3>
         <p className="text-lg">{description}</p>
-        <div className="xl:self-start self-center">
-          <Button rounded="full" color={button as any}>
-            <h3>{buttonText}</h3>
-          </Button>
-        </div>
       </div>
     </div>
   );

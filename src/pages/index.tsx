@@ -14,8 +14,7 @@ import Dialog from "../components/Dialog";
 import Modal from "../components/Modal";
 import Disclaimer from "../components/Disclaimer";
 
-const dynC = (className: string, color: string) =>
-  `${className}-light${color}`;
+const dynC = (className: string, color: string) => `${className}-light${color}`;
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -51,11 +50,20 @@ function HomepageHeader() {
       </div>
       <VideoPlayer />
       <div className="relative text-center mx-auto mt-20 mb-10">
-        <Link to="/docs/getting-started/dogma">
-          <Button color="yellow" rounded="full" size="lg">
-            <h2 className="mx-4 my-2 sm:text-2xl text-xl">Read the Dogma</h2>
-          </Button>
-        </Link>
+        <div className="flex justify-center gap-10">
+          <Link to="/docs/getting-started/dogma">
+            <Button color="yellow" rounded="full" size="lg">
+              <h2 className="mx-4 my-2 sm:text-2xl text-xl">Read the Dogma</h2>
+            </Button>
+          </Link>
+          <Link to="/docs/extra-topics/news-announcements">
+            <Button color="violet" rounded="full" size="lg">
+              <h2 className="mx-4 my-2 sm:text-2xl text-xl">
+                News and Roadmap
+              </h2>
+            </Button>
+          </Link>
+        </div>
       </div>
     </header>
   );
