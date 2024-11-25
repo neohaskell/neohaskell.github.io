@@ -3,25 +3,6 @@ import { FeatureItem } from "./feature-item";
 
 export const ComingSoonFeatures: FeatureItem[] = [
   {
-    title: "A beautiful standard library",
-    description: (
-      <>
-        NeoHaskell offers a clean and intuitive language design, complemented by
-        a core library that provides all the tools you need to start creating
-        amazing software right away.
-      </>
-    ),
-    buttonText: "Start Coding",
-    showcase: {
-      language: "haskell",
-      code: `"NeoHaskell is cool"
-  |> Text.toWordList
-  |> List.map Text.length
-  |> List.map (\\x -> x * x)
-  |> List.takeIf Int.isEven`,
-    },
-  },
-  {
     title: "An integrated build system",
     description: (
       <>
@@ -113,6 +94,28 @@ Done!
   llm = OpenAI()
   return llm.predict("hi!")
   |]`,
+    },
+  },
+  {
+    title: "Event Sourcing and CQRS Ready",
+    description: (
+      <>
+        NeoHaskell aligns well with modern architectural patterns like Event
+        Sourcing and CQRS, making it easier for you to build scalable and
+        maintainable systems.
+      </>
+    ),
+    buttonText: "Build Modern Systems",
+    showcase: {
+      language: "haskell",
+      code: `reduction = do
+  myEvents <- getEvents "myAggregate"
+  return (
+    Stream.reduce
+      myReducer
+      initialState
+      myEvents
+  )`,
     },
   },
 ];

@@ -72,25 +72,22 @@ main = race foo bar`,
     },
   },
   {
-    title: "Event Sourcing and CQRS Ready",
+    title: "A beautiful standard library",
     description: (
       <>
-        NeoHaskell aligns well with modern architectural patterns like Event
-        Sourcing and CQRS, making it easier for you to build scalable and
-        maintainable systems.
+        NeoHaskell offers a clean and intuitive language design, complemented by
+        a core library that provides all the tools you need to start creating
+        amazing software right away.
       </>
     ),
-    buttonText: "Build Modern Systems",
+    buttonText: "Start Coding",
     showcase: {
       language: "haskell",
-      code: `reduction = do
-  myEvents <- getEvents "myAggregate"
-  return (
-    Stream.reduce
-      myReducer
-      initialState
-      myEvents
-  )`,
+      code: `"NeoHaskell is cool"
+  |> Text.toWordList
+  |> List.map Text.length
+  |> List.map (\\x -> x * x)
+  |> List.takeIf Int.isEven`,
     },
   },
 ];
