@@ -25,15 +25,7 @@ In order to install Neo, copy and paste the following command in your terminal (
 <TabItem value="mac" label="MacOS/Linux/WSL2">
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.neohaskell.org | sh
-```
-
-</TabItem>
-
-<TabItem value="windows" label="Windows">
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force;[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; try { Invoke-Command -ScriptBlock ([ScriptBlock]::Create((Invoke-WebRequest https://ps.neohaskell.org -UseBasicParsing))) -ArgumentList $true } catch { Write-Error $_ }
+curl --proto '=https' --tlsv1.2 -sSf https://sh.neohaskell.org | bash
 ```
 
 </TabItem>
