@@ -1,0 +1,9 @@
+{
+  "label": "Core Modules",
+  "position": 98,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Guides and tutorials to help you understand the built-in modules in NeoHaskell"
+  }
+}

@@ -1,0 +1,250 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Badge from "@site/src/components/Badge";
+
+# Building Command-Line Interfaces
+
+Most programs we write do something. And a lot of the time, we want to **ask the user what they want to do** — maybe by passing a name, setting a path, or toggling a feature on or off.
+
+That’s where NeoHaskell’s command-line parser comes in. It's clean, safe, and easy to use — and integrates perfectly with the rest of your application.
+
+You describe what arguments you want, and NeoHaskell builds a structured object for you, automatically.
+
+Let’s see how.
+
+## A Simple CLI: Hello, Whoever You Are!
+
+Imagine we’re writing a small tool. It greets someone. The user can give us their name, and ask us to shout it.
+
+Here’s how we describe that in NeoHaskell.
+
+```haskell
+data GreetCommand = GreetCommand
+  { name :: Text,
+    isShouting :: Bool
+  }
+```
+
+That’s our data. A name (`Text`) and whether to shout (`Bool`).
+
+Now the command parser:
+
+```haskell
+import Command qualified
+
+greetParser : Command.OptionsParser GreetCommand
+greetParser = do
+  parsedName <- Command.text
+            { help = "Name of the person to greet",
+              long = "name",
+              short = 'n',
+              metavar = "NAME",
+              value = Nothing
+            }
+  parsedShout <- Command.flag
+                  { help = "Whether to shout the greeting",
+                    long = "shout",
+                    short = 's',
+                    value = Nothing
+                  }
+  GreetCommand { name = parsedName, isShouting = parsedShout }
+    |> Command.yield
+```
+
+So far, so good.
+
+We just defined how to convert a few flags into something meaningful:
+
+`GreetCommand { name = "Alice", isShouting = True }`
+
+Now, we'd need a function to know how to run this command. We usually call these _handlers_:
+
+```hs
+handleCommand : GreetCommand -> Task Text Unit
+handleCommand GreetCommand{name, isShouting} = do
+  let baseGreeting = [fmt|Hello, {name}!|]
+  let greeting =
+        if isShouting then
+          baseGreeting |> Text.toUpper
+        else
+          baseGreeting
+  Console.print greeting
+```
+
+Afterwards, we'd need to modify our `run` function in order to parse the command and call the handler:
+
+```hs
+run : Task Text Unit
+  cmd <- Command.parseHandler greetParser
+
+  let onError err = [fmt|Oops, an error has occurred{e}|]
+  handleCommand cmd
+    |> Task.mapError onError
+```
+
+Try running the code with:
+
+```bash
+$ neo run -- --name Alice --isShouting
+```
+
+:::note
+When running code with `neo run`, if your program receives command line arguments, you should write them
+after two dashes like above. If not, `neo` will think that you are passing those to it.
+:::
+
+## Multiple Commands
+
+Sometimes, you want more than one thing your program can do. Like `greet`, but also `wave` or `thank`.
+
+You can define a data type that lists all possible commands:
+
+```haskell
+data Command
+  = Greet GreetCommand
+  | Wave WaveCommand
+  | Thank ThankCommand
+```
+
+Each command has its own record:
+
+```haskell
+data GreetCommand = GreetCommand
+  { name :: Text,
+    isShouting :: Bool
+  }
+
+data WaveCommand = WaveCommand
+  { emoji :: Text
+  }
+
+data ThankCommand = ThankCommand
+  { name :: Text
+  }
+```
+
+Now, let’s write a parser for each one.
+
+```haskell
+greet : Command.CommandOptions Command
+greet =
+  { name = "greet",
+    description = "say hello",
+    version = Nothing,
+    decoder = do
+      name <- Command.text
+        { help = "Who to greet",
+          long = "name",
+          short = 'n',
+          metavar = "NAME",
+          value = Nothing
+        }
+      isShouting <- Command.flag
+        { help = "Whether to shout",
+          long = "shout",
+          short = 's',
+          value = Nothing
+        }
+
+      -- Protip! If there's a variable in scope with the same name as the record field,
+      -- you don't have to assign it. NeoHaskell will do it for you!
+      GreetCommand { name, isShouting }
+        |> Greet   -- Note how we're wrapping the type GreetCommand
+                   -- into the Greet branch of the Command enum.
+        |> Command.yield
+  }
+```
+
+```haskell
+wave : Command.CommandOptions Command
+wave =
+  { name = "wave",
+    description = "wave silently",
+    version = Nothing,
+    decoder = do
+      emoji <- Command.text
+        { help = "Which emoji to use",
+          long = "emoji",
+          short = 'e',
+          metavar = "EMOJI",
+          value = Just "👋"
+        }
+      WaveCommand { emoji }
+        |> Wave   -- Same here
+        |> Command.yield
+  }
+```
+
+```haskell
+thank : Command.CommandOptions Command
+thank =
+  { name = "thank",
+    description = "thank someone",
+    version = Nothing,
+    decoder = do
+      name <- Command.text
+        { help = "Who to thank",
+          long = "name",
+          short = 'n',
+          metavar = "NAME",
+          value = Nothing
+        }
+      ThankCommand { name }
+        |> Thank
+        |> Command.yield
+  }
+```
+
+Now combine them into a single parser:
+
+```haskell
+allCommands : Command.OptionsParser Command
+allCommands =
+  Command.commands [greet, wave, thank]
+```
+
+And finally run it:
+
+```haskell
+main : Task Text Unit
+main = do
+  userCommand <- Command.parseHandler
+    { name = "hello-cli",
+      description = "A friendly assistant",
+      version = Just [version|1.0.0|],
+      decoder = allCommands
+    }
+  let onError e = [fmt|Oops, something went wrong: {e}|])
+  handle userCommand
+    |> Task.mapError onError
+```
+
+## Handling the Commands
+
+Once you've parsed a command, you can handle it however you want:
+
+```haskell
+handle : Command -> Task Text Unit
+handle command =
+  case command of
+    Greet GreetCommand{name, isShouting} -> do
+      let baseGreeting = [fmt|Hello, {name}!|]
+      let greeting =
+            if isShouting then
+              baseGreeting |> Text.toUpper
+            else
+              baseGreeting
+      Console.print greeting
+
+    Wave WaveCommand{emoji} ->
+      Console.print emoji
+
+    Thank ThankCommand{name} ->
+      Console.print [fmt|"Thanks, {name}!"|]
+```
+
+And that’s it! Now your CLI supports multiple commands, each with its own set of options, and a clean entrypoint to handle them.
