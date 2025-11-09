@@ -119,12 +119,7 @@ const config = {
             type: "docSidebar",
             sidebarId: "tutorialSidebar",
             position: "left",
-            label: "Documentation",
-          },
-          {
-            to: "blog",
-            label: "Evolution Proposals",
-            position: "left",
+            label: "Support Us!",
           },
           {
             href: "https://github.com/neohaskell/",

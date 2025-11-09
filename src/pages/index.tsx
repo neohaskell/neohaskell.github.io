@@ -349,14 +349,14 @@ function HomepageHeader() {
       <VideoPlayer />
       <div className="relative text-center mx-auto mt-20 mb-10">
         <div className="flex lg:flex-row flex-col justify-center gap-10">
-          <Link to="/docs/getting-started/dogma">
+          <Link to="/docs/docs-intro">
             <Button color="yellow" rounded="full" size="lg" className="w-full">
               <h2 className="mx-4 my-2 sm:text-2xl text-xl">
                 Support the Project
               </h2>
             </Button>
           </Link>
-          <Link to="/docs/extra-topics/news-announcements">
+          <Link to="https://discord.com/invite/wDj3UYzec8">
             <Button color="violet" rounded="full" size="lg" className="w-full">
               <h2 className="mx-4 my-2 sm:text-2xl text-xl">
                 Join the Discord server
