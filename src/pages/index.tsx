@@ -35,12 +35,22 @@ function HomepageHeader() {
       <div className="mx-auto mb-4 lg:w-2/3">
         <Frame rainbow>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10">
-            Every successful software company follows the same tragic arc. Day
-            one: pure creativity, features ship in hours, everyone understands
-            everything. Year one: velocity slows, meetings multiply, "technical
-            debt" enters the vocabulary. Year three: the rewrite discussions
-            begin. Year five: half your budget maintains what the other half
-            tries to replace.
+            Every successful software company follows the same tragic arc:
+          </p>
+          <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
+            - <strong>Day one:</strong> pure creativity, features ship in hours,
+            everyone understands everything.
+          </p>
+          <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
+            - Year one: velocity slows, meetings multiply, "technical debt"
+            enters the vocabulary.
+          </p>
+          <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
+            - Year three: the rewrite discussions begin.
+          </p>
+          <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
+            - Year five: half your budget maintains what the other half tries to
+            replace.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
             This isn't incompetence. It's not bad management. It's the
