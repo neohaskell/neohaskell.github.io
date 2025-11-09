@@ -142,15 +142,6 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Docs",
-            items: [
-              {
-                label: "Get Started",
-                to: "/docs/docs-intro",
-              },
-            ],
-          },
-          {
             title: "Community",
             items: [
               {
@@ -158,8 +149,12 @@ const config = {
                 href: "https://discord.com/invite/wDj3UYzec8",
               },
               {
-                label: "Twitter",
-                href: "https://twitter.com/neohaskell",
+                label: "X",
+                href: "https://x.com/neohaskell",
+              },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/company/neohaskell",
               },
             ],
           },
