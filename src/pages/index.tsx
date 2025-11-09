@@ -42,18 +42,18 @@ function HomepageHeader() {
             everyone understands everything.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            - Year one: velocity slows, meetings multiply, "technical debt"
+            - <strong>Year one:</strong> velocity slows, meetings multiply, "technical debt"
             enters the vocabulary.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            - Year three: the rewrite discussions begin.
+            - <strong>Year three:</strong> the rewrite discussions begin.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            - Year five: half your budget maintains what the other half tries to
+            - <strong>Year five:</strong> half your budget maintains what the other half tries to
             replace.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            This isn't incompetence. It's not bad management. It's the
+            <strong>This isn't incompetence. It's not bad management.</strong> It's the
             inevitable result of building on foundations that turn human
             thoughts into machine instructions through layers of mistranslation.
           </p>
@@ -84,10 +84,10 @@ function HomepageHeader() {
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
             Six months later, nobody remembers why that code exists. The
             celebration feature breaks. The developer who wrote it left. The new
-            developer is afraid to touch it. The cycle of decay has begun.
+            developer is afraid to touch it. <strong>The cycle of decay has begun.</strong>
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            This isn't a people problem. It's a technology problem. We're
+            <strong>This isn't a people problem. It's a technology problem.</strong> We're
             forcing humans to speak machine when machines should speak human.
           </p>
           <h2 className="text-4xl">Technology Shapes Thought</h2>
@@ -99,13 +99,13 @@ function HomepageHeader() {
             "update customer record."
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            This subtle shift is poison. It disconnects your code from your
+            <strong>This subtle shift is poison.</strong> It disconnects your code from your
             business. It makes simple things complex. It makes change dangerous.
             It makes your software brittle where it should be antifragile.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
             The oldest ideas survive because everything unnecessary has been
-            stripped away. Double-entry bookkeeping has worked for 700 years.
+            stripped away. <strong>Double-entry bookkeeping has worked for 700 years.</strong>
             Event ledgers are how humans naturally think about change. Banks
             don't UPDATE your balance; they record deposits and withdrawals.
             History doesn't UPDATE the past; it records what happened.
@@ -118,14 +118,14 @@ function HomepageHeader() {
             we optimized for machines instead of humans.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            Those constraints are gone. It's time for software development to
-            become human again.
+            <strong>Those constraints are gone. It's time for software development to
+            become human again.</strong>
           </p>
           <h2 className="text-4xl">
             Enter NeoHaskell: Where Business Events Become Code
           </h2>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            NeoHaskell isn't just another programming language. It's a
+            <strong>NeoHaskell isn't just another programming language.</strong> It's a
             fundamental rethinking of how human intention becomes running
             software.
           </p>
@@ -145,7 +145,7 @@ function HomepageHeader() {
             </CodeBlock>
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            No translation. No abstraction. No impedance mismatch. Your business
+            <strong>No translation. No abstraction. No impedance mismatch.</strong> Your business
             logic reads like a business conversation.
           </p>
           <h2 className="text-4xl">What Makes NeoHaskell Different</h2>
@@ -158,8 +158,8 @@ function HomepageHeader() {
             back in CRUD hell.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            In NeoHaskell, event sourcing isn't something you add. It's
-            something you'd have to work to avoid. Every state change is an
+            In NeoHaskell, <strong>event sourcing isn't something you add. It's
+            something you'd have to work to avoid.</strong> Every state change is an
             event. Every event is immutable. Every system is automatically
             auditable, replayable, debuggable.{" "}
             <strong>
@@ -171,8 +171,8 @@ function HomepageHeader() {
             Mathematical Guarantees, Human Expression
           </h2>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            From Haskell, we inherit something profound: if it compiles, it
-            works. This isn't marketing, it's math. Entire categories of errors
+            From Haskell, we inherit something profound: <strong>if it compiles, it
+            works.</strong> This isn't marketing, it's math. Entire categories of errors
             become impossible. Race conditions, null pointer exceptions, type
             mismatches, all gone.
           </p>
@@ -192,7 +192,7 @@ function HomepageHeader() {
             in.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            In NeoHaskell, feature #1000 takes the same effort as feature #1.
+            In NeoHaskell, <strong>feature #1000 takes the same effort as feature #1.</strong>
             New events don't break old ones. New handlers don't destabilize
             existing ones. Your system grows by addition, never by modification.
           </p>
@@ -261,22 +261,22 @@ function HomepageHeader() {
           </h2>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
             We're not adding features for their own sake. Every decision follows
-            a simple principle: does this remove friction between human
-            intention and running software?
+            a simple principle: <strong>does this remove friction between human
+            intention and running software?</strong>
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            - Configuration files? Removed. Your code should express intent
+            - <strong>Configuration files? Removed.</strong> Your code should express intent
             clearly enough.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            - Dependency hell? Removed. One tool, one purpose, one way that
+            - <strong>Dependency hell? Removed.</strong> One tool, one purpose, one way that
             works.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            - DevOps complexity? Removed. From code to cloud in one command.
+            - <strong>DevOps complexity? Removed.</strong> From code to cloud in one command.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            - The fear of change? Removed. If it compiles, it works.
+            - <strong>The fear of change? Removed.</strong> If it compiles, it works.
           </p>
           <h2 className="text-4xl my-10">Who This Is For</h2>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
@@ -326,10 +326,10 @@ function HomepageHeader() {
             <strong>Join us.</strong>
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            Software development should be joyful, not painful. Systems should
+            <strong>Software development should be joyful, not painful.</strong> Systems should
             become more valuable over time, not more dangerous. Technology
-            should amplify human creativity, not constrain it. Your 1000th day
-            of development should feel like your first.
+            should amplify human creativity, not constrain it. <strong>Your 1000th day
+            of development should feel like your first.</strong>
           </p>
           <h2 className="text-4xl my-10">Start Today</h2>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
@@ -338,7 +338,7 @@ function HomepageHeader() {
             can be better: We're waiting for you.
           </p>
           <p className="text-left md:text-2xl sm:text-xl text-lg justify-normal my-10 ">
-            The revolution isn't coming. It's being typed right now, one event
+            <strong>The revolution isn't coming. It's being typed right now,</strong> one event
             at a time, by developers who refuse to accept that suffering is the
             price of scale.
           </p>
