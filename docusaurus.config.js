@@ -8,7 +8,8 @@ const lightCodeTheme = require("prism-react-renderer/themes/shadesOfPurple");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "NeoHaskell",
-  tagline: "A Haskell dialect to think less and do more",
+  tagline:
+    "A language and application model for explicit decisions, meaningful history, and software people can explain.",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
