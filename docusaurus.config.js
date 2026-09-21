@@ -8,7 +8,8 @@ const lightCodeTheme = require("prism-react-renderer/themes/shadesOfPurple");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "NeoHaskell",
-  tagline: "A Haskell dialect to think less and do more",
+  tagline:
+    "Model requests, decisions, events, and views so current state has an explainable history.",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -71,15 +72,7 @@ const config = {
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/neohaskell/neohaskell.github.io/tree/main/",
-          remarkPlugins: [math],
-          rehypePlugins: [katex],
-        },
+        docs: false,
         blog: {
           path: "blog/nhep/nhep",
           exclude: ["README.md"],
@@ -115,12 +108,6 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Support Us!",
-          },
           {
             href: "https://github.com/neohaskell/",
             label: "GitHub",
