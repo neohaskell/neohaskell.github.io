@@ -1,23 +1,470 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
+.hero {
+  margin: 0 auto;
+  max-width: 92rem;
+  padding: 6rem 2rem 2rem;
   text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.hero h1 {
+  letter-spacing: -0.035em;
+  margin: 0 auto;
+  max-width: 16ch;
 }
 
-.buttons {
+.heroLead {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.6;
+  margin: 2rem auto 0;
+  max-width: 68ch;
+}
+
+.heroDiagram {
+  margin: 4rem auto 0;
+  max-width: 74rem;
+  text-align: left;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 78rem;
+  padding: 0 2rem 6rem;
+}
+
+.section {
+  margin: 8rem auto 0;
+}
+
+.sectionText {
+  max-width: 72ch;
+}
+
+.sectionText h2,
+.closing h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 1.5rem;
+}
+
+.sectionText p,
+.closing p {
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.7;
+  margin: 1.25rem 0 0;
+}
+
+.diagram {
+  background: white;
+  border: 4px solid black;
+  box-shadow: 8px 8px 0 black;
+  margin: 3rem 0 0;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.heroDiagram .diagram {
+  border: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.caption {
+  border-top: 2px solid black;
+  display: block;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
+.flow {
+  align-items: stretch;
   display: flex;
-  align-items: center;
   justify-content: center;
+}
+
+.flowStep {
+  align-items: center;
+  border: 3px solid black;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 7.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.flowStep strong {
+  font-family: "Lexend Mega", sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1.15rem);
+  line-height: 1.25;
+}
+
+.flowStep span {
+  font-family: "Ubuntu", sans-serif;
+  line-height: 1.35;
+  margin-top: 0.45rem;
+}
+
+.cyan {
+  background: #cffafe;
+}
+
+.yellow {
+  background: #fef9c3;
+}
+
+.violet {
+  background: #ede9fe;
+}
+
+.flowConnector,
+.transitionConnector {
+  align-self: center;
+  background: black;
+  flex: 0 0 2rem;
+  height: 4px;
+  position: relative;
+}
+
+.flowConnector::after,
+.transitionConnector::after {
+  border-bottom: 8px solid transparent;
+  border-left: 11px solid black;
+  border-top: 8px solid transparent;
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: -6px;
+}
+
+.comparisonGrid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.comparisonPanel h3 {
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+  text-transform: uppercase;
+}
+
+.comparisonPanel > p {
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 1.5rem 0 0;
+}
+
+.stateTransition {
+  align-items: center;
+  display: flex;
+}
+
+.valueBlock {
+  border: 3px solid black;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.25rem 0.75rem;
+  text-align: center;
+}
+
+.valueBlock span {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.valueBlock strong {
+  font-family: "Lexend Mega", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin-top: 0.4rem;
+}
+
+.timeline {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.timelineItem {
+  align-items: center;
+  border: 3px solid black;
+  display: flex;
+  justify-content: space-between;
+  min-height: 3.75rem;
+  padding: 0.85rem 1rem;
+}
+
+.timelineItem strong,
+.timelineItem span {
+  font-family: "Comic Mono", monospace;
+}
+
+.timelineConnector {
+  align-self: center;
+  background: black;
+  height: 1rem;
+  width: 4px;
+}
+
+.foundationMap {
+  margin: 0;
+}
+
+.foundationRow {
+  align-items: center;
+  border-bottom: 2px solid black;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(12rem, 0.8fr) 2fr;
+  padding: 1rem 0;
+}
+
+.foundationRow:first-child {
+  padding-top: 0;
+}
+
+.foundationRow:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.foundationRow dt {
+  align-items: center;
+  display: flex;
+  font-family: "Lexend Mega", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  gap: 0.8rem;
+}
+
+.foundationRow dt span {
+  align-items: center;
+  background: #cffafe;
+  border: 2px solid black;
+  border-radius: 999px;
+  display: inline-flex;
+  flex: 0 0 2.25rem;
+  height: 2.25rem;
+  justify-content: center;
+}
+
+.foundationRow dd {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.costFigures {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.costFigure h3 {
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+}
+
+.costFigure > p {
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 1rem 0 0;
+}
+
+.costChart {
+  display: block;
+  height: auto;
+  overflow: visible;
+  width: 100%;
+}
+
+.chartAxis {
+  fill: none;
+  stroke: black;
+  stroke-width: 3;
+}
+
+.featureBlock {
+  fill: #cffafe;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.reworkBlock {
+  fill: #fecaca;
+  stroke: black;
+  stroke-width: 2;
+}
+
+.blockLabel {
+  fill: black;
+  font-family: "Comic Mono", monospace;
+  font-size: 16px;
+  text-anchor: middle;
+}
+
+.risingCurve {
+  fill: none;
+  stroke: #ef4444;
+  stroke-width: 4;
+}
+
+.boundedCurve {
+  fill: none;
+  stroke: #0ea5e9;
+  stroke-width: 4;
+}
+
+.redArrow {
+  fill: #ef4444;
+}
+
+.blueArrow {
+  fill: #0ea5e9;
+}
+
+.curveLabel,
+.boundedLabel,
+.sharedLabel,
+.axisLabel {
+  fill: black;
+  font-family: "Comic Mono", monospace;
+  text-anchor: middle;
+}
+
+.curveLabel,
+.boundedLabel {
+  font-size: 14px;
+}
+
+.axisLabel,
+.sharedLabel {
+  font-size: 12px;
+}
+
+.sharedContract {
+  fill: none;
+  stroke: #9723c9;
+  stroke-width: 4;
+}
+
+.callout {
+  border-bottom: 3px solid black;
+  border-top: 3px solid black;
+  font-family: "Ubuntu", sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.6;
+  margin: 3.5rem 0 0;
+  max-width: 72ch;
+  padding: 1.5rem 0;
+}
+
+.closing {
+  margin-bottom: 2rem;
+}
+
+.closingContent {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.closingContent p {
+  max-width: 62ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.actions span {
+  font-family: "Lexend Mega", sans-serif;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 760px) {
+  .hero {
+    padding: 4rem 1rem 1rem;
+  }
+
+  .heroLead {
+    font-size: 1.1rem;
+  }
+
+  .heroDiagram {
+    margin-top: 2.5rem;
+  }
+
+  .content {
+    padding: 0 1rem 4rem;
+  }
+
+  .section {
+    margin-top: 5rem;
+  }
+
+  .flow {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .flowConnector,
+  .transitionConnector {
+    flex-basis: auto;
+    height: 2rem;
+    width: 4px;
+  }
+
+  .flowConnector::after,
+  .transitionConnector::after {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 11px solid black;
+    bottom: -2px;
+    left: -6px;
+    right: auto;
+    top: auto;
+  }
+
+  .comparisonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .costFigures {
+    grid-template-columns: 1fr;
+  }
+
+  .comparisonPanel + .comparisonPanel {
+    border-top: 3px solid black;
+    padding-top: 2rem;
+  }
+
+  .stateTransition {
+    flex-direction: column;
+  }
+
+  .valueBlock {
+    width: 100%;
+  }
+
+  .foundationRow {
+    align-items: start;
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
+  }
+
+  .actions,
+  .actions a,
+  .actions button {
+    width: 100%;
+  }
 }
